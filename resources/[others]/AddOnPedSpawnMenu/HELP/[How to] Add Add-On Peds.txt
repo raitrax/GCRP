@@ -1,0 +1,6 @@
+[How to] Add Add-On Peds?
+
+1. Open the Add-On Peds.txt
+2. Add ONE Ped for each three lines
+3. Add the name you use to spawn the Ped after 'SpawnName: ’
+4. Add the name which should be shown in the menu after 'DisplayName: ’
