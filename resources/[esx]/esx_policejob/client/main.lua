@@ -491,6 +491,9 @@ function OpenVehicleSpawnerMenu(station, partNum)
 	  table.insert(elements, { label = "Véhicule de patrouille 2", value = 'police2'})
 	  table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
 	  table.insert(elements, { label = "polp1", value = 'polp1'})
+	  table.insert(elements, { label = '2015POLSTANG', value = '2015POLSTANG'})
+	  table.insert(elements, { label = 'ghispo2', value = 'ghispo2'})
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
 	  table.insert(elements, { label = 'moto', value = 'policeb'})
     end
 
