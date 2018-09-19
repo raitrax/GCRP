@@ -392,19 +392,74 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
 	else
 
-		local elements = {}
+	local elements = {}
 
-		local sharedVehicles = Config.AuthorizedVehicles.Shared
-		for i=1, #sharedVehicles, 1 do
-			table.insert(elements, { label = sharedVehicles[i].label, model = sharedVehicles[i].model})
-		end
+    if PlayerData.job.grade_name == 'recruit' then
+      table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
 
-		local authorizedVehicles = Config.AuthorizedVehicles[PlayerData.job.grade_name]
-		for i=1, #authorizedVehicles, 1 do
-			table.insert(elements, { label = authorizedVehicles[i].label, model = authorizedVehicles[i].model})
-		end
+    if PlayerData.job.grade_name == 'officer' then
+	  table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
+	  table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
 
-		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner',
+    if PlayerData.job.grade_name == 'sergeant' then
+      table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
+	  table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
+
+    if PlayerData.job.grade_name == 'intendent' then
+      table.insert(elements, { label = "Police Mustang 2015", value = '2015POLSTANG'})
+      table.insert(elements, { label = "Police GT350R", value = 'policegt350r'})
+      table.insert(elements, { label = "Police Maserati", value = 'ghispo2'})
+      table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
+	  table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
+
+    if PlayerData.job.grade_name == 'lieutenant' then
+      table.insert(elements, { label = "Police Mustang 2015", value = '2015POLSTANG'})
+      table.insert(elements, { label = "Police GT350R", value = 'policegt350r'})
+      table.insert(elements, { label = "Police Maserati", value = 'ghispo2'})
+      table.insert(elements, { label = 'fourgon transport divers', value = 'policet'})
+      table.insert(elements, { label = 'Transport de prisonnier', value = 'pbus'})
+      table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
+	  table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
+
+    if PlayerData.job.grade_name == 'chef' then
+      table.insert(elements, { label = "Police Mustang 2015", value = '2015POLSTANG'})
+      table.insert(elements, { label = "Police GT350R", value = 'policegt350r'})
+      table.insert(elements, { label = "Police Maserati", value = 'ghispo2'})
+      table.insert(elements, { label = 'fourgon transport divers', value = 'policet'})
+      table.insert(elements, { label = 'Transport de prisonnier', value = 'pbus'})
+      table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
+	  table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
+
+    if PlayerData.job.grade_name == 'boss' then
+      table.insert(elements, { label = "Police P1", value = 'polp1'})
+      table.insert(elements, { label = "Police Chiron", value = 'polchiron'})
+      table.insert(elements, { label = "Police Mustang 2015", value = '2015POLSTANG'})
+      table.insert(elements, { label = "Police GT350R", value = 'policegt350r'})
+      table.insert(elements, { label = "Police Maserati", value = 'ghispo2'})
+      table.insert(elements, { label = "Véhicule de patrouille 2", value = 'police2'})
+      table.insert(elements, { label = 'véhicule commandement', value = 'fbi'})
+      table.insert(elements, { label = 'fourgon transport divers', value = 'policet'})
+      table.insert(elements, { label = 'Transport de prisonnier', value = 'pbus'})
+      table.insert(elements, { label = 'Véhicule de patrouille 3', value = 'police3'})
+	  table.insert(elements, { label = 'Véhicule de patrouille 1', value = 'police' })
+	  table.insert(elements, { label = 'moto', value = 'policeb'})
+    end
+	
+	ESX.UI.Menu.CloseAll()
+	
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner',
 		{
 			title    = _U('vehicle_menu'),
 			align    = 'top-left',

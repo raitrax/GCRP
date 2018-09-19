@@ -96,11 +96,11 @@ Config.AuthorizedVehicles = {
 	Shared = {
 		{
 			model = 'police',
-			label = 'Police Cruiser'
+			label = 'Véhicule de patrouille 1'
 		},
 		{
-			model = 'pbus',
-			label = 'Police Prison Bus'
+			model = 'policeb',
+			label = 'moto'
 		}
 	},
 
@@ -111,42 +111,123 @@ Config.AuthorizedVehicles = {
 	officer = {
 		{
 			model = 'police3',
-			label = 'Police Interceptor'
+			label = 'Véhicule de patrouille 3'
 		}
 	},
 
 	sergeant = {
 		{
-			model = 'policet',
-			label = 'Police Transporter'
-		},
-		{
-			model = 'policeb',
-			label = 'Police Bike'
+			model = 'police3',
+			label = 'Véhicule de patrouille 3'
 		}
 	},
 
 	intendent = {
-
+		{
+			model = 'police3',
+			label = 'Véhicule de patrouille 3'
+		},
+		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
+		}
 	},
 
 	lieutenant = {
 		{
-			model = 'riot',
-			label = 'Police Riot'
+			model = 'police3',
+			label = 'Véhicule de patrouille 3'
 		},
 		{
-			model = 'fbi2',
-			label = 'FIB SUV'
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
+		},
+		{
+			model = 'policet',
+			label = 'fourgon transport divers'
+		},
+		{
+			model = 'pbus',
+			label = 'Transport de prisonnier'
 		}
 	},
 
 	chef = {
-
+		{
+			model = 'police3',
+			label = 'Véhicule de patrouille 3'
+		},
+		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
+		},
+		{
+			model = 'policet',
+			label = 'fourgon transport divers'
+		},
+		{
+			model = 'pbus',
+			label = 'Transport de prisonnier'
+		}
 	},
 
 	boss = {
-
+		{
+			model = 'polp1',
+			label = 'Police P1'
+		},
+		{
+			model = 'polchiron',
+			label = 'Police Chiron'
+		},
+		{
+			model = 'police3',
+			label = 'Véhicule de patrouille 3'
+		},
+		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
+		},
+		{
+			model = 'policet',
+			label = 'fourgon transport divers'
+		},
+		{
+			model = 'pbus',
+			label = 'Transport de prisonnier'
+		}
 	}
 }
 
