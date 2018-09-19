@@ -106,6 +106,7 @@ function OpenCloakroomMenu()
               SetPlayerModel(PlayerId(), model)
               SetModelAsNoLongerNeeded(model)
               TriggerEvent('skinchanger:loadSkin', skin)
+              TriggerEvent('esx:restoreLoadout')
 
         end)
       end
@@ -122,6 +123,7 @@ function OpenCloakroomMenu()
               SetPlayerModel(PlayerId(), model)
               SetModelAsNoLongerNeeded(model)
               TriggerEvent('skinchanger:loadSkin', skin)
+              TriggerEvent('esx:restoreLoadout')
 
         end)
       end
@@ -138,6 +140,7 @@ function OpenCloakroomMenu()
               SetPlayerModel(PlayerId(), model)
               SetModelAsNoLongerNeeded(model)
               TriggerEvent('skinchanger:loadSkin', skin)
+              TriggerEvent('esx:restoreLoadout')
 
         end)
       end
@@ -154,6 +157,7 @@ function OpenCloakroomMenu()
               SetPlayerModel(PlayerId(), model)
               SetModelAsNoLongerNeeded(model)
               TriggerEvent('skinchanger:loadSkin', skin)
+              TriggerEvent('esx:restoreLoadout')
 
         end)
       end
@@ -174,6 +178,8 @@ function OpenCloakroomMenu()
                     SetPlayerModel(PlayerId(), model)
                     SetModelAsNoLongerNeeded(model)
                     TriggerEvent('skinchanger:loadSkin', skin)
+                    TriggerEvent('esx:restoreLoadout')
+
             else
                     local model = GetHashKey("mp_f_freemode_01")
 
@@ -186,6 +192,7 @@ function OpenCloakroomMenu()
                     SetPlayerModel(PlayerId(), model)
                     SetModelAsNoLongerNeeded(model)
                     TriggerEvent('skinchanger:loadSkin', skin)
+                    TriggerEvent('esx:restoreLoadout')
                     end
 
                 end)
