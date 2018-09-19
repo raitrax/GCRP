@@ -90,9 +90,6 @@
 
     function formatValue(arg) {
         switch (true) {
-            case arg === null:
-                return 'null';
-
             case arg instanceof WeakMap:
                 return 'WeakMap {}';
 
@@ -267,11 +264,11 @@
         }
 
         warn(message = undefined, ...optionalParams) {
-            this._trace('^3Warning: ' + format(message, ...optionalParams) + '^7');
+            this._trace('Warning: ' + format(message, ...optionalParams));
         }
 
         error(message = undefined, ...optionalParams) {
-            this._trace('^1Error: ' + format(message, ...optionalParams) + '^7');
+            this._trace('Error: ' + format(message, ...optionalParams));
         }
 
         trace(message = undefined, ...optionalParams) {
