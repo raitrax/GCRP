@@ -69,7 +69,6 @@ function OpenCloakroomMenu()
 	if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
     table.insert(elements, {label = 'batman', value = 'batman'})
     table.insert(elements, {label = 'BatmanBVS ', value = 'BatmanBVS'})
-    table.insert(elements, {label = 'The Batman', value = 'BlackPantherIW'})
 	end
 	
 
