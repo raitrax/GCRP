@@ -79,6 +79,7 @@ function OpenCloakroomMenu()
   end
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Joker
     table.insert(elements, {label = 'Joker', value = 'JokerBAO'})
+    table.insert(elements, {label = 'Joker Inj2', value = 'Joker'})
   end
     ESX.UI.Menu.Open(
       'default', GetCurrentResourceName(), 'cloakroom',
@@ -187,6 +188,23 @@ function OpenCloakroomMenu()
 
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
           local model = GetHashKey("JokerBAO")
+              RequestModel(model)
+              while not HasModelLoaded(model) do
+                  RequestModel(model)
+                  Citizen.Wait(0)
+              end
+
+              SetPlayerModel(PlayerId(), model)
+              SetModelAsNoLongerNeeded(model)
+              TriggerEvent('skinchanger:loadSkin', skin)
+              TriggerEvent('esx:restoreLoadout')
+
+        end)
+      end
+      if data.current.value == 'Joker' then
+
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+          local model = GetHashKey("Joker")
               RequestModel(model)
               while not HasModelLoaded(model) do
                   RequestModel(model)
