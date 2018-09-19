@@ -52,18 +52,23 @@ end
 function OpenCloakroomMenu()
 
 	local elements = {
-    {label = _U('citizen_wear'), value = 'citizen_wear'},
-    {label = 'Tenue Swat', value = 'swat_wear'},
+    {label = _U('citizen_wear'), value = 'citizen_wear'}
+    --{label = 'Tenue Swat', value = 'swat_wear'},
     	}
 	
-	if PlayerData.job ~= nil and (PlayerData.job.grade_name == 'recruit' or PlayerData.job.grade_name == 'agent' or PlayerData.job.grade_name == 'specialagent') then
-		table.insert(elements, {label = 'Tenue Agent du FIB', value = 'fib_wear'})
-    	end
+  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'recruit' then --Alfred
+    --table.insert(elements, {label = 'Tenue Directeur FIB ', value = 'fibboss_wear'})
+  end
+  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'agent' then --Robin
+    table.insert(elements, {label = 'Robin', value = 'blademasterrobin'})
+  end
+  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'specialagent' then --Nightwing
+    table.insert(elements, {label = 'Nightwing', value = 'nightwing'})
+  end
 	
-	if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then
-		table.insert(elements, {label = 'Tenue Directeur FIB ', value = 'fibboss_wear'})
-    table.insert(elements, {label = 'BatmanAK', value = 'BatmanAK', maleModel = 'BatmanAK', femaleModel = 'BatmanAK'})
-    table.insert(elements, {label = 'Swat', value = 'freemode_ped', maleModel = 'nightwing', femaleModel = 'nightwing'})	
+	if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
+    table.insert(elements, {label = 'batman', value = 'batman'})
+    table.insert(elements, {label = 'BatmanBVS ', value = 'BatmanBVS'})
 	end
 	
 
@@ -86,6 +91,72 @@ function OpenCloakroomMenu()
 
 			menu.close()
 
+
+      --Taken from SuperCoolNinja
+      if data.current.value == 'batman' then
+
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+          local model = GetHashKey("batman")
+              RequestModel(model)
+              while not HasModelLoaded(model) do
+                  RequestModel(model)
+                  Citizen.Wait(0)
+              end
+
+              SetPlayerModel(PlayerId(), model)
+              SetModelAsNoLongerNeeded(model)
+              TriggerEvent('skinchanger:loadSkin', skin)
+
+        end)
+      end
+      if data.current.value == 'BatmanBVS' then
+
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+          local model = GetHashKey("BatmanBVS")
+              RequestModel(model)
+              while not HasModelLoaded(model) do
+                  RequestModel(model)
+                  Citizen.Wait(0)
+              end
+
+              SetPlayerModel(PlayerId(), model)
+              SetModelAsNoLongerNeeded(model)
+              TriggerEvent('skinchanger:loadSkin', skin)
+
+        end)
+      end
+      if data.current.value == 'nightwing' then
+
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+          local model = GetHashKey("nightwing")
+              RequestModel(model)
+              while not HasModelLoaded(model) do
+                  RequestModel(model)
+                  Citizen.Wait(0)
+              end
+
+              SetPlayerModel(PlayerId(), model)
+              SetModelAsNoLongerNeeded(model)
+              TriggerEvent('skinchanger:loadSkin', skin)
+
+        end)
+      end
+      if data.current.value == 'blademasterrobin' then
+
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+          local model = GetHashKey("blademasterrobin")
+              RequestModel(model)
+              while not HasModelLoaded(model) do
+                  RequestModel(model)
+                  Citizen.Wait(0)
+              end
+
+              SetPlayerModel(PlayerId(), model)
+              SetModelAsNoLongerNeeded(model)
+              TriggerEvent('skinchanger:loadSkin', skin)
+
+        end)
+      end
 			--Taken from SuperCoolNinja
 			if data.current.value == 'citizen_wear' then
 
