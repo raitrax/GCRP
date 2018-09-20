@@ -54,67 +54,42 @@ function CloakRoom()
 			align    = 'top-left',
 			elements = {
 				{label = _U('clothes_civil'), value = 'citizen_wear'},
-				{label = 'Deadpool', value = 'DeadPool'},
+				{label = _U('clothes_job'), value = 'gouvernor_wear'},
+				{label = 'Armurerie', value = 'weapon_wear'},
 			},
 		},
 		function(data, menu)
 
 			menu.close()
 
-	        --Taken from SuperCoolNinja
-			if data.current.value == 'DeadPool' then
-
-			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-			  local model = GetHashKey("DeadPool")
-			      RequestModel(model)
-			      while not HasModelLoaded(model) do
-			          RequestModel(model)
-			          Citizen.Wait(0)
-			      end
-
-			      SetPlayerModel(PlayerId(), model)
-			      SetModelAsNoLongerNeeded(model)
-			      TriggerEvent('skinchanger:loadSkin', skin)
-			      TriggerEvent('esx:restoreLoadout')
-
-			end)
-			end
-			--Taken from SuperCoolNinja
 			if data.current.value == 'citizen_wear' then
 
-            ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+					TriggerEvent('skinchanger:loadSkin', skin)
+				end)
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_COMBATPISTOL')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_ASSAULTSMG')
 
-            if skin.sex == 0 then
+			end
 
-                local model = GetHashKey("mp_m_freemode_01")
-                    RequestModel(model)
-                    while not HasModelLoaded(model) do
-                        RequestModel(model)
-                        Citizen.Wait(0)
-                    end
+			if data.current.value == 'gouvernor_wear' then
 
-                    SetPlayerModel(PlayerId(), model)
-                    SetModelAsNoLongerNeeded(model)
-                    TriggerEvent('skinchanger:loadSkin', skin)
-                    TriggerEvent('esx:restoreLoadout')
+				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
-            else
-                    local model = GetHashKey("mp_f_freemode_01")
+					if skin.sex == 0 then
+						TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
+					else
+						TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
+					end
 
-                    RequestModel(model)
-                    while not HasModelLoaded(model) do
-                        RequestModel(model)
-                        Citizen.Wait(0)
-                    end
+				end)
 
-                    SetPlayerModel(PlayerId(), model)
-                    SetModelAsNoLongerNeeded(model)
-                    TriggerEvent('skinchanger:loadSkin', skin)
-                    TriggerEvent('esx:restoreLoadout')
-                    end
+			end
 
-                end)
-            end
+			if data.current.value == 'weapon_wear' then
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_COMBATPISTOL', 450)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_ASSAULTSMG', 2000)
+			end
 
 			CurrentAction     = 'cloakroom_menu'
 			CurrentActionMsg  = _U('cloakroom')
