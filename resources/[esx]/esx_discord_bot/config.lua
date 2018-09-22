@@ -6,7 +6,7 @@ Config.red 					  = 16711680
 Config.orange 				  = 16744192
 Config.blue 				  = 2061822
 Config.purple 				  = 11750815
-Config.webhook                = "https://discordapp.com/api/webhooks/482729307693776911/2QNTPoa3JOs15zoNU31cEtvlMBLPJ6e3jSftBhswPmeCxQuZGxFFzA3uYqXfpuTK_NWW"
+Config.webhook                = "https://discordapp.com/api/webhooks/493071362710044685/eVq8J27IM5qA9bkQZvfUF3zpeohMzsVHfnbN4mi86SD9TW9xXYekTgQ4Oe1pMG8pBJ_m"
 
 
 settings = {
@@ -47,8 +47,6 @@ blacklistedModels = {
 	"Opressor",
 	"Buzzard",
 	"Annihilator",
-	"WEAPON_RAILGUN",
-}
 }
 
 BlacklistedWeapons = { -- weapons that will get people banned
