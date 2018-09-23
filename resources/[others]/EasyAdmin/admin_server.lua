@@ -6,7 +6,7 @@ admins = {
 --"steam:11000010d704b92", --ouss
 "steam:11000011ca16ad3", -- cerder
 "steam:11000010ef07bcf", -- antoine
-"steam:11000010e8d0f59", -- Batman
+--"steam:11000010a9fabe8", -- fabien
 "steam:1100001349f2f84", -- john doe
 --"steam:110000111365654", -- joe ker
 "steam:", -- steamid64 converted to hex, this might need to be in lowercase, i didn't test
@@ -117,7 +117,7 @@ blacklist.reasons = {}
 	function updateBlacklist(addItem)
 		blacklist = {}
 		blacklist.reasons = {}
-		content = LoadResourceFile(GetCurrentResourceName(), "banlist.txt")
+		content = LoadResourceFile(GetCurrentResourceName(), "bans.txt")
 		if string.find(content, "|") ~= nil then
 			content = string.gsub(content,"|","\n")
 			Citizen.Trace("Found old banlist file, converting to new format..\n")
