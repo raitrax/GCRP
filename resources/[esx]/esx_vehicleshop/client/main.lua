@@ -826,7 +826,7 @@ AddEventHandler('esx_vehicleshop:hasEnteredMarker', function (zone)
       }
     end
   end
-
+--[[
   if zone == 'ResellVehicle' then
     local playerPed = GetPlayerPed(-1)
 
@@ -852,7 +852,7 @@ AddEventHandler('esx_vehicleshop:hasEnteredMarker', function (zone)
       }
     end
   end
-
+--]]
 
   if zone == 'BossActions' and Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'cardealer' and PlayerData.job.grade_name == 'boss' then
     CurrentAction     = 'boss_actions_menu'

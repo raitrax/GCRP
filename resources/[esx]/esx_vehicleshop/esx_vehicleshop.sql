@@ -320,4 +320,5 @@ INSERT INTO `vehicles` (name, model, price, category) VALUES
   ('Revolter', 'revolter', 1610000, 'sports'),
   ('Sentinel3', 'sentinel3', 650000, 'sports'),
   ('Hustler', 'hustler', 625000, 'muscle')
+  ('tmax', 'tmax', 625000, 'motocycles')
 ;

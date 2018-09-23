@@ -27,17 +27,17 @@ Config.FibStations = {
     },
 
     AuthorizedWeapons = {
-      {name = 'WEAPON_STUNGUN',          price = 100 },	
-      --{name = 'WEAPON_HEAVYPISTOL',      price = 100 },
-      --{name = 'WEAPON_ADVANCEDRIFLE',    price = 300 },
-      --{name = 'WEAPON_BULLPUPSHOTGUN',   price = 250 },
-      --{name = 'WEAPON_HEAVYSNIPER',      price = 450 },
-      {name = 'WEAPON_FLASHLIGHT',       price = 40 },
-      --{name = 'WEAPON_ASSAULTSMG', 		 price = 120 },
-	  {name = 'WEAPON_BZGAS',        	 price = 50 },	  
-      --{name = 'WEAPON_FLAREGUN',         price = 30 },
-      {name = 'GADGET_PARACHUTE',        price = 100 },
-      { name = 'WEAPON_NIGHTSTICK',       price = 25   },
+      {name = 'WEAPON_STUNGUN',          price = 0 },	
+      {name = 'WEAPON_HEAVYPISTOL',      price = 0 },
+      {name = 'WEAPON_ADVANCEDRIFLE',    price = 0 },
+      {name = 'WEAPON_BULLPUPSHOTGUN',   price = 0 },
+      {name = 'WEAPON_HEAVYSNIPER',      price = 0 },
+      {name = 'WEAPON_FLASHLIGHT',       price = 0 },
+      {name = 'WEAPON_ASSAULTSMG', 		 price = 0 },
+	  {name = 'WEAPON_BZGAS',        	 price = 0 },	  
+      {name = 'WEAPON_FLAREGUN',         price = 0 },
+      {name = 'GADGET_PARACHUTE',        price = 0 },
+      {name = 'WEAPON_NIGHTSTICK',       price = 0 },
     },
 
     AuthorizedVehicles = {
