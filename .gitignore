@@ -6,3 +6,5 @@ server.cfg
 server.cfg
 server.cfg
 server.cfg
+resources/[others]/EasyAdmin/admin_server.lua
+*.lua

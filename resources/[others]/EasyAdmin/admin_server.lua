@@ -4,8 +4,8 @@ admins = {
 --"steam:11000011b3fc1aa", --fonda
 --"steam:110000107fa0b65", -- Narus
 --"steam:11000010d704b92", --ouss
-"steam:11000011ca16ad3", -- cerder
-"steam:11000010ef07bcf", -- antoine
+--"steam:11000011ca16ad3", -- cerder
+--"steam:11000010ef07bcf", -- antoine
 --"steam:11000010a9fabe8", -- fabien
 "steam:1100001349f2f84", -- john doe
 --"steam:110000111365654", -- joe ker
