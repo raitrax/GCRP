@@ -50,5 +50,5 @@ blacklistedModels = {
 }
 
 BlacklistedWeapons = { -- weapons that will get people banned
-	"WEAPON_RAILGUN",
+	--"WEAPON_RAILGUN",
 }

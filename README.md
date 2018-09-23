@@ -5,6 +5,6 @@ Notre Serveur au complet sous ESX !
 
 
 # Rejoignez le serveur Officiel GothamCityRP
-# https://discord.gg/R76Kge
+# https://discord.gg/sdKNU5W
 
 
