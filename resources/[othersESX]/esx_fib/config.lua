@@ -34,7 +34,7 @@ Config.FibStations = {
       {name = 'WEAPON_HEAVYSNIPER',      price = 0 },
       {name = 'WEAPON_FLASHLIGHT',       price = 0 },
       {name = 'WEAPON_ASSAULTSMG', 		 price = 0 },
-	  {name = 'WEAPON_BZGAS',        	 price = 0 },	  
+	  {name = 'WEAPON_SMOKEGRENADE',        	 price = 0 },	  
       {name = 'WEAPON_FLAREGUN',         price = 0 },
       {name = 'GADGET_PARACHUTE',        price = 0 },
       {name = 'WEAPON_NIGHTSTICK',       price = 0 },
