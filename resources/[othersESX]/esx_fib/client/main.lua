@@ -51,11 +51,11 @@ end
 
 function OpenCloakroomMenu()
 
-	local elements = {
+  local elements = {
     {label = _U('citizen_wear'), value = 'citizen_wear'}
     --{label = 'Tenue Swat', value = 'swat_wear'},
-    	}
-	
+      }
+  
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'recruit' then --Alfred
     --table.insert(elements, {label = 'Tenue Directeur FIB ', value = 'fibboss_wear'})
   end
@@ -65,30 +65,31 @@ function OpenCloakroomMenu()
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'specialagent' then --Nightwing
     table.insert(elements, {label = 'Nightwing', value = 'nightwing'})
   end
-	
-	if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
+  
+  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
     table.insert(elements, {label = 'batman', value = 'batman'})
-	end
-	
+    table.insert(elements, {label = 'BatmanAK', value = 'BatmanAK'})
+  end
+  
 
-	ESX.UI.Menu.CloseAll()
-	
-	if Config.EnableNonFreemodePeds then
-		table.insert(elements, {label = _U('test'), value = 'test'})
-		table.insert(elements, {label = _U('test'), value = 'test'})
-	end	
+  ESX.UI.Menu.CloseAll()
+  
+  if Config.EnableNonFreemodePeds then
+    table.insert(elements, {label = _U('test'), value = 'test'})
+    table.insert(elements, {label = _U('test'), value = 'test'})
+  end 
 
-		ESX.UI.Menu.Open(
-			'default', GetCurrentResourceName(), 'cloakroom',
-			{
-				title    = _U('cloakroom'),
-				align    = 'top-left',
-				elements = elements,
-				},
+    ESX.UI.Menu.Open(
+      'default', GetCurrentResourceName(), 'cloakroom',
+      {
+        title    = _U('cloakroom'),
+        align    = 'top-left',
+        elements = elements,
+        },
 
-				function(data, menu)
+        function(data, menu)
 
-			menu.close()
+      menu.close()
 
 
       --Taken from SuperCoolNinja
@@ -109,10 +110,10 @@ function OpenCloakroomMenu()
 
         end)
       end
-      if data.current.value == 'BatmanBVS' then
+      if data.current.value == 'BatmanAK' then
 
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-          local model = GetHashKey("BatmanBVS")
+          local model = GetHashKey("BatmanAK")
               RequestModel(model)
               while not HasModelLoaded(model) do
                   RequestModel(model)
@@ -160,8 +161,8 @@ function OpenCloakroomMenu()
 
         end)
       end
-			--Taken from SuperCoolNinja
-			if data.current.value == 'citizen_wear' then
+      --Taken from SuperCoolNinja
+      if data.current.value == 'citizen_wear' then
 
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
@@ -197,72 +198,72 @@ function OpenCloakroomMenu()
                 end)
             end
 
-			if data.current.value == 'fib_wear' and PlayerData.job.name == 'fib' then
+      if data.current.value == 'fib_wear' and PlayerData.job.name == 'fib' then
 
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
-    				if skin.sex == 0 then
-        				TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
-    				else
-        				TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
-    				end
+            if skin.sex == 0 then
+                TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
+            else
+                TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
+            end
     
-				end)
-			end
-			
+        end)
+      end
+      
 
-			if data.current.value == 'fibboss_wear' and PlayerData.job.grade_name == 'boss' then
+      if data.current.value == 'fibboss_wear' and PlayerData.job.grade_name == 'boss' then
 
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
-    				if skin.sex == 0 then
-        				TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
-    				else
-        				TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
-    				end
+            if skin.sex == 0 then
+                TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
+            else
+                TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
+            end
     
-				end)
-			end
-			
-		if data.current.value == 'swat_wear' and PlayerData.job.name == 'fib' then
-		
-			local hashSkin = GetHashKey("mp_m_freemode_01")
-		    Citizen.CreateThread(function()
-		
-		  if(GetEntityModel(GetPlayerPed(-1)) == hashSkin) then
-		
-			SetPedComponentVariation(GetPlayerPed(-1), 7, 0, 0, 2)	  -- retrait cravate
-			SetPedComponentVariation(GetPlayerPed(-1), 10, 0, 0, 2)	  -- retrait grade
-			
-			SetPedComponentVariation(GetPlayerPed(-1), 11, 49, 0, 2)  -- Chemise Police
-			SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 2)   -- Ceinture+matraque Police 
-			SetPedComponentVariation(GetPlayerPed(-1), 4, 34, 0, 2)   -- Pantalon Police
-			SetPedComponentVariation(GetPlayerPed(-1), 6, 25, 0, 2)   -- Chaussure Police
-			SetPedComponentVariation(GetPlayerPed(-1), 3, 17, 0, 2)   -- under skin
-			SetPedComponentVariation(GetPlayerPed(-1), 9, 16, 2, 2)   -- parballes
-			SetPedComponentVariation(GetPlayerPed(-1), 1, 52, 0, 0)   -- Mask
-			SetPedPropIndex(GetPlayerPed(-1), 0, 39,0, 0) -- casque
-			
-			SetPedArmour(GetPlayerPed(-1), 100) -- Ajout armure
-			
-		  else
-		
-			SetPedComponentVariation(GetPlayerPed(-1), 7, 0, 0, 2)	  -- retrait cravate
-			SetPedComponentVariation(GetPlayerPed(-1), 10, 0, 0, 2)	  -- retrait grade
-			
-			SetPedComponentVariation(GetPlayerPed(-1), 11, 42, 0, 2) -- Chemise Police
-			SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 2)  -- Ceinture+matraque Police 
-			SetPedComponentVariation(GetPlayerPed(-1), 4, 33, 0, 2)  -- Pantalon Police
-			SetPedComponentVariation(GetPlayerPed(-1), 6, 25, 0, 2)  -- Chaussure Police
-			SetPedComponentVariation(GetPlayerPed(-1), 3, 18, 0, 2)   -- under skin
-			SetPedComponentVariation(GetPlayerPed(-1), 9, 18, 2, 2)   -- parballe
-			SetPedComponentVariation(GetPlayerPed(-1), 1, 52, 0, 0)   -- Mask
-			SetPedPropIndex(GetPlayerPed(-1), 0, 38,0, 0) -- casque
-			
-			SetPedArmour(GetPlayerPed(-1), 100) -- Ajout armure
-		
-		  end
-		 end)
+        end)
+      end
+      
+    if data.current.value == 'swat_wear' and PlayerData.job.name == 'fib' then
+    
+      local hashSkin = GetHashKey("mp_m_freemode_01")
+        Citizen.CreateThread(function()
+    
+      if(GetEntityModel(GetPlayerPed(-1)) == hashSkin) then
+    
+      SetPedComponentVariation(GetPlayerPed(-1), 7, 0, 0, 2)    -- retrait cravate
+      SetPedComponentVariation(GetPlayerPed(-1), 10, 0, 0, 2)   -- retrait grade
+      
+      SetPedComponentVariation(GetPlayerPed(-1), 11, 49, 0, 2)  -- Chemise Police
+      SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 2)   -- Ceinture+matraque Police 
+      SetPedComponentVariation(GetPlayerPed(-1), 4, 34, 0, 2)   -- Pantalon Police
+      SetPedComponentVariation(GetPlayerPed(-1), 6, 25, 0, 2)   -- Chaussure Police
+      SetPedComponentVariation(GetPlayerPed(-1), 3, 17, 0, 2)   -- under skin
+      SetPedComponentVariation(GetPlayerPed(-1), 9, 16, 2, 2)   -- parballes
+      SetPedComponentVariation(GetPlayerPed(-1), 1, 52, 0, 0)   -- Mask
+      SetPedPropIndex(GetPlayerPed(-1), 0, 39,0, 0) -- casque
+      
+      SetPedArmour(GetPlayerPed(-1), 100) -- Ajout armure
+      
+      else
+    
+      SetPedComponentVariation(GetPlayerPed(-1), 7, 0, 0, 2)    -- retrait cravate
+      SetPedComponentVariation(GetPlayerPed(-1), 10, 0, 0, 2)   -- retrait grade
+      
+      SetPedComponentVariation(GetPlayerPed(-1), 11, 42, 0, 2) -- Chemise Police
+      SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 2)  -- Ceinture+matraque Police 
+      SetPedComponentVariation(GetPlayerPed(-1), 4, 33, 0, 2)  -- Pantalon Police
+      SetPedComponentVariation(GetPlayerPed(-1), 6, 25, 0, 2)  -- Chaussure Police
+      SetPedComponentVariation(GetPlayerPed(-1), 3, 18, 0, 2)   -- under skin
+      SetPedComponentVariation(GetPlayerPed(-1), 9, 18, 2, 2)   -- parballe
+      SetPedComponentVariation(GetPlayerPed(-1), 1, 52, 0, 0)   -- Mask
+      SetPedPropIndex(GetPlayerPed(-1), 0, 38,0, 0) -- casque
+      
+      SetPedArmour(GetPlayerPed(-1), 100) -- Ajout armure
+    
+      end
+     end)
 
                 if data.current.value == 'freemode_ped' then
             local modelHash = ''
@@ -281,25 +282,25 @@ function OpenCloakroomMenu()
             end)
 
         end
-		end
-			
+    end
+      
 
-			CurrentAction     = 'menu_cloakroom'
-			CurrentActionMsg  = _U('open_cloackroom')
-			CurrentActionData = {}
+      CurrentAction     = 'menu_cloakroom'
+      CurrentActionMsg  = _U('open_cloackroom')
+      CurrentActionData = {}
 
-		end,
-		function(data, menu)
+    end,
+    function(data, menu)
 
-			menu.close()
+      menu.close()
 
-			CurrentAction     = 'menu_cloakroom'
-			CurrentActionMsg  = _U('open_cloackroom')
-			CurrentActionData = {}
-		end
-	  	
-		
-	)
+      CurrentAction     = 'menu_cloakroom'
+      CurrentActionMsg  = _U('open_cloackroom')
+      CurrentActionData = {}
+    end
+      
+    
+  )
 
   end
 
@@ -308,8 +309,8 @@ function OpenArmoryMenu(station)
   if Config.EnableArmoryManagement then
 
     local elements = {
-	    {label = 'Prendre un gilet pare-balle',  value = 'gilet_wear'},
-	    {label = 'Enlever le gilet pare-balle',  value = 'veste_wear'},
+      {label = 'Prendre un gilet pare-balle',  value = 'gilet_wear'},
+      {label = 'Enlever le gilet pare-balle',  value = 'veste_wear'},
       {label = _U('get_weapon'), value = 'get_weapon'},
       {label = _U('put_weapon'), value = 'put_weapon'},
       {label = 'Prendre Objet',  value = 'get_stock'},
@@ -350,8 +351,8 @@ function OpenArmoryMenu(station)
             if data.current.value == 'get_stock' then
               OpenGetStocksMenu()
             end
-			
-		if data.current.value == 'gilet_wear' then
+      
+    if data.current.value == 'gilet_wear' then
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function()
           SetPedComponentVariation(GetPlayerPed(-1), 9, 20, 6, 2)--Gilet
           local playerPed = GetPlayerPed(-1)
@@ -361,8 +362,8 @@ function OpenArmoryMenu(station)
           ClearPedLastWeaponDamage(playerPed)
           end)
         end
-	  
-	    if data.current.value == 'veste_wear' then
+    
+      if data.current.value == 'veste_wear' then
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function()
           SetPedComponentVariation(GetPlayerPed(-1), 9, 14, 1, 2)--Sans Gilet
           local playerPed = GetPlayerPed(-1)
@@ -371,7 +372,7 @@ function OpenArmoryMenu(station)
           ResetPedVisibleDamage(playerPed)
           ClearPedLastWeaponDamage(playerPed)
           end)
-        end			
+        end     
 
       end,
       function(data, menu)
@@ -476,12 +477,12 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
     local elements = {}
 
-	
+  
     table.insert(elements, { label = 'Vigilante', value = 'Vigilante'})
-	table.insert(elements, { label = 'batpod', value = 'batpod'})
-	table.insert(elements, { label = 'snyder', value = 'snyder'})
-	table.insert(elements, { label = 'lp700', value = 'lp700'})
-	table.insert(elements, { label = 'mvisiongt', value = 'mvisiongt'})
+  table.insert(elements, { label = 'batpod', value = 'batpod'})
+  table.insert(elements, { label = 'snyder', value = 'snyder'})
+  table.insert(elements, { label = 'lp700', value = 'lp700'})
+  table.insert(elements, { label = 'mvisiongt', value = 'mvisiongt'})
 
 
     ESX.UI.Menu.Open(
@@ -559,141 +560,141 @@ end
 
 function OpenVehicle1SpawnerMenu(station, partNum)
 
-	local vehicles1 = Config.FibStations[station].Vehicles1
+  local vehicles1 = Config.FibStations[station].Vehicles1
 
-	ESX.UI.Menu.CloseAll()
+  ESX.UI.Menu.CloseAll()
 
-	if Config.EnableSocietyOwnedVehicles1 then
+  if Config.EnableSocietyOwnedVehicles1 then
 
-		local elements = {}
+    local elements = {}
 
-		ESX.TriggerServerCallback('esx_society:getVehiclesInGarage', function(garageVehicles1)
+    ESX.TriggerServerCallback('esx_society:getVehiclesInGarage', function(garageVehicles1)
 
-			for i=1, #garageVehicles1, 1 do
-				table.insert(elements, {label = GetDisplayNameFromVehicleModel(garageVehicles1[i].model) .. ' [' .. garageVehicles1[i].plate .. ']', value = garageVehicles1[i]})
-			end
+      for i=1, #garageVehicles1, 1 do
+        table.insert(elements, {label = GetDisplayNameFromVehicleModel(garageVehicles1[i].model) .. ' [' .. garageVehicles1[i].plate .. ']', value = garageVehicles1[i]})
+      end
 
-			ESX.UI.Menu.Open(
-				'default', GetCurrentResourceName(), 'vehicle_spawner1',
-				{
-					title    = _U('vehicle_menu'),
-					align    = 'top-left',
-					elements = elements,
-				},
-				function(data, menu)
+      ESX.UI.Menu.Open(
+        'default', GetCurrentResourceName(), 'vehicle_spawner1',
+        {
+          title    = _U('vehicle_menu'),
+          align    = 'top-left',
+          elements = elements,
+        },
+        function(data, menu)
 
-					menu.close()
+          menu.close()
 
-					local vehicleProps = data.current.value
+          local vehicleProps = data.current.value
 
-					ESX.Game.SpawnVehicle(vehicleProps.model, vehicles1[partNum].SpawnPoint1, 270.0, function(vehicle)
+          ESX.Game.SpawnVehicle(vehicleProps.model, vehicles1[partNum].SpawnPoint1, 270.0, function(vehicle)
 
-						ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
-						local playerPed = GetPlayerPed(-1)
+            ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
+            local playerPed = GetPlayerPed(-1)
 
-						if model == 'frogger2' then
-							SetVehicleModKit(vehicle, 0)
-							SetVehicleLivery(vehicle, 1)
-						end
+            if model == 'frogger2' then
+              SetVehicleModKit(vehicle, 0)
+              SetVehicleLivery(vehicle, 1)
+            end
 
-						TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
-					end)
+            TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+          end)
 
-					TriggerServerEvent('esx_society:removeVehicleFromGarage', 'fib', vehicleProps)
+          TriggerServerEvent('esx_society:removeVehicleFromGarage', 'fib', vehicleProps)
 
-				end,
-				function(data, menu)
+        end,
+        function(data, menu)
 
-					menu.close()
+          menu.close()
 
-					CurrentAction     = 'menu_vehicle_spawner1'
-					CurrentActionMsg  = _U('vehicle_spawner')
-					CurrentActionData = {station = station, partNum = partNum}
+          CurrentAction     = 'menu_vehicle_spawner1'
+          CurrentActionMsg  = _U('vehicle_spawner')
+          CurrentActionData = {station = station, partNum = partNum}
 
-				end
-			)
+        end
+      )
 
-		end, 'fib')
+    end, 'fib')
 
-	else
+  else
 
-		local elements = {}
+    local elements = {}
 
-		for i=1, #Config.FibStations[station].AuthorizedVehicles1, 1 do
-			local vehicle = Config.FibStations[station].AuthorizedVehicles1[i]
-			table.insert(elements, { label = 'batwing', value = 'batwing'})
-		end
+    for i=1, #Config.FibStations[station].AuthorizedVehicles1, 1 do
+      local vehicle = Config.FibStations[station].AuthorizedVehicles1[i]
+      table.insert(elements, { label = 'batwing', value = 'batwing'})
+    end
 
-		ESX.UI.Menu.Open(
-			'default', GetCurrentResourceName(), 'vehicle_spawner1',
-			{
-				title    = _U('vehicle_menu'),
-				align    = 'top-left',
-				elements = elements,
-			},
-			function(data, menu)
+    ESX.UI.Menu.Open(
+      'default', GetCurrentResourceName(), 'vehicle_spawner1',
+      {
+        title    = _U('vehicle_menu'),
+        align    = 'top-left',
+        elements = elements,
+      },
+      function(data, menu)
 
-				menu.close()
+        menu.close()
 
-				local model = data.current.value
+        local model = data.current.value
 
-				local vehicle = GetClosestVehicle(vehicles1[partNum].SpawnPoint1.x,  vehicles1[partNum].SpawnPoint1.y,  vehicles1[partNum].SpawnPoint1.z,  3.0,  0,  71)
+        local vehicle = GetClosestVehicle(vehicles1[partNum].SpawnPoint1.x,  vehicles1[partNum].SpawnPoint1.y,  vehicles1[partNum].SpawnPoint1.z,  3.0,  0,  71)
 
-				if not DoesEntityExist(vehicle) then
+        if not DoesEntityExist(vehicle) then
 
-					local playerPed = GetPlayerPed(-1)
+          local playerPed = GetPlayerPed(-1)
 
-					if Config.MaxInService == -1 then
+          if Config.MaxInService == -1 then
 
-						ESX.Game.SpawnVehicle(model, {
-							x = vehicles1[partNum].SpawnPoint1.x, 
-							y = vehicles1[partNum].SpawnPoint1.y, 
-							z = vehicles1[partNum].SpawnPoint1.z
-						}, vehicles1[partNum].Heading1, function(vehicle)
-							TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
-							SetVehicleMaxMods(vehicle)
-						end)
+            ESX.Game.SpawnVehicle(model, {
+              x = vehicles1[partNum].SpawnPoint1.x, 
+              y = vehicles1[partNum].SpawnPoint1.y, 
+              z = vehicles1[partNum].SpawnPoint1.z
+            }, vehicles1[partNum].Heading1, function(vehicle)
+              TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+              SetVehicleMaxMods(vehicle)
+            end)
 
-					else
+          else
 
-						ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
+            ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
 
-							if canTakeService then
+              if canTakeService then
 
-								ESX.Game.SpawnVehicle(model, {
-									x = vehicles1[partNum].SpawnPoint1.x, 
-									y = vehicles1[partNum].SpawnPoint1.y, 
-									z = vehicles1[partNum].SpawnPoint1.z
-								}, Vehicles1[partNum].Heading, function(vehicle)
-									TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
-									SetVehicleMaxMods(vehicle)
-								end)
+                ESX.Game.SpawnVehicle(model, {
+                  x = vehicles1[partNum].SpawnPoint1.x, 
+                  y = vehicles1[partNum].SpawnPoint1.y, 
+                  z = vehicles1[partNum].SpawnPoint1.z
+                }, Vehicles1[partNum].Heading, function(vehicle)
+                  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+                  SetVehicleMaxMods(vehicle)
+                end)
 
-							else
-								ESX.ShowNotification(_U('service_max') .. inServiceCount .. '/' .. maxInService)
-							end
+              else
+                ESX.ShowNotification(_U('service_max') .. inServiceCount .. '/' .. maxInService)
+              end
 
-						end, 'fib')
+            end, 'fib')
 
-					end
+          end
 
-				else
-					ESX.ShowNotification(_U('vehicle_out'))
-				end
+        else
+          ESX.ShowNotification(_U('vehicle_out'))
+        end
 
-			end,
-			function(data, menu)
+      end,
+      function(data, menu)
 
-				menu.close()
+        menu.close()
 
-				CurrentAction     = 'menu_vehicle_spawner1'
-				CurrentActionMsg  = _U('vehicle_spawner')
-				CurrentActionData = {station = station, partNum = partNum}
+        CurrentAction     = 'menu_vehicle_spawner1'
+        CurrentActionMsg  = _U('vehicle_spawner')
+        CurrentActionData = {station = station, partNum = partNum}
 
-			end
-		)
+      end
+    )
 
-	end
+  end
 
 end
 
@@ -729,12 +730,12 @@ function OpenFibActionsMenu()
               {label = _U('put_in_vehicle'),  value = 'put_in_vehicle'},
               {label = _U('out_the_vehicle'), value = 'out_the_vehicle'},
               --{label = _U('fine'),            value = 'fine'},
-			  {label = ("amendes"), 		  value = 'billing'},
-			  {label = _U('codedmv'),         value = 'codedmv'},
-			  {label = _U('codedrive'),       value = 'codedrive'},
-			  {label = _U('codedrivebike'),   value = 'codedrivebike'},
-			  {label = _U('codedrivetruck'),  value = 'codedrivetruck'},
-			  {label = _U('weaponlicense'),  value = 'weaponlicense'},
+        {label = ("amendes"),       value = 'billing'},
+        {label = _U('codedmv'),         value = 'codedmv'},
+        {label = _U('codedrive'),       value = 'codedrive'},
+        {label = _U('codedrivebike'),   value = 'codedrivebike'},
+        {label = _U('codedrivetruck'),  value = 'codedrivetruck'},
+        {label = _U('weaponlicense'),  value = 'weaponlicense'},
         
             },
           },
@@ -771,32 +772,32 @@ function OpenFibActionsMenu()
               if data2.current.value == 'fine' then
                 OpenFineMenu(player)
               end
-			  
-		if data.current.value == 'billing' then
-				ESX.UI.Menu.Open(
-					'dialog', GetCurrentResourceName(), 'billing',
-					{
-						title = 'Montant de la facture'
-					},
-					function(data, menu)
-						local amount = tonumber(data.value)
-						if amount == nil then
-							ESX.ShowNotification('Montant invalide')
-						else							
-							menu.close()							
-							local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-							if closestPlayer == -1 or closestDistance > 3.0 then
-								ESX.ShowNotification('Aucun joueur à proximité')
-							else
-								TriggerServerEvent('esx_billing:sendBill', GetPlayerServerId(closestPlayer), 'society_fib', 'Fib', amount)
-							end
-						end
-					end,
-				function(data, menu)
-					menu.close()
-				end
-				)
-			end	  
+        
+    if data.current.value == 'billing' then
+        ESX.UI.Menu.Open(
+          'dialog', GetCurrentResourceName(), 'billing',
+          {
+            title = 'Montant de la facture'
+          },
+          function(data, menu)
+            local amount = tonumber(data.value)
+            if amount == nil then
+              ESX.ShowNotification('Montant invalide')
+            else              
+              menu.close()              
+              local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+              if closestPlayer == -1 or closestDistance > 3.0 then
+                ESX.ShowNotification('Aucun joueur à proximité')
+              else
+                TriggerServerEvent('esx_billing:sendBill', GetPlayerServerId(closestPlayer), 'society_fib', 'Fib', amount)
+              end
+            end
+          end,
+        function(data, menu)
+          menu.close()
+        end
+        )
+      end   
         
         if data2.current.value == 'code' then
                 TriggerServerEvent('esx_fib:codedmv', GetPlayerServerId(player))
@@ -1570,10 +1571,10 @@ AddEventHandler('esx_fib:hasEnteredMarker', function(station, part, partNum)
   end
   
   if part == 'VehicleSpawner1' then
-		CurrentAction     = 'menu_vehicle_spawner1'
-		CurrentActionMsg  = _U('vehicle_spawner')
-		CurrentActionData = {station = station, partNum = partNum}
-	end
+    CurrentAction     = 'menu_vehicle_spawner1'
+    CurrentActionMsg  = _U('vehicle_spawner')
+    CurrentActionData = {station = station, partNum = partNum}
+  end
 
   if part == 'VehicleDeleter' then
 
@@ -1765,22 +1766,22 @@ Citizen.CreateThread(function()
       DisableControlAction(0, 15,   true) -- Weapon Wheel Prev
       DisableControlAction(0, 16,   true) -- Select Next Weapon
       DisableControlAction(0, 17,   true) -- Select Prev Weapon
-	  DisableControlAction(0, 322,  true)
-	  DisableControlAction(0, 288,  true)
-	  DisableControlAction(0, 289,  true)
-	  DisableControlAction(0, 170,  true)
-	  DisableControlAction(0, 166,  true)
-	  DisableControlAction(0, 167,  true)
-	  DisableControlAction(0, 168,  true)
-	  DisableControlAction(0, 169,  true)
-	  DisableControlAction(0, 56,   true)
-	  DisableControlAction(0, 57,   true)
-	  DisableControlAction(0, 23,   true)
-	  DisableControlAction(0, 32,   true)
-	  DisableControlAction(0, 20,   true)
-	  DisableControlAction(0, 73,   true)
-	  DisableControlAction(0, 29,   true)
-	  DisableControlAction(0, 37,   true)
+    DisableControlAction(0, 322,  true)
+    DisableControlAction(0, 288,  true)
+    DisableControlAction(0, 289,  true)
+    DisableControlAction(0, 170,  true)
+    DisableControlAction(0, 166,  true)
+    DisableControlAction(0, 167,  true)
+    DisableControlAction(0, 168,  true)
+    DisableControlAction(0, 169,  true)
+    DisableControlAction(0, 56,   true)
+    DisableControlAction(0, 57,   true)
+    DisableControlAction(0, 23,   true)
+    DisableControlAction(0, 32,   true)
+    DisableControlAction(0, 20,   true)
+    DisableControlAction(0, 73,   true)
+    DisableControlAction(0, 29,   true)
+    DisableControlAction(0, 37,   true)
     
     end
   end
@@ -1837,24 +1838,24 @@ Citizen.CreateThread(function()
             DrawMarker(Config.MarkerType, v.Vehicles[i].Spawner.x, v.Vehicles[i].Spawner.y, v.Vehicles[i].Spawner.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
           end
         end
-		
-		for i=1, #v.Vehicles1, 1 do
-		  if GetDistanceBetweenCoords(coords,  v.Vehicles1[i].Spawner1.x,  v.Vehicles1[i].Spawner1.y,  v.Vehicles1[i].Spawner1.z,  true) < Config.DrawDistance then
-			DrawMarker(Config.MarkerType, v.Vehicles1[i].Spawner1.x, v.Vehicles1[i].Spawner1.y, v.Vehicles1[i].Spawner1.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
-		  end
-		end
+    
+    for i=1, #v.Vehicles1, 1 do
+      if GetDistanceBetweenCoords(coords,  v.Vehicles1[i].Spawner1.x,  v.Vehicles1[i].Spawner1.y,  v.Vehicles1[i].Spawner1.z,  true) < Config.DrawDistance then
+      DrawMarker(Config.MarkerType, v.Vehicles1[i].Spawner1.x, v.Vehicles1[i].Spawner1.y, v.Vehicles1[i].Spawner1.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
+      end
+    end
 
         for i=1, #v.VehicleDeleters, 1 do
           if GetDistanceBetweenCoords(coords,  v.VehicleDeleters[i].x,  v.VehicleDeleters[i].y,  v.VehicleDeleters[i].z,  true) < Config.DrawDistance then
             DrawMarker(Config.MarkerType, v.VehicleDeleters[i].x, v.VehicleDeleters[i].y, v.VehicleDeleters[i].z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColorDel.r, Config.MarkerColorDel.g, Config.MarkerColorDel.b, 100, false, true, 2, false, false, false, false)
           end
         end
-		
-		for i=1, #v.VehicleDeleters1, 1 do
-		  if GetDistanceBetweenCoords(coords,  v.VehicleDeleters1[i].x,  v.VehicleDeleters1[i].y,  v.VehicleDeleters1[i].z,  true) < Config.DrawDistance then
-			DrawMarker(Config.MarkerType, v.VehicleDeleters1[i].x, v.VehicleDeleters1[i].y, v.VehicleDeleters1[i].z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSizeDel.x, Config.MarkerSizeDel.y, Config.MarkerSizeDel.z, Config.MarkerColorDel.r, Config.MarkerColorDel.g, Config.MarkerColorDel.b, 100, false, true, 2, false, false, false, false)
-		  end
-		end
+    
+    for i=1, #v.VehicleDeleters1, 1 do
+      if GetDistanceBetweenCoords(coords,  v.VehicleDeleters1[i].x,  v.VehicleDeleters1[i].y,  v.VehicleDeleters1[i].z,  true) < Config.DrawDistance then
+      DrawMarker(Config.MarkerType, v.VehicleDeleters1[i].x, v.VehicleDeleters1[i].y, v.VehicleDeleters1[i].z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSizeDel.x, Config.MarkerSizeDel.y, Config.MarkerSizeDel.z, Config.MarkerColorDel.r, Config.MarkerColorDel.g, Config.MarkerColorDel.b, 100, false, true, 2, false, false, false, false)
+      end
+    end
 
         if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'fib' and PlayerData.job.grade_name == 'boss' then
 
@@ -1929,21 +1930,21 @@ Citizen.CreateThread(function()
 
         for i=1, #v.Vehicles1, 1 do
 
-		  if GetDistanceBetweenCoords(coords,  v.Vehicles1[i].Spawner1.x,  v.Vehicles1[i].Spawner1.y,  v.Vehicles1[i].Spawner1.z,  true) < Config.MarkerSize.x then
-			isInMarker     = true
-			currentStation = k
-			currentPart    = 'VehicleSpawner1'
-			currentPartNum = i
-		  end
+      if GetDistanceBetweenCoords(coords,  v.Vehicles1[i].Spawner1.x,  v.Vehicles1[i].Spawner1.y,  v.Vehicles1[i].Spawner1.z,  true) < Config.MarkerSize.x then
+      isInMarker     = true
+      currentStation = k
+      currentPart    = 'VehicleSpawner1'
+      currentPartNum = i
+      end
 
-		  if GetDistanceBetweenCoords(coords,  v.Vehicles1[i].SpawnPoint1.x,  v.Vehicles1[i].SpawnPoint1.y,  v.Vehicles1[i].SpawnPoint1.z,  true) < Config.MarkerSize.x then
-			isInMarker     = true
-			currentStation = k
-			currentPart    = 'VehicleSpawnPoint1'
-			currentPartNum = i
-		  end
+      if GetDistanceBetweenCoords(coords,  v.Vehicles1[i].SpawnPoint1.x,  v.Vehicles1[i].SpawnPoint1.y,  v.Vehicles1[i].SpawnPoint1.z,  true) < Config.MarkerSize.x then
+      isInMarker     = true
+      currentStation = k
+      currentPart    = 'VehicleSpawnPoint1'
+      currentPartNum = i
+      end
 
-		end
+    end
 
         for i=1, #v.VehicleDeleters, 1 do
           if GetDistanceBetweenCoords(coords,  v.VehicleDeleters[i].x,  v.VehicleDeleters[i].y,  v.VehicleDeleters[i].z,  true) < Config.MarkerSize.x then
@@ -1953,15 +1954,15 @@ Citizen.CreateThread(function()
             currentPartNum = i
           end
         end
-		
-		for i=1, #v.VehicleDeleters1, 1 do
-		  if GetDistanceBetweenCoords(coords,  v.VehicleDeleters1[i].x,  v.VehicleDeleters1[i].y,  v.VehicleDeleters1[i].z,  true) < Config.MarkerSizeDel.x then
-			isInMarker     = true
-			currentStation = k
-			currentPart    = 'VehicleDeleter'
-			currentPartNum = i
-		  end
-		end
+    
+    for i=1, #v.VehicleDeleters1, 1 do
+      if GetDistanceBetweenCoords(coords,  v.VehicleDeleters1[i].x,  v.VehicleDeleters1[i].y,  v.VehicleDeleters1[i].z,  true) < Config.MarkerSizeDel.x then
+      isInMarker     = true
+      currentStation = k
+      currentPart    = 'VehicleDeleter'
+      currentPartNum = i
+      end
+    end
 
         if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'fib' and PlayerData.job.grade_name == 'boss' then
 
@@ -2093,10 +2094,10 @@ Citizen.CreateThread(function()
         if CurrentAction == 'menu_vehicle_spawner' then
           OpenVehicleSpawnerMenu(CurrentActionData.station, CurrentActionData.partNum)
         end
-		
-		if CurrentAction == 'menu_vehicle_spawner1' then
-		  OpenVehicle1SpawnerMenu(CurrentActionData.station, CurrentActionData.partNum)
-		end
+    
+    if CurrentAction == 'menu_vehicle_spawner1' then
+      OpenVehicle1SpawnerMenu(CurrentActionData.station, CurrentActionData.partNum)
+    end
 
         if CurrentAction == 'delete_vehicle' then
 
@@ -2110,8 +2111,8 @@ Citizen.CreateThread(function()
             if
               GetEntityModel(vehicle) == GetHashKey('fbi') or
               GetEntityModel(vehicle) == GetHashKey('fbi2') or
-              GetEntityModel(vehicle) == GetHashKey('riot')	or
-              GetEntityModel(vehicle) == GetHashKey('schafter5')			  
+              GetEntityModel(vehicle) == GetHashKey('riot') or
+              GetEntityModel(vehicle) == GetHashKey('schafter5')        
             then
               TriggerServerEvent('esx_service:disableService', 'fib')
             end
@@ -2147,8 +2148,8 @@ Citizen.CreateThread(function()
       end
 
     end 
-	
-	if IsControlPressed(0,  Keys['F6']) and PlayerData.job ~= nil and PlayerData.job.name == 'fib' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'fib_actions') and (GetGameTimer() - GUI.Time) > 150 then
+  
+  if IsControlPressed(0,  Keys['F6']) and PlayerData.job ~= nil and PlayerData.job.name == 'fib' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'fib_actions') and (GetGameTimer() - GUI.Time) > 150 then
       OpenFibActionsMenu()
       GUI.Time = GetGameTimer()
     end
@@ -2159,22 +2160,22 @@ end)
 
 local TeleportFromTo = {
 
-	["FIB"] = {
-		positionFrom = { ['x'] = 136.18350219727, ['y'] = -761.86651611328, ['z'] = 242.15200805664, nom = "Descendre au rdc"},
-		positionTo = { ['x'] = 138.98336791992, ['y'] = -762.68725585938, ['z'] = 45.752006530762, nom = "Monter au bureau"},
-	},
-	
-	["GARAGE"] = {
-		positionFrom = { ['x'] = 136.0496673584, ['y'] = -761.77819824219, ['z'] = 45.752021789551, nom = "Descendre au garage"},
-		positionTo = { ['x'] = 144.23973083496, ['y'] = -689.15106201172, ['z'] = 33.128112792969, nom = "Monter au rdc"},
-	},
+  ["FIB"] = {
+    positionFrom = { ['x'] = 136.18350219727, ['y'] = -761.86651611328, ['z'] = 242.15200805664, nom = "Descendre au rdc"},
+    positionTo = { ['x'] = 138.98336791992, ['y'] = -762.68725585938, ['z'] = 45.752006530762, nom = "Monter au bureau"},
+  },
+  
+  ["GARAGE"] = {
+    positionFrom = { ['x'] = 136.0496673584, ['y'] = -761.77819824219, ['z'] = 45.752021789551, nom = "Descendre au garage"},
+    positionTo = { ['x'] = 144.23973083496, ['y'] = -689.15106201172, ['z'] = 33.128112792969, nom = "Monter au rdc"},
+  },
 
-	["HELICO"] = {
-		positionFrom = { ['x'] = 138.22854614258, ['y'] = -764.94403076172, ['z'] = 242.15211486816, nom = "Monter sur le toit"},
-		positionTo = { ['x'] = -67.257919311523, ['y'] = -821.841796875, ['z'] = 321.28735351563, nom = "Descendre au bureau"}, 
-	},	
-	
-}	
+  ["HELICO"] = {
+    positionFrom = { ['x'] = 138.22854614258, ['y'] = -764.94403076172, ['z'] = 242.15211486816, nom = "Monter sur le toit"},
+    positionTo = { ['x'] = -67.257919311523, ['y'] = -821.841796875, ['z'] = 321.28735351563, nom = "Descendre au bureau"}, 
+  },  
+  
+} 
 
 Drawing = setmetatable({}, Drawing)
 Drawing.__index = Drawing
@@ -2217,10 +2218,10 @@ end
 ------------------------------------------
 ------------------------------------------
 function DisplayHelpText(str)
-	SetTextComponentFormat("STRING")
-	AddTextComponentString(str)
-	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-	--DisplayHelpTextFromStringLabel(0, 0, 0, -1)			---A 0 Enleve le son de la notif
+  SetTextComponentFormat("STRING")
+  AddTextComponentString(str)
+  DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+  --DisplayHelpTextFromStringLabel(0, 0, 0, -1)     ---A 0 Enleve le son de la notif
 end
 ------------------------------------------
 ------------------------------------------
@@ -2237,48 +2238,48 @@ function msginf(msg, duree)
 end
 
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(2)
-		local pos = GetEntityCoords(GetPlayerPed(-1), true)
-		
-		for k, j in pairs(TeleportFromTo) do
-		
-			--msginf(k .. " " .. tostring(j.positionFrom.x), 15000)
-			if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 150.0) then
-				DrawMarker(1, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.501, 117,202,93,255, 0, 0, 0,0)
-				if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 5.0)then
-					Drawing.draw3DText(j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1.100, j.positionFrom.nom, 1, 0.2, 0.1, 255, 255, 255, 215)
-					if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 1.0)then
-						ClearPrints()
-						DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ~b~".. j.positionFrom.nom,1, 1, 0.5, 0.8, 0.9, 255, 255, 255, 255)
-						DrawSubtitleTimed(2000, 1)
-						if IsControlJustPressed(1, 38) then
-							DoScreenFadeOut(1000)
-							Citizen.Wait(2000)
-							SetEntityCoords(GetPlayerPed(-1), j.positionTo.x, j.positionTo.y, j.positionTo.z - 1)
-							DoScreenFadeIn(1000)
-						end
-					end
-				end
-			end
-			
-			if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 150.0) then
-				DrawMarker(1, j.positionTo.x, j.positionTo.y, j.positionTo.z - 1, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.501, 117,202,93,255, 0, 0, 0,0)
-				if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 5.0)then
-					Drawing.draw3DText(j.positionTo.x, j.positionTo.y, j.positionTo.z - 1.100, j.positionTo.nom, 1, 0.2, 0.1, 255, 255, 255, 215)
-					if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 1.0)then
-						ClearPrints()
-						DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ~r~".. j.positionTo.nom,1, 1, 0.5, 0.8, 0.9, 255, 255, 255, 255)
-						DrawSubtitleTimed(2000, 1)
-						if IsControlJustPressed(1, 38) then
-							DoScreenFadeOut(1000)
-							Citizen.Wait(2000)
-							SetEntityCoords(GetPlayerPed(-1), j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1)
-							DoScreenFadeIn(1000)
-						end
-					end
-				end
-			end
-		end
-	end
+  while true do
+    Citizen.Wait(2)
+    local pos = GetEntityCoords(GetPlayerPed(-1), true)
+    
+    for k, j in pairs(TeleportFromTo) do
+    
+      --msginf(k .. " " .. tostring(j.positionFrom.x), 15000)
+      if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 150.0) then
+        DrawMarker(1, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.501, 117,202,93,255, 0, 0, 0,0)
+        if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 5.0)then
+          Drawing.draw3DText(j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1.100, j.positionFrom.nom, 1, 0.2, 0.1, 255, 255, 255, 215)
+          if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 1.0)then
+            ClearPrints()
+            DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ~b~".. j.positionFrom.nom,1, 1, 0.5, 0.8, 0.9, 255, 255, 255, 255)
+            DrawSubtitleTimed(2000, 1)
+            if IsControlJustPressed(1, 38) then
+              DoScreenFadeOut(1000)
+              Citizen.Wait(2000)
+              SetEntityCoords(GetPlayerPed(-1), j.positionTo.x, j.positionTo.y, j.positionTo.z - 1)
+              DoScreenFadeIn(1000)
+            end
+          end
+        end
+      end
+      
+      if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 150.0) then
+        DrawMarker(1, j.positionTo.x, j.positionTo.y, j.positionTo.z - 1, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.501, 117,202,93,255, 0, 0, 0,0)
+        if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 5.0)then
+          Drawing.draw3DText(j.positionTo.x, j.positionTo.y, j.positionTo.z - 1.100, j.positionTo.nom, 1, 0.2, 0.1, 255, 255, 255, 215)
+          if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 1.0)then
+            ClearPrints()
+            DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ~r~".. j.positionTo.nom,1, 1, 0.5, 0.8, 0.9, 255, 255, 255, 255)
+            DrawSubtitleTimed(2000, 1)
+            if IsControlJustPressed(1, 38) then
+              DoScreenFadeOut(1000)
+              Citizen.Wait(2000)
+              SetEntityCoords(GetPlayerPed(-1), j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1)
+              DoScreenFadeIn(1000)
+            end
+          end
+        end
+      end
+    end
+  end
 end)
