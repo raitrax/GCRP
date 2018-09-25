@@ -1,4 +1,0 @@
-1. Extract the content of the Archive into your resource folder
-2. Add start AddOnPedSpawnMenu to your server.cfg
-3. Add your Add-On Peds to the Add-On Peds.txt
-4. Profit
