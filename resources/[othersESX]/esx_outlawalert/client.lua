@@ -36,7 +36,7 @@ local timing = timer * 60000 --Don't touche it
 GetPlayerName()
 RegisterNetEvent('outlawNotify')
 AddEventHandler('outlawNotify', function(alert)
-		if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') then
+		if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
             Notify(alert)
         end
 end)
@@ -60,7 +60,7 @@ end)
 
 RegisterNetEvent('thiefPlace')
 AddEventHandler('thiefPlace', function(tx, ty, tz)
-	if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') then
+	if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
 		if carJackingAlert then
 			local transT = 250
 			local thiefBlip = AddBlipForCoord(tx, ty, tz)
@@ -84,7 +84,7 @@ end)
 
 RegisterNetEvent('gunshotPlace')
 AddEventHandler('gunshotPlace', function(gx, gy, gz)
-	if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') then
+	if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
 		if gunshotAlert then
 			local transG = 250
 			local gunshotBlip = AddBlipForCoord(gx, gy, gz)
@@ -108,7 +108,7 @@ end)
 
 RegisterNetEvent('meleePlace')
 AddEventHandler('meleePlace', function(mx, my, mz)
-		if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') then
+	if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
 		if meleeAlert then
 			local transM = 250
 			local meleeBlip = AddBlipForCoord(mx, my, mz)
@@ -190,8 +190,8 @@ Citizen.CreateThread( function()
 			local coords    = GetEntityCoords(playerPed)
 			local vehicle =GetVehiclePedIsIn(playerPed,false)
 			local vehicleProps  = ESX.Game.GetVehicleProperties(vehicle)
-			if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') and showcopsmisbehave == false then
-			elseif PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') and showcopsmisbehave then
+			if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+			elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
 				ESX.TriggerServerCallback('esx_outlawalert:ownvehicle',function(valid)
 					if (valid) then
 					else
@@ -260,8 +260,8 @@ Citizen.CreateThread( function()
         local street2 = GetStreetNameFromHashKey(s2)
         if IsPedInMeleeCombat(GetPlayerPed(-1)) then
             DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
-			if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') and showcopsmisbehave == false then
-			elseif PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') and showcopsmisbehave then
+			if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+			elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
@@ -307,8 +307,8 @@ Citizen.CreateThread( function()
         local street2 = GetStreetNameFromHashKey(s2)
         if IsPedShooting(GetPlayerPed(-1)) then
             DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
-			if PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') and showcopsmisbehave == false then
-			elseif PlayerData.job ~= nil and (PlayerData.job.name  == 'police' or PlayerData.job.name  == 'fib'  or PlayerData.job.name  == 'gouvernor') and showcopsmisbehave then
+			if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+			elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then

@@ -1,6 +1,6 @@
 Config = {}
 Config.Locale = 'fr'
-Config.NumberOfCopsRequired = 1
+Config.NumberOfCopsRequired = 2
 
 Stores = {
 	["paleto_twentyfourseven"] = {

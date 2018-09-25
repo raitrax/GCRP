@@ -2616,11 +2616,11 @@ function Global.GetGameplayCamRelativePitch()
 end
 
 function Global.GetGameplayCamRot(p0)
-	return _in(0x837765A25378F0BB, p0, _r, _ri)
+	return _in(0x5B4E4C817FCC2DFB, p0, _r, _rv)
 end
 
 function Global.GetGameplayCamRot(p0)
-	return _in(0x5B4E4C817FCC2DFB, p0, _r, _rv)
+	return _in(0x837765A25378F0BB, p0, _r, _ri)
 end
 
 function Global.GetGameplayCamZoom()
@@ -3837,12 +3837,12 @@ function Global.GetVariantComponent(componentHash, componentId)
 	return _in(0x6E11F282F11863B6, _ch(componentHash), componentId, _i, _i, _i)
 end
 
-function Global.GetVehicleAcceleration(p0)
-	return _in(0x5DD35C8D074E57AE, p0, _r, _rf)
-end
-
 function Global.GetVehicleAcceleration(vehicle)
 	return _in(0x478321, vehicle, _r, _rf)
+end
+
+function Global.GetVehicleAcceleration(p0)
+	return _in(0x5DD35C8D074E57AE, p0, _r, _rf)
 end
 
 function Global.GetVehicleAlarmTimeLeft(vehicle)
@@ -5799,10 +5799,6 @@ end
 
 function Global.IsPrevWeatherType(weatherType)
 	return _in(0x44F28F86433B10A9, _ts(weatherType), _r)
-end
-
-function Global.IsPrincipalAceAllowed(principal, object)
-	return _in(0x37cf52ce, _ts(principal), _ts(object), _r)
 end
 
 function Global.IsProjectileInArea(p0, p1, p2, p3, p4, p5, p6)
@@ -17157,12 +17153,12 @@ function Global.NetworkGetFriendCount()
 	return _in(0x203F1CFD823B27A4, _r, _ri)
 end
 
-function Global.NetworkGetFriendName(p0)
-	return _in(0xE11EBBB2A783FE8B, p0, _r, _ri)
-end
-
 function Global.NetworkGetFriendName(friendIndex)
 	return _in(0x4164F227D052E293, friendIndex, _r, _s)
+end
+
+function Global.NetworkGetFriendName(p0)
+	return _in(0xE11EBBB2A783FE8B, p0, _r, _ri)
 end
 
 function Global.NetworkGetGamertagFromHandle(p0)
@@ -19562,18 +19558,6 @@ end
 
 function Global.SetDisableVehiclePetrolTankDamage(vehicle, toggle)
 	return _in(0x37C8252A7C92D017, vehicle, toggle)
-end
-
---- This native sets the app id for the discord rich presence implementation.
--- @param appId A valid Discord API App Id, can be generated at https://discordapp.com/developers/applications/
-function Global.SetDiscordAppId(appId)
-	return _in(0x6a02254d, _ts(appId))
-end
-
---- This native sets the image asset for the discord rich presence implementation.
--- @param assetName The name of a valid asset registered on Discordapp's developer dashboard. note that the asset has to be registered under the same discord API application set using the SET_DISCORD_APP_ID native.
-function Global.SetDiscordRichPresenceAsset(assetName)
-	return _in(0x53dfd530, _ts(assetName))
 end
 
 function Global.SetDispatchCopsForPlayer(player, toggle)

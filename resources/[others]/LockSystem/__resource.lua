@@ -1,21 +1,4 @@
-resource_manifest_version "05cfa83c-a124-4cfa-a768-c24a5811d8f9"
+resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'
 
-client_scripts {
-    "config/shared.lua",
-    "client/VehicleManager_CL.lua",
-    "client/client.lua"
-}
-
-server_scripts {
-    "config/shared.lua",
-    "server/chatCommand.lua",
-    "server/server.lua"
-}
-
-ui_page 'client/html/index.html'
-
-files {
-    'client/html/index.html',
-    'client/html/sounds/lock.ogg',
-    'client/html/sounds/unlock.ogg'
-}
+client_script "client.lua"
+server_script "server.lua"

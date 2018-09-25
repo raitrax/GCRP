@@ -1,0 +1,2 @@
+AOPSM = {}
+AOPSMMenu = {}

@@ -12,7 +12,7 @@ Locales['fr'] = {
   -- Armory
   ['get_weapon'] = 'prendre Arme',
   ['put_weapon'] = 'déposer Arme',
-  ['buy_weapons'] = 'acheter Armes',
+  --['buy_weapons'] = 'acheter Armes',
   ['armory'] = 'armurerie',
   ['open_armory'] = 'appuez sur ~INPUT_CONTEXT~ pour accéder à l\'armurerie',
   -- Vehicles

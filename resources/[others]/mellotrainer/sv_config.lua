@@ -66,13 +66,12 @@ local admins = {
 	
 	---"steam:11000011b3fc1aa", -- David Grean 
 	---"steam:11000011407b73d", -- Many Lightz 
-	--"steam:11000011ca16ad3", --cerder
-    "steam:11000010adb7315", -- Joker
-    "steam:11000010e8d0f59", -- Batman
-    --"steam:11000010ef07bcf", -- antoine
-	--"steam:1100001349f2f84", -- john doe
-	"steam:1100001075e32e8", -- lucius Fox
-	--"steam:11000010e8d0f59", -- Batman
+	----"steam:11000010d964be6", --franck
+   --"steam:110000107fa0b65", -- Narus
+    --"steam:11000011ca16ad3", -- cerder
+    "steam:11000010ef07bcf", -- antoine
+	"steam:1100001349f2f84", -- john doe
+	---"steam:11000010c135717", -- mikael nikolas
 	"ip:0.0.0.0",            
 }
 

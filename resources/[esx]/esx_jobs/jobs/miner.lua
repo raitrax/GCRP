@@ -6,7 +6,7 @@ Config.Jobs.miner = {
   Vehicles = {
     Truck = {
       Spawner = 1,
-      Hash = "crafter17",
+      Hash = "rubble",
       Trailer = "none",
       HasCaution = true
     }
