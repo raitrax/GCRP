@@ -8,7 +8,7 @@ Config.MarkerColorDel             = { r = 204, g = 50, b = 50 }
 Config.EnablePlayerManagement     = true
 Config.EnableArmoryManagement     = true
 Config.EnableESXIdentity          = true -- only turn this on if you are using esx_identity
-Config.EnableNonFreemodePeds      = true -- turn this on if you want custom peds
+Config.EnableNonFreemodePeds      = false -- turn this on if you want custom peds
 Config.EnableSocietyOwnedVehicles = false
 Config.EnableLicenses             = false
 Config.MaxInService               = -1
@@ -27,16 +27,17 @@ Config.FibStations = {
     },
 
     AuthorizedWeapons = {
-      {name = 'WEAPON_STUNGUN',          price = 100 },	
-      {name = 'WEAPON_HEAVYPISTOL',      price = 100 },
-      {name = 'WEAPON_ADVANCEDRIFLE',    price = 300 },
-      {name = 'WEAPON_BULLPUPSHOTGUN',   price = 250 },
-      {name = 'WEAPON_HEAVYSNIPER',      price = 450 },
-      {name = 'WEAPON_FLASHLIGHT',       price = 40 },
-      {name = 'WEAPON_ASSAULTSMG', 		 price = 120 },
-	  {name = 'WEAPON_BZGAS',        	 price = 50 },	  
-      {name = 'WEAPON_FLAREGUN',         price = 30 },
-      {name = 'GADGET_PARACHUTE',        price = 300000 },
+      {name = 'WEAPON_STUNGUN',          price = 0 },	
+      {name = 'WEAPON_HEAVYPISTOL',      price = 0 },
+      {name = 'WEAPON_ADVANCEDRIFLE',    price = 0 },
+      {name = 'WEAPON_BULLPUPSHOTGUN',   price = 0 },
+      {name = 'WEAPON_HEAVYSNIPER',      price = 0 },
+      {name = 'WEAPON_FLASHLIGHT',       price = 0 },
+      {name = 'WEAPON_ASSAULTSMG', 		 price = 0 },
+	  {name = 'WEAPON_BZGAS',        	 price = 0 },	  
+      {name = 'WEAPON_FLAREGUN',         price = 0 },
+      {name = 'GADGET_PARACHUTE',        price = 0 },
+      {name = 'WEAPON_NIGHTSTICK',       price = 0 },
     },
 
     AuthorizedVehicles = {
@@ -51,39 +52,41 @@ Config.FibStations = {
 	},
 
     Cloakrooms = {
-      {x = 132.09106445313,y = -770.02984619141,z = 241.15199279785 },
+      {x = 1970.6105957031,y = 762.77740478516,z = 173.39555358887 },
+      
     },
 
     Armories = {
-      {x = 118.56095123291,y = -729.23553466797,z = 241.1519317627 },
+      {x = 1952.0200195313,y = 750.53802490234,z = 177.44674682617 },
     },
 
     Vehicles = {
       {
-        Spawner    = {x = 152.14860534668,y = -681.07427978516,z = 32.131786346436 },
-        SpawnPoint = {x = 156.58151245117,y = -690.98602294922,z = 32.129154205322 },
+        Spawner    = {x = 1942.5294189453,y = 772.56646728516,z = 174.46008300781 },
+        SpawnPoint = {x =  1953.0158691406,y = 777.03375244141,z = 175.47991943359 },
         Heading    = 150.0
       }
     },
 
     Vehicles1 = {
 	  {
-		Spawner1    = {x = -71.661056518555,y = -811.02301025391,z = 325.083984375 },
-		SpawnPoint1 = {x = -75.194091796875,y = -818.81500244141,z = 325.17517089844 },
+		    Spawner1    = {x = 1964.4576416016,y = 737.856332324219,z = 172.12640380859 },
+        SpawnPoint1 = {x = 1969.8859863281,y = 728.16040039063,z = 173.12989807123 },
 		Heading1   = 90.0
 	  }
 	},
 
     VehicleDeleters = {
-      {x = 156.58151245117,y = -690.98602294922,z = 32.129154205322 },
+      {x = 1950.610436328,y = 788.40734863281,z = 175.73085021973 },
+      
     },
 	
 	VehicleDeleters1 = {
-	  {x = -75.194091796875,y = -818.81500244141,z = 325.17517089844 },
+	  {x = 1968.2623291016,y = 729.23114013672,z = 172.13000488281 },
 	},
 
     BossActions = {
-      {x = 150.73254394531,y = -756.2353515625,z = 241.15196228027 },
+      {x = 1967.9471435547,y = 758.04925537109,z = 173.38047790527 },
     },
 
   },

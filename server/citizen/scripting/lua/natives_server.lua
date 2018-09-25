@@ -226,6 +226,10 @@ function Global.IsPlayerAceAllowed(playerSrc, object)
 	return _in(0xdedae23d, _ts(playerSrc), _ts(object), _r)
 end
 
+function Global.IsPrincipalAceAllowed(principal, object)
+	return _in(0x37cf52ce, _ts(principal), _ts(object), _r)
+end
+
 --- Reads the contents of a text file in a specified resource.
 -- If executed on the client, this file has to be included in `files` in the resource manifest.
 -- Example: `local data = LoadResourceFile("devtools", "data.json")`
@@ -234,6 +238,10 @@ end
 -- @return The file contents
 function Global.LoadResourceFile(resourceName, fileName)
 	return _in(0x76a9ee1f, _ts(resourceName), _ts(fileName), _r, _s)
+end
+
+function Global.NetworkGetNetworkIdFromEntity(entity)
+	return _in(0x9e35dab6, entity, _r, _ri)
 end
 
 function Global.PerformHttpRequestInternal(requestData, requestDataLength)

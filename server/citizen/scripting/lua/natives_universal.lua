@@ -538,11 +538,11 @@ function Global.AddTextComponentSubstringBlipName(blip)
 end
 Global.N_0x80ead8e2e1d5d52e = Global.AddTextComponentSubstringBlipName
 
---- ??? Description :
+--- • Description :
 -- Processes a string and removes the player name(max len 99)
 -- You can use this function to create notifications/subtitles
 -- --------------------------------------------------------------------
--- ??? Usage(Colors) :
+-- • Usage(Colors) :
 -- ~r~ = red
 -- ~y~ = yellow
 -- ~g~ = green
@@ -551,19 +551,19 @@ Global.N_0x80ead8e2e1d5d52e = Global.AddTextComponentSubstringBlipName
 -- ~p~ = purple
 -- ~n~ = new line
 -- --------------------------------------------------------------------
--- ??? Usage(Input) :
+-- • Usage(Input) :
 -- ~INPUT_CONTEXT~ will show button symbol (regarding last input device -&gt; keyboard/gamepad)
 -- example:
 -- string info = "Context action is assigned to ~INPUT_CONTEXT~!";
 -- --------------------------------------------------------------------
--- ??? Example (C++):
+-- • Example (C++):
 -- void ShowNotification(char *text)
 -- {
 -- UI::_SET_NOTIFICATION_TEXT_ENTRY("STRING");
 -- UI::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(text);
 -- UI::_DRAW_NOTIFICATION(FALSE, FALSE); // if first param = 1, the message flashes 1 or 2 times
 -- }
--- ??? Colors example :
+-- • Colors example :
 -- string red = "~r~Red test";
 -- string white_and_yellow = "~w~White and ~y~yellow";
 -- string text_with_double_line = "First line.~n~Second line";
@@ -3361,9 +3361,9 @@ end
 -- ~h~ = Bold Text
 -- ~nrt~ = ???
 -- Special characters:
--- ?? = Rockstar Verified Icon (U+00A6:Broken Bar - Alt+0166)
--- ?? = Rockstar Icon (U+00F7:Division Sign - Alt+0247)
--- ??? = Rockstar Icon 2 (U+2211:N-Ary Summation)
+-- ¦ = Rockstar Verified Icon (U+00A6:Broken Bar - Alt+0166)
+-- ÷ = Rockstar Icon (U+00F7:Division Sign - Alt+0247)
+-- ∑ = Rockstar Icon 2 (U+2211:N-Ary Summation)
 -- Example C#:
 -- Function.Call(Hash._ADD_TEXT_COMPONENT_STRING3, "Now I need you to bring the ~b~vehicle~w~ back to me!");
 -- ----
@@ -7278,13 +7278,6 @@ function Global.GetScaleformMovieFunctionReturnInt(method_return)
 end
 Global.N_0x2de7efa66b906036 = Global.GetScaleformMovieFunctionReturnInt
 
---- World to relative screen coords
--- this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
-function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
-	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
-end
-Global.N_0xf9904d11f1acbec3 = Global.GetScreenCoordFromWorldCoord
-
 --- Convert a world coordinate into its relative screen coordinate.  (WorldToScreen)
 -- Returns a boolean; whether or not the operation was successful. It will return false if the coordinates given are not visible to the rendering camera.
 -- For .NET users...
@@ -7309,6 +7302,13 @@ function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
 	return _in(0x34E82F05DF2974F5, worldX, worldY, worldZ, _f, _f, _r)
 end
 Global.World3dToScreen2d = Global.GetScreenCoordFromWorldCoord
+
+--- World to relative screen coords
+-- this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
+function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
+	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
+end
+Global.N_0xf9904d11f1acbec3 = Global.GetScreenCoordFromWorldCoord
 
 --- Returns whether the specified screen effect is active.
 -- See the effects list in _START_SCREEN_EFFECT
@@ -8110,7 +8110,6 @@ Global.N_0xc6ad107ddc9054cc = Global.GetVehicleModelMaxKnots
 function Global.GetVehicleModelMaxSpeed(modelHash)
 	return _in(0xF417C2502FFFED43, _ch(modelHash), _r, _rf)
 end
-Global.GetVehicleMaxSpeed = Global.GetVehicleModelMaxSpeed
 
 --- Returns max traction of the specified vehicle model.
 -- For a full list, see here: pastebin.com/ERnntVjK
@@ -10577,6 +10576,10 @@ end
 
 function Global.IsPrevWeatherType(weatherType)
 	return _in(0x44F28F86433B10A9, _ts(weatherType), _r)
+end
+
+function Global.IsPrincipalAceAllowed(principal, object)
+	return _in(0x37cf52ce, _ts(principal), _ts(object), _r)
 end
 
 --- Determines whether there is a projectile within the specified coordinates. The coordinates form a rectangle.
@@ -15733,7 +15736,7 @@ function Global.N_0x6fb7bb3607d27fa2()
 	return _in(0x6FB7BB3607D27FA2, _r, _ri)
 end
 
---- This function is hard-coded to always return 1. ?????? ??????????-???? ??????????.
+--- This function is hard-coded to always return 1. Крч какая-то хуйня.
 function Global.N_0x6fcf8ddea146c45b(p0)
 	return _in(0x6FCF8DDEA146C45B, p0)
 end
@@ -24763,7 +24766,7 @@ end
 -- blr
 -- thats all it does.
 -- mov dword ptr [rax], 2
--- ?????????????? ????????????????????
+-- Заебись функционал
 function Global.ReturnTwo(p0)
 	return _in(0x40AFB081F8ADD4EE, p0, _r, _ri)
 end
@@ -25920,6 +25923,18 @@ function Global.SetDisableVehiclePetrolTankFires(vehicle, toggle)
 	return _in(0x465BF26AB9684352, vehicle, toggle)
 end
 Global.N_0x465bf26ab9684352 = Global.SetDisableVehiclePetrolTankFires
+
+--- This native sets the app id for the discord rich presence implementation.
+-- @param appId A valid Discord API App Id, can be generated at https://discordapp.com/developers/applications/
+function Global.SetDiscordAppId(appId)
+	return _in(0x6a02254d, _ts(appId))
+end
+
+--- This native sets the image asset for the discord rich presence implementation.
+-- @param assetName The name of a valid asset registered on Discordapp's developer dashboard. note that the asset has to be registered under the same discord API application set using the SET_DISCORD_APP_ID native.
+function Global.SetDiscordRichPresenceAsset(assetName)
+	return _in(0x53dfd530, _ts(assetName))
+end
 
 function Global.SetDispatchCopsForPlayer(player, toggle)
 	return _in(0xDB172424876553F4, player, toggle)
@@ -27333,12 +27348,12 @@ end
 --- Previously named _0xD30C50DF888D58B5, this native turns on the AI blip on the specified ped. It also disappears automatically when the ped is too far or if the ped is dead. You don't need to control it with other natives.
 -- See gtaforums.com/topic/884370-native-research-ai-blips for further information.
 -- Note: Everything said at the bottom is only valid for persistant peds, as AI blips seem to behave differently for non-persistant peds.
--- ??? To create an AI blip, you must use UI::0xD30C50DF888D58B5() (_SET_PED_ENEMY_AI_BLIP). It has two arguments: "ped" which is the ped you want to AI blip to be linked to, and "showViewCones" which needs to be true for AI blips to appear.
--- ??? To check if a ped has an AI blip, you can use UI::DOES_PED_HAVE_AI_BLIP(Ped ped), which returns a simple bool.
--- ??? By default, AI blips never disappear. If you want them to disappear when you're at a certain distance from a ped, you can use UI::0x97C65887D4B37FA9(Ped ped, float distance) (_SET_AI_BLIP_MAX_DISTANCE)
--- ??? By default, the blip only appears when you're in combat with the specified ped. If you want it to be always displayed, you can use UI::x0C4BBF625CA98C4E() (_IS_AI_BLIP_ALWAYS_SHOWN). It also has two arguments: "ped", and a flag. If the flag is set to true, the blip will always be displayed. If it's set to false, the AI blip will have its default behaviour.
--- ??? By default, a view cone is displayed with the blip (basically a blue surface that represents the field of view of the ped, like in vanilla stealth missions). If you don't want it, you can disable it with UI::HIDE_SPECIAL_ABILITY_LOCKON_OPERATION(Ped ped, bool flag). If the flag is set to true, the view cone is displayed. If the flag is set to false, it is not.
--- ??? Finally, there's actually 3 types of AI blips:
+-- • To create an AI blip, you must use UI::0xD30C50DF888D58B5() (_SET_PED_ENEMY_AI_BLIP). It has two arguments: "ped" which is the ped you want to AI blip to be linked to, and "showViewCones" which needs to be true for AI blips to appear.
+-- • To check if a ped has an AI blip, you can use UI::DOES_PED_HAVE_AI_BLIP(Ped ped), which returns a simple bool.
+-- • By default, AI blips never disappear. If you want them to disappear when you're at a certain distance from a ped, you can use UI::0x97C65887D4B37FA9(Ped ped, float distance) (_SET_AI_BLIP_MAX_DISTANCE)
+-- • By default, the blip only appears when you're in combat with the specified ped. If you want it to be always displayed, you can use UI::x0C4BBF625CA98C4E() (_IS_AI_BLIP_ALWAYS_SHOWN). It also has two arguments: "ped", and a flag. If the flag is set to true, the blip will always be displayed. If it's set to false, the AI blip will have its default behaviour.
+-- • By default, a view cone is displayed with the blip (basically a blue surface that represents the field of view of the ped, like in vanilla stealth missions). If you don't want it, you can disable it with UI::HIDE_SPECIAL_ABILITY_LOCKON_OPERATION(Ped ped, bool flag). If the flag is set to true, the view cone is displayed. If the flag is set to false, it is not.
+-- • Finally, there's actually 3 types of AI blips:
 -- 0 - the default, red, "enemy" blip
 -- 1 - a weird, semi-transparent, nameless, yellow blip
 -- 2 - the blue "friend" blip
@@ -27748,11 +27763,11 @@ function Global.SetPedDefensiveSphereAttachedToPed(ped, target, xOffset, yOffset
 end
 Global.N_0xf9b8f91aad3b953e = Global.SetPedDefensiveSphereAttachedToPed
 
---- ??? Usage
--- ??? Use this native inside a looped function.
--- ??? Values:
--- ??? 0.0 = no peds on streets
--- ??? 1.0 = normal peds on streets
+--- • Usage
+-- → Use this native inside a looped function.
+-- → Values:
+-- → 0.0 = no peds on streets
+-- → 1.0 = normal peds on streets
 function Global.SetPedDensityMultiplierThisFrame(multiplier)
 	return _in(0x95E3D6257B166CF2, multiplier)
 end
@@ -29653,11 +29668,11 @@ function Global.SetVehicleDeformationFixed(vehicle)
 	return _in(0x953DA1E1B12C0491, vehicle)
 end
 
---- ??? Usage
--- ??? Use this native inside a looped function.
--- ??? Values:
--- ??? 0.0 = no vehicles on streets
--- ??? 1.0 = normal vehicles on streets
+--- • Usage
+-- → Use this native inside a looped function.
+-- → Values:
+-- → 0.0 = no vehicles on streets
+-- → 1.0 = normal vehicles on streets
 function Global.SetVehicleDensityMultiplierThisFrame(multiplier)
 	return _in(0x245A6883D966D537, multiplier)
 end
@@ -31550,7 +31565,7 @@ function Global.StopAllScreenEffects()
 end
 
 --- From re_drunkdriver:
--- ??? AI::STOP_ANIM_PLAYBACK(l_5B[0/*1*/], 0, 0);
+-- • AI::STOP_ANIM_PLAYBACK(l_5B[0/*1*/], 0, 0);
 -- Looks like p1 may be a flag, still need to do some research, though.
 function Global.StopAnimPlayback(ped, p1, p2)
 	return _in(0xEE08C992D238C5D1, ped, p1, p2)
@@ -32122,20 +32137,20 @@ end
 -- Allow a ped to fly to a specific destination.
 -- USAGE:
 -- -- REQUIRED --
--- ??? pilot = The ped flying the aircraft.
--- ??? aircraft = The aircraft the pilot is flying.
+-- • pilot = The ped flying the aircraft.
+-- • aircraft = The aircraft the pilot is flying.
 -- -- OPTIONAL -- [atleast 1 must be assigned]
--- ??? targetVehicle = The vehicle the pilot will target.
--- ??? targetPed = The ped the pilot will target.
--- ??? destinationX, destinationY, destinationZ = The location the pilot will target.
+-- • targetVehicle = The vehicle the pilot will target.
+-- • targetPed = The ped the pilot will target.
+-- • destinationX, destinationY, destinationZ = The location the pilot will target.
 -- -- LOGIC --
--- ??? missionFlag = The type of mission.
--- ??? maxSpeed = The speed in mph that the pilot will limit his/her self to while flying.
--- ??? landingRadius = The distance from the destination that the pilot must be to land.
--- ??? targetHeading = The heading that the pilot will try to achieve while flying.
--- ??? unk1, unk2 = Set to -1 and it will be okay.
--- ??? unk3 = I'm almost sure this is a vehicle record/waypoint recording hash. A value of -1 is for none. Maybe it's a float? Idk.
--- ??? landingFlags = Bit flags used for landing. All I know is:
+-- • missionFlag = The type of mission.
+-- • maxSpeed = The speed in mph that the pilot will limit his/her self to while flying.
+-- • landingRadius = The distance from the destination that the pilot must be to land.
+-- • targetHeading = The heading that the pilot will try to achieve while flying.
+-- • unk1, unk2 = Set to -1 and it will be okay.
+-- • unk3 = I'm almost sure this is a vehicle record/waypoint recording hash. A value of -1 is for none. Maybe it's a float? Idk.
+-- • landingFlags = Bit flags used for landing. All I know is:
 -- 0 = Hover over the destination.
 -- 32 = Land on destination.
 -- 1024 = Erratic, crash into nearby obstacles.
@@ -32277,19 +32292,19 @@ end
 -- Ever wish your buddy could shoot down one of your enemies for you? Ever wanted an auto-pilot? Well look no further! This is the native for you! (Ped intelligence may vary)
 -- USAGE:
 -- -- REQUIRED --
--- ??? pilot = The ped flying the aircraft.
--- ??? aircraft = The aircraft the pilot is flying
+-- • pilot = The ped flying the aircraft.
+-- • aircraft = The aircraft the pilot is flying
 -- -- OPTIONAL -- [atleast 1 must be assigned]
--- ??? targetVehicle = The vehicle the pilot will target.
--- ??? targetPed = The ped the pilot will target.
--- ??? destinationX, destinationY, destinationZ = The location the pilot will target.
+-- • targetVehicle = The vehicle the pilot will target.
+-- • targetPed = The ped the pilot will target.
+-- • destinationX, destinationY, destinationZ = The location the pilot will target.
 -- -- LOGIC --
--- ??? missionFlag = The type of mission. pastebin.com/R8x73dbv
--- ??? angularDrag = The higher the value, the slower the plane will rotate. Value ranges from 0 - Infinity.
--- ??? unk = Set to 0, and you'll be fine.
--- ??? targetHeading = The target angle (from world space north) that the pilot will try to acheive before executing an attack/landing.
--- ??? maxZ = Maximum Z coordinate height for flying.
--- ??? minZ = Minimum Z coordinate height for flying.
+-- • missionFlag = The type of mission. pastebin.com/R8x73dbv
+-- • angularDrag = The higher the value, the slower the plane will rotate. Value ranges from 0 - Infinity.
+-- • unk = Set to 0, and you'll be fine.
+-- • targetHeading = The target angle (from world space north) that the pilot will try to acheive before executing an attack/landing.
+-- • maxZ = Maximum Z coordinate height for flying.
+-- • minZ = Minimum Z coordinate height for flying.
 -- Z: 2,700 is the default max height a pilot will be able to fly. Anything greater and he will fly downward until reaching 2,700 again.
 -- Mission Types (incase you don't like links..):
 -- 0 = None

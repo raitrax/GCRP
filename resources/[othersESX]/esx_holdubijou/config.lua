@@ -1,6 +1,6 @@
 Config = {}
 Config.Locale = 'fr'
-Config.NumberOfCopsRequired = 3
+Config.NumberOfCopsRequired = 2
 
 Stores = {
 	["Vangelico"] = {
