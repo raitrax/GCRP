@@ -55,17 +55,36 @@ function CloakRoom()
 			elements = {
 				{label = _U('clothes_civil'), value = 'citizen_wear'},
 				{label = 'Deadpool', value = 'DeadPool'},
+				{label = 'Night', value = 'arkhamknight'},
 			},
 		},
 		function(data, menu)
 
 			menu.close()
 
-	        --Taken from SuperCoolNinja
+	               --Taken from SuperCoolNinja
 			if data.current.value == 'DeadPool' then
 
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 			  local model = GetHashKey("DeadPool")
+			      RequestModel(model)
+			      while not HasModelLoaded(model) do
+			          RequestModel(model)
+			          Citizen.Wait(0)
+			      end
+
+			      SetPlayerModel(PlayerId(), model)
+			      SetModelAsNoLongerNeeded(model)
+			      TriggerEvent('skinchanger:loadSkin', skin)
+			      TriggerEvent('esx:restoreLoadout')
+
+			end)
+			end
+		    --Taken from SuperCoolNinja
+			if data.current.value == 'arkhamknight' then
+
+			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+			  local model = GetHashKey("arkhamknight")
 			      RequestModel(model)
 			      while not HasModelLoaded(model) do
 			          RequestModel(model)
@@ -189,6 +208,7 @@ function OpenHelicoSpawnerMenu()
 							{label = 'XLS', value = 'XLS2'},
 							{label = 'Granger', value = 'Granger'},
 							{label = 'Limousine', value = 'Stretch'}
+							
 						}
 
 						ESX.UI.Menu.CloseAll()
