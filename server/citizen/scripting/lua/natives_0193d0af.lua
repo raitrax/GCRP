@@ -800,7 +800,7 @@ function Global.CanVehicleParachuteBeActivated(vehicle)
 	return _in(0xA916396DF4154EE3, vehicle, _r)
 end
 
---- Cancels the currently executing event. See https://wiki.fivem.net/wiki/CancelEvent
+--- Cancels the currently executing event.
 function Global.CancelEvent()
 	return _in(0xfa29d35d)
 end
@@ -1187,7 +1187,7 @@ function Global.CreateCinematicShot(p0, p1, p2, entity)
 	return _in(0x741B0129D4560F31, p0, p1, p2, entity)
 end
 
---- Creates a DUI browser. This can be used to draw on a runtime texture using CREATE\_RUNTIME\_TEXTURE\_FROM\_DUI\_HANDLE.
+--- Creates a DUI browser. This can be used to draw on a runtime texture using CREATE_RUNTIME_TEXTURE_FROM_DUI_HANDLE.
 -- @param url The initial URL to load in the browser.
 -- @param width The width of the backing surface.
 -- @param height The height of the backing surface.
@@ -1321,7 +1321,7 @@ end
 --- Creates a runtime texture from a DUI handle.
 -- @param txd A handle to the runtime TXD to create the runtime texture in.
 -- @param txn The name for the texture in the runtime texture dictionary.
--- @param duiHandle The DUI handle returned from GET\_DUI\_HANDLE.
+-- @param duiHandle The DUI handle returned from GET_DUI_HANDLE.
 -- @return The runtime texture handle.
 function Global.CreateRuntimeTextureFromDuiHandle(txd, txn, duiHandle)
 	return _in(0xb135472b, txd, txn, _ts(duiHandle), _r, _rl)
@@ -1337,8 +1337,7 @@ function Global.CreateRuntimeTextureFromImage(txd, txn, fileName)
 end
 
 --- Creates a runtime texture dictionary with the specified name.
--- Example:
--- ```lua
+-- Example:```lua
 -- local txd = CreateRuntimeTxd('meow')
 -- ```
 -- @param name The name for the runtime TXD.
@@ -2606,6 +2605,14 @@ function Global.GetControlValue(inputGroup, control)
 	return _in(0xD95E79E8686D2C27, inputGroup, control, _r, _ri)
 end
 
+function Global.GetConvar(varName, default_)
+	return _in(0x6ccd2564, _ts(varName), _ts(default_), _r, _s)
+end
+
+function Global.GetConvarInt(varName, default_)
+	return _in(0x935c0ab2, _ts(varName), default_, _r, _ri)
+end
+
 function Global.GetConvertibleRoofState(vehicle)
 	return _in(0xF8C397922FC03F41, vehicle, _r, _ri)
 end
@@ -2722,7 +2729,7 @@ end
 
 --- Returns the NUI window handle for a specified DUI browser object.
 -- @param duiObject The DUI browser handle.
--- @return The NUI window handle, for use in e.g. CREATE\_RUNTIME\_TEXTURE\_FROM\_DUI\_HANDLE.
+-- @return The NUI window handle, for use in e.g. CREATE_RUNTIME_TEXTURE_FROM_DUI_HANDLE.
 function Global.GetDuiHandle(duiObject)
 	return _in(0x1655d41d, duiObject, _r, _s)
 end
@@ -2956,11 +2963,11 @@ function Global.GetGameplayCamRelativePitch()
 end
 
 function Global.GetGameplayCamRot(rotationOrder)
-	return _in(0x5B4E4C817FCC2DFB, rotationOrder, _r, _rv)
+	return _in(0x837765A25378F0BB, rotationOrder, _r, _rv)
 end
 
 function Global.GetGameplayCamRot(rotationOrder)
-	return _in(0x837765A25378F0BB, rotationOrder, _r, _rv)
+	return _in(0x5B4E4C817FCC2DFB, rotationOrder, _r, _rv)
 end
 
 function Global.GetGameplayCamZoom()
@@ -3396,7 +3403,7 @@ function Global.GetNumReservedMissionVehicles(p0)
 end
 
 --- Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
--- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
 -- @param resourceName The resource name.
 -- @param metadataKey The key to look up in the resource manifest.
 function Global.GetNumResourceMetadata(resourceName, metadataKey)
@@ -3880,11 +3887,11 @@ function Global.GetPositionOfVehicleRecordingAtTime(p0, p1, p2)
 end
 
 function Global.GetPosixTime()
-	return _in(0x9A73240B49945C76, _r, _ri)
+	return _in(0xDA488F299A5B164E, _i, _i, _i, _i, _i, _i)
 end
 
 function Global.GetPosixTime()
-	return _in(0xDA488F299A5B164E, _i, _i, _i, _i, _i, _i)
+	return _in(0x9A73240B49945C76, _r, _ri)
 end
 
 function Global.GetPrevWeatherTypeHashName()
@@ -3952,8 +3959,7 @@ function Global.GetRandomVehicleNode(x, y, z, radius, p4, p5, p6)
 end
 
 --- Returns all commands that are registered in the command system.
--- The data returned adheres to the following layout:
--- ```
+-- The data returned adheres to the following layout:```
 -- [
 -- {
 -- "name": "cmdlist"
@@ -3965,7 +3971,7 @@ end
 -- ```
 -- @return An object containing registered commands.
 function Global.GetRegisteredCommands()
-	return msgpack.unpack(_in(0xd4bef069, _r, _ro))
+	return _in(0xd4bef069, _r, _ri)
 end
 
 function Global.GetRelationshipBetweenGroups(group1, group2)
@@ -3997,7 +4003,7 @@ function Global.GetResourceKvpString(key)
 end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
--- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
 -- @param resourceName The resource name.
 -- @param metadataKey The key in the resource manifest.
 -- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
@@ -4078,11 +4084,11 @@ function Global.GetSafeZoneSize()
 end
 
 function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
-	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
+	return _in(0x34E82F05DF2974F5, worldX, worldY, worldZ, _f, _f, _r)
 end
 
 function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
-	return _in(0x34E82F05DF2974F5, worldX, worldY, worldZ, _f, _f, _r)
+	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
 end
 
 function Global.GetScreenEffectIsActive(effectName)
@@ -4456,31 +4462,31 @@ end
 --- Returns the effective handling data of a vehicle as a floating-point value.
 -- Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
 -- @param vehicle The vehicle to obtain data for.
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
 -- @return A floating-point value.
-function Global.GetVehicleHandlingFloat(vehicle, class, fieldName)
-	return _in(0x642fc12f, vehicle, _ts(class), _ts(fieldName), _r, _rf)
+function Global.GetVehicleHandlingFloat(vehicle, class_, fieldName)
+	return _in(0x642fc12f, vehicle, _ts(class_), _ts(fieldName), _r, _rf)
 end
 
 --- Returns the effective handling data of a vehicle as an integer value.
 -- Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
 -- @param vehicle The vehicle to obtain data for.
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
 -- @return An integer.
-function Global.GetVehicleHandlingInt(vehicle, class, fieldName)
-	return _in(0x27396c75, vehicle, _ts(class), _ts(fieldName), _r, _ri)
+function Global.GetVehicleHandlingInt(vehicle, class_, fieldName)
+	return _in(0x27396c75, vehicle, _ts(class_), _ts(fieldName), _r, _ri)
 end
 
 --- Returns the effective handling data of a vehicle as a vector value.
 -- Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
 -- @param vehicle The vehicle to obtain data for.
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
 -- @return An integer.
-function Global.GetVehicleHandlingVector(vehicle, class, fieldName)
-	return _in(0xfb341304, vehicle, _ts(class), _ts(fieldName), _r, _rv)
+function Global.GetVehicleHandlingVector(vehicle, class_, fieldName)
+	return _in(0xfb341304, vehicle, _ts(class_), _ts(fieldName), _r, _rv)
 end
 
 function Global.GetVehicleHighGear(vehicle)
@@ -17882,7 +17888,7 @@ function Global.RegisterBoolToSave(name)
 end
 
 function Global.RegisterCommand(commandName, handler, restricted)
-	return _in(0x5fa79b0f, _ts(commandName), _mfr(handler), restricted)
+	return _in(0x5fa79b0f, _ts(commandName), handler, restricted)
 end
 
 function Global.RegisterEntityForCutscene(cutscenePed, cutsceneEntName, p2, modelHash, p4)
@@ -17906,7 +17912,7 @@ end
 
 --- Registers a specified font name for use with text draw commands.
 -- @param fontName The name of the font in the GFx font library.
--- @return An index to use with [SET\_TEXT\_FONT](#_0x66E0276CC5F6B9DA) and similar natives.
+-- @return An index to use with [SET_TEXT_FONT](#_0x66E0276CC5F6B9DA) and similar natives.
 function Global.RegisterFontId(fontName)
 	return _in(0xacf6d8ee, _ts(fontName), _r, _ri)
 end
@@ -18680,14 +18686,14 @@ function Global.ScriptIsMovingMobilePhoneOffscreen(toggle)
 	return _in(0xF511F759238A5122, toggle)
 end
 
---- Sends a message to the specific DUI root page. This is similar to SEND\_NUI\_MESSAGE.
+--- Sends a message to the specific DUI root page. This is similar to SEND_NUI_MESSAGE.
 -- @param duiObject The DUI browser handle.
 -- @param jsonString The message, encoded as JSON.
 function Global.SendDuiMessage(duiObject, jsonString)
 	return _in(0xcd380da9, duiObject, _ts(jsonString))
 end
 
---- Injects a 'mouse down' event for a DUI object. Coordinates are expected to be set using SEND\_DUI\_MOUSE\_MOVE.
+--- Injects a 'mouse down' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
 -- @param duiObject The DUI browser handle.
 -- @param button Either `'left'`, `'middle'` or `'right'`.
 function Global.SendDuiMouseDown(duiObject, button)
@@ -18702,7 +18708,7 @@ function Global.SendDuiMouseMove(duiObject, x, y)
 	return _in(0xd9d7a0aa, duiObject, x, y)
 end
 
---- Injects a 'mouse up' event for a DUI object. Coordinates are expected to be set using SEND\_DUI\_MOUSE\_MOVE.
+--- Injects a 'mouse up' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
 -- @param duiObject The DUI browser handle.
 -- @param button Either `'left'`, `'middle'` or `'right'`.
 function Global.SendDuiMouseUp(duiObject, button)
@@ -19273,7 +19279,6 @@ function Global.SetDisableVehiclePetrolTankFires(vehicle, toggle)
 end
 
 --- This native sets the app id for the discord rich presence implementation.
--- @param appId A valid Discord API App Id, can be generated at https://discordapp.com/developers/applications/
 function Global.SetDiscordAppId(appId)
 	return _in(0x6a02254d, _ts(appId))
 end
@@ -19746,40 +19751,40 @@ end
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The value to set.
-function Global.SetHandlingField(vehicle, class, fieldName, value)
-	return _in(0xfe8064e3, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingField(vehicle, class_, fieldName, value)
+	return _in(0xfe8064e3, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The floating-point value to set.
-function Global.SetHandlingFloat(vehicle, class, fieldName, value)
-	return _in(0x90dd01c, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingFloat(vehicle, class_, fieldName, value)
+	return _in(0x90dd01c, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The integer value to set.
-function Global.SetHandlingInt(vehicle, class, fieldName, value)
-	return _in(0x8ab3f46c, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingInt(vehicle, class_, fieldName, value)
+	return _in(0x8ab3f46c, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The Vector3 value to set.
-function Global.SetHandlingVector(vehicle, class, fieldName, value)
-	return _in(0x7f9d543, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingVector(vehicle, class_, fieldName, value)
+	return _in(0x7f9d543, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 function Global.SetHdArea(x, y, z, ground)
@@ -19905,9 +19910,9 @@ end
 -- @param miniMap The minimap overlay ID.
 -- @param x The X position for the overlay. This is equivalent to a game coordinate X.
 -- @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
--- @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
--- @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
--- @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+-- @param xScale The X scale for the overlay. This is equivalent to the Flash \_xscale property, therefore 100 = 100%.
+-- @param yScale The Y scale for the overlay. This is equivalent to the Flash \_yscale property.
+-- @param alpha The alpha value for the overlay. This is equivalent to the Flash \_alpha property, therefore 100 = 100%.
 function Global.SetMinimapOverlayDisplay(miniMap, x, y, xScale, yScale, alpha)
 	return _in(0x6a48b3ca, miniMap, x, y, xScale, yScale, alpha)
 end
@@ -21836,39 +21841,39 @@ end
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
 -- Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The value to set.
-function Global.SetVehicleHandlingField(vehicle, class, fieldName, value)
-	return _in(0x2ba40795, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingField(vehicle, class_, fieldName, value)
+	return _in(0x2ba40795, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
 -- Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The floating-point value to set.
-function Global.SetVehicleHandlingFloat(vehicle, class, fieldName, value)
-	return _in(0x488c86d2, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingFloat(vehicle, class_, fieldName, value)
+	return _in(0x488c86d2, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The integer value to set.
-function Global.SetVehicleHandlingInt(vehicle, class, fieldName, value)
-	return _in(0xc37f4cf9, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingInt(vehicle, class_, fieldName, value)
+	return _in(0xc37f4cf9, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The Vector3 value to set.
-function Global.SetVehicleHandlingVector(vehicle, class, fieldName, value)
-	return _in(0x12497890, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingVector(vehicle, class_, fieldName, value)
+	return _in(0x12497890, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 function Global.SetVehicleHasBeenOwnedByPlayer(vehicle, owned)
@@ -22105,8 +22110,7 @@ end
 
 --- Adjusts the offset of the specified wheel relative to the wheel's axle center.
 -- Needs to be called every frame in order to function properly, as GTA will reset the offset otherwise.
--- This function can be especially useful to set the track width of a vehicle, for example:
--- ```
+-- This function can be especially useful to set the track width of a vehicle, for example:```
 -- function SetVehicleFrontTrackWidth(vehicle, width)
 -- SetVehicleWheelXOffset(vehicle, 0, -width/2)
 -- SetVehicleWheelXOffset(vehicle, 1, width/2)
@@ -23765,7 +23769,7 @@ function Global.WasCutsceneSkipped()
 	return _in(0x40C8656EDAEDD569, _r)
 end
 
---- Returns whether or not the currently executing event was canceled. See https://wiki.fivem.net/wiki/WasEventCanceled
+--- Returns whether or not the currently executing event was canceled.
 -- @return A boolean.
 function Global.WasEventCanceled()
 	return _in(0x58382a19, _r)

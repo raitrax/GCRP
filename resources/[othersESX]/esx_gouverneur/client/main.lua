@@ -319,6 +319,8 @@ function OpenVehicleSpawnerMenu()
 					else
 
 						local elements = {
+							{label = 'arrow', value = 'arrow'},
+							{label = 'trezor1', value = 'trezor1'},
 							{label = 'Limousine', value = 'Stretch'},
 							{label = 'Voiture personnelle', value = 's63w222'}, --Cog552
 							{label = 'SUV', value = 'FBI2'} --FBI2 / Baller6 

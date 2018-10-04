@@ -33,7 +33,7 @@ end})
 
 _ENV = nil
 
---- Cancels the currently executing event. See https://wiki.fivem.net/wiki/CancelEvent
+--- Cancels the currently executing event.
 function Global.CancelEvent()
 	return _in(0xfa29d35d)
 end
@@ -63,16 +63,22 @@ function Global.ExecuteCommand(commandString)
 	return _in(0x561c060b, _ts(commandString))
 end
 
-function Global.FlagServerAsPrivate(private)
-	return _in(0x13b6855d, private)
+function Global.FlagServerAsPrivate(private_)
+	return _in(0x13b6855d, private_)
 end
 
-function Global.GetConvar(varName, default)
-	return _in(0x6ccd2564, _ts(varName), _ts(default), _r, _s)
+--- No, this should be called SET_ENTITY_KINEMATIC. It does more than just "freeze" it's position.
+-- ^Rockstar Devs named it like that, Now cry about it.
+function Global.FreezeEntityPosition(entity, toggle)
+	return _in(0x65c16d57, entity, toggle)
 end
 
-function Global.GetConvarInt(varName, default)
-	return _in(0x935c0ab2, _ts(varName), default, _r, _ri)
+function Global.GetConvar(varName, default_)
+	return _in(0x6ccd2564, _ts(varName), _ts(default_), _r, _s)
+end
+
+function Global.GetConvarInt(varName, default_)
+	return _in(0x935c0ab2, _ts(varName), default_, _r, _ri)
 end
 
 --- Returns the name of the currently executing resource.
@@ -83,6 +89,22 @@ end
 
 function Global.GetEntityCoords(entity)
 	return _in(0x1647f1cb, entity, _r, _rv)
+end
+
+function Global.GetEntityHeading(entity)
+	return _in(0x972cc383, entity, _r, _rf)
+end
+
+function Global.GetEntityRotation(entity)
+	return _in(0x8ff45b04, entity, _r, _rv)
+end
+
+function Global.GetEntityRotationVelocity(entity)
+	return _in(0x9bf8a73f, entity, _r, _rv)
+end
+
+function Global.GetEntityVelocity(entity)
+	return _in(0xc14c9b6b, entity, _r, _rv)
 end
 
 --- Gets the current game timer in milliseconds.
@@ -117,7 +139,7 @@ function Global.GetNumPlayerIndices()
 end
 
 --- Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
--- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
 -- @param resourceName The resource name.
 -- @param metadataKey The key to look up in the resource manifest.
 function Global.GetNumResourceMetadata(resourceName, metadataKey)
@@ -165,8 +187,7 @@ function Global.GetPlayerPing(playerSrc)
 end
 
 --- Returns all commands that are registered in the command system.
--- The data returned adheres to the following layout:
--- ```
+-- The data returned adheres to the following layout:```
 -- [
 -- {
 -- "name": "cmdlist"
@@ -186,7 +207,7 @@ function Global.GetResourceByFindIndex(findIndex)
 end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
--- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
 -- @param resourceName The resource name.
 -- @param metadataKey The key in the resource manifest.
 -- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
@@ -253,12 +274,10 @@ function Global.RegisterCommand(commandName, handler, restricted)
 end
 
 --- Registers a build task factory for resources.
--- The function should return an object (msgpack map) with the following fields:
--- ```
+-- The function should return an object (msgpack map) with the following fields:```
 -- {
 -- // returns whether the specific resource should be built
 -- shouldBuild = func(resourceName: string): bool,
--- 
 -- // asynchronously start building the specific resource.
 -- // call cb when completed
 -- build = func(resourceName: string, cb: func(success: bool, status: string): void): void
@@ -285,11 +304,37 @@ function Global.SetConvar(varName, value)
 	return _in(0x341b16d2, _ts(varName), _ts(value))
 end
 
+function Global.SetConvarReplicated(varName, value)
+	return _in(0xf292858c, _ts(varName), _ts(value))
+end
+
+function Global.SetConvarServerInfo(varName, value)
+	return _in(0x9338d547, _ts(varName), _ts(value))
+end
+
 --- p7 is always 1 in the scripts. Set to 1, an area around the destination coords for the moved entity is cleared from other entities.
 -- Often ends with 1, 0, 0, 1); in the scripts. It works.
 -- Axis - Invert Axis Flags
 function Global.SetEntityCoords(entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea)
 	return _in(0xdf70b41b, entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea)
+end
+
+function Global.SetEntityHeading(entity, heading)
+	return _in(0xe0ff064d, entity, heading)
+end
+
+--- rotationOrder refers to the order yaw pitch roll is applied
+-- value ranges from 0 to 5. What you use for rotationOrder when setting must be the same as rotationOrder when getting the rotation.
+-- Unsure what value corresponds to what rotation order, more testing will be needed for that.
+-- For the most part R* uses 1 or 2 as the order.
+-- p5 is usually set as true
+function Global.SetEntityRotation(entity, pitch, roll, yaw, rotationOrder, p5)
+	return _in(0xa345efe, entity, pitch, roll, yaw, rotationOrder, p5)
+end
+
+--- Note that the third parameter(denoted as z) is "up and down" with positive ment.
+function Global.SetEntityVelocity(entity, x, y, z)
+	return _in(0xff5a1988, entity, x, y, z)
 end
 
 function Global.SetGameType(gametypeName)
@@ -323,7 +368,7 @@ function Global.SetPlayerWantedLevel(player, wantedLevel, disableNoMission)
 	return _in(0xb7a0914b, player, wantedLevel, disableNoMission)
 end
 
---- colorPrimary &amp; colorSecondary are the paint index for the vehicle.
+--- colorPrimary & colorSecondary are the paint index for the vehicle.
 -- For a list of valid paint indexes, view: pastebin.com/pwHci0xK
 -- -------------------------------------------------------------------------
 -- Use this to get the number of color indices: pastebin.com/RQEeqTSM
@@ -358,7 +403,7 @@ function Global.VerifyPasswordHash(password, hash)
 	return _in(0x2e310acd, _ts(password), _ts(hash), _r)
 end
 
---- Returns whether or not the currently executing event was canceled. See https://wiki.fivem.net/wiki/WasEventCanceled
+--- Returns whether or not the currently executing event was canceled.
 -- @return A boolean.
 function Global.WasEventCanceled()
 	return _in(0x58382a19, _r)

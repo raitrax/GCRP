@@ -280,7 +280,7 @@ Global.AddSpecfxExplosion = Global.AddExplosionWithUserVfx
 
 --- Seems to add/set the current menu context (to show/hide buttons?)
 -- Pausemenu.xml:
--- &lt;Contexts&gt;*ALL*, DISPLAY_CORONA_BUTTONS, *NONE*, BET_LOCKED, BET_AVAILABLE, SCROLL_OPTION&lt;/Contexts&gt;
+-- <Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, *NONE*, BET_LOCKED, BET_AVAILABLE, SCROLL_OPTION</Contexts>
 -- Code:
 -- if (...) {
 -- sub_bbd34(a_0, 0, "FM_BET_HELP");
@@ -309,7 +309,7 @@ end
 -- _GET_TEXT_SUBSTRING and depending on what the result is it goes in check order of 0 - 9 then A - Z then z (lowercase). So it will then return 0 - 35 or -1 if it's 'z'. The func to handle that ^^ is func_67 in dialog_handler.c atleast in TU27 Xbox360 scripts.
 -- p0 is -1, 0
 -- p1 is a char or string (whatever you wanna call it)
--- p2 is Global 10597 + i * 6. 'i' is a while(i &lt; 70) loop
+-- p2 is Global 10597 + i * 6. 'i' is a while(i < 70) loop
 -- p3 is again -1, 0 - 35
 -- p4 is again -1, 0 - 35
 -- p5 is either 0 or 1 (bool ?)
@@ -441,8 +441,8 @@ end
 --- Creates a rope at the specific position, that extends in the specified direction when not attached to any entities.
 -- __
 -- Add_Rope(pos.x,pos.y,pos.z,0.0,0.0,0.0,20.0,4,20.0,1.0,0.0,false,false,false,5.0,false,NULL)
--- When attached, Position&lt;vector&gt; does not matter
--- When attached, Angle&lt;vector&gt; does not matter
+-- When attached, Position<vector> does not matter
+-- When attached, Angle<vector> does not matter
 -- Rope Type:
 -- 4 and bellow is a thick rope
 -- 5 and up are small metal wires
@@ -488,7 +488,7 @@ end
 
 --- This is used to add a speedzone on a position.
 -- Example usage C#:
--- uint speedZone = Function.Call&lt;uint&gt;((Hash) 0x2CE544C68FB812A0, Game.PlayerPed.Position.X, Game.PlayerPed.Position.Y, Game.PlayerPed.Position.Z, 100.0f, 0.0f, false);
+-- uint speedZone = Function.Call<uint>((Hash) 0x2CE544C68FB812A0, Game.PlayerPed.Position.X, Game.PlayerPed.Position.Y, Game.PlayerPed.Position.Z, 100.0f, 0.0f, false);
 -- (Thanks to alexguirre for his help!)
 -- ==========================================
 -- What is the point in adding a speed zone? Does it just generally affect the speed NPCs will drive? I can imagine running this on every section of the interstate setting it to 3 MPH rip.
@@ -527,7 +527,7 @@ end
 
 --- This native (along with 0x6C188BE134E074AA and 0x94CF4AC034C9C986) do not actually filter anything. They simply add the provided text (as of 944)
 -- did you even check the disassembly?
--- &gt; Do you even lift bro? The PLAYER_NAME and WEBSITE natives are the correct names, it doesn't matter if they're filtered or not. Blame R* for that matter. Hashes don't lie, and it's extremely unlikely the validated names are collisions (what are the odds??)
+-- > Do you even lift bro? The PLAYER_NAME and WEBSITE natives are the correct names, it doesn't matter if they're filtered or not. Blame R* for that matter. Hashes don't lie, and it's extremely unlikely the validated names are collisions (what are the odds??)
 function Global.AddTextComponentScaleform(p0)
 	return _in(0x5F68520888E69014, _ts(p0))
 end
@@ -552,7 +552,7 @@ Global.N_0x80ead8e2e1d5d52e = Global.AddTextComponentSubstringBlipName
 -- ~n~ = new line
 -- --------------------------------------------------------------------
 -- • Usage(Input) :
--- ~INPUT_CONTEXT~ will show button symbol (regarding last input device -&gt; keyboard/gamepad)
+-- ~INPUT_CONTEXT~ will show button symbol (regarding last input device -> keyboard/gamepad)
 -- example:
 -- string info = "Context action is assigned to ~INPUT_CONTEXT~!";
 -- --------------------------------------------------------------------
@@ -1458,7 +1458,7 @@ function Global.CanVehicleParachuteBeActivated(vehicle)
 	return _in(0xA916396DF4154EE3, vehicle, _r)
 end
 
---- Cancels the currently executing event. See https://wiki.fivem.net/wiki/CancelEvent
+--- Cancels the currently executing event.
 function Global.CancelEvent()
 	return _in(0xfa29d35d)
 end
@@ -1496,7 +1496,7 @@ function Global.CenterPlayerOnRadarThisFrame()
 	return _in(0x6D14BFDC33B34F55)
 end
 
---- b2 and/or b3 maybe got something to do with keeping values from the last ped. Both of them set to 1 works great. <br/><br/>Examples from the decompiled scripts:<br/><br/>PLAYER::CHANGE_PLAYER_PED(PLAYER::PLAYER_ID(), l_5C0[4/*14*/], 0, 1);<br/>PLAYER::CHANGE_PLAYER_PED(PLAYER::PLAYER_ID(), a_0[a_0._f7/*1*/], a_2, 0);<br/><br/><br/>===========================================================<br/>The only way I ever got this to work in GTA Online once is by setting both to 0, 0. However, when you switch from your online character to whomever, your character will start walking away 'as if you left the game.' If from there you attempt to call this native once more to switch back to you online ped. You will freeze or if you try changing to another ped. I've tried all posibilities so far.<br/>1, 1 (Freeze), 0, 0(Works Once), 1, 0 &amp; 0, 1 (Freeze). Note of course trying to call this on another online player will crash. Anyone have any idea if implementing a blr within the xex itself on a possible check if it would prevent this freezing?<br/>===========================================================
+--- b2 and/or b3 maybe got something to do with keeping values from the last ped. Both of them set to 1 works great. <br/><br/>Examples from the decompiled scripts:<br/><br/>PLAYER::CHANGE_PLAYER_PED(PLAYER::PLAYER_ID(), l_5C0[4/*14*/], 0, 1);<br/>PLAYER::CHANGE_PLAYER_PED(PLAYER::PLAYER_ID(), a_0[a_0._f7/*1*/], a_2, 0);<br/><br/><br/>===========================================================<br/>The only way I ever got this to work in GTA Online once is by setting both to 0, 0. However, when you switch from your online character to whomever, your character will start walking away 'as if you left the game.' If from there you attempt to call this native once more to switch back to you online ped. You will freeze or if you try changing to another ped. I've tried all posibilities so far.<br/>1, 1 (Freeze), 0, 0(Works Once), 1, 0 & 0, 1 (Freeze). Note of course trying to call this on another online player will crash. Anyone have any idea if implementing a blr within the xex itself on a possible check if it would prevent this freezing?<br/>===========================================================
 function Global.ChangePlayerPed(Player, ped, b2, b3)
 	return _in(0x048189FAC643DEEE, Player, ped, b2, b3)
 end
@@ -1592,7 +1592,7 @@ end
 
 --- This sets bit [offset] of [address] to off.
 -- Example:
--- GAMEPLAY::CLEAR_BIT(&amp;bitAddress, 1);
+-- GAMEPLAY::CLEAR_BIT(&bitAddress, 1);
 -- To check if this bit has been enabled:
 -- GAMEPLAY::IS_BIT_SET(bitAddress, 1); // will return 0 afterwards
 function Global.ClearBit(offset)
@@ -1895,18 +1895,18 @@ end
 -- maxLength - Maximum number of characters to compare. A value of -1 indicates an infinite length.
 -- Returns:
 -- A value indicating the relationship between the strings:
--- &lt;0 - The first non-matching character in 'str1' is less than the one in 'str2'. (e.g. 'A' &lt; 'B', so result = -1)
+-- <0 - The first non-matching character in 'str1' is less than the one in 'str2'. (e.g. 'A' < 'B', so result = -1)
 -- 0 - The contents of both strings are equal.
--- &gt;0 - The first non-matching character in 'str1' is less than the one in 'str2'. (e.g. 'B' &gt; 'A', so result = 1)
+-- >0 - The first non-matching character in 'str1' is less than the one in 'str2'. (e.g. 'B' > 'A', so result = 1)
 -- Examples:
 -- GAMEPLAY::COMPARE_STRINGS("STRING", "string", false, -1); // 0; equal
 -- GAMEPLAY::COMPARE_STRINGS("TESTING", "test", false, 4); // 0; equal
 -- GAMEPLAY::COMPARE_STRINGS("R2D2", "R2xx", false, 2); // 0; equal
--- GAMEPLAY::COMPARE_STRINGS("foo", "bar", false, -1); // 4; 'f' &gt; 'b'
+-- GAMEPLAY::COMPARE_STRINGS("foo", "bar", false, -1); // 4; 'f' > 'b'
 -- GAMEPLAY::COMPARE_STRINGS("A", "A", true, 1); // 0; equal
 -- When comparing case-sensitive strings, lower-case characters are greater than upper-case characters:
--- GAMEPLAY::COMPARE_STRINGS("A", "a", true, 1); // -1; 'A' &lt; 'a'
--- GAMEPLAY::COMPARE_STRINGS("a", "A", true, 1); // 1; 'a' &gt; 'A'
+-- GAMEPLAY::COMPARE_STRINGS("A", "a", true, 1); // -1; 'A' < 'a'
+-- GAMEPLAY::COMPARE_STRINGS("a", "A", true, 1); // 1; 'a' > 'A'
 function Global.CompareStrings(str1, str2, matchCase, maxLength)
 	return _in(0x1E34710ECD4AB0EB, _ts(str1), _ts(str2), matchCase, maxLength, _r, _ri)
 end
@@ -2015,7 +2015,7 @@ function Global.CreateCinematicShot(p0, p1, p2, entity)
 	return _in(0x741B0129D4560F31, p0, p1, p2, entity)
 end
 
---- Creates a DUI browser. This can be used to draw on a runtime texture using CREATE\_RUNTIME\_TEXTURE\_FROM\_DUI\_HANDLE.
+--- Creates a DUI browser. This can be used to draw on a runtime texture using CREATE_RUNTIME_TEXTURE_FROM_DUI_HANDLE.
 -- @param url The initial URL to load in the browser.
 -- @param width The width of the backing surface.
 -- @param height The height of the backing surface.
@@ -2044,7 +2044,7 @@ end
 -- PedsInCavalcades = 11,
 -- Merryweather = 14
 -- };
--- As for the 'police' incident, it will call police cars to you, but unlike PedsInCavalcades &amp; Merryweather they won't start shooting at you unless you shoot first or shoot at them. The top 2 however seem to cancel theirselves if there is noone dead around you or a fire. I only figured them out as I found out the 3rd param is definately the amountOfPeople and they called incident 3 in scripts with 4 people (which the firetruck has) and incident 5 with 2 people (which the ambulence has). The 4 param I cant say is radius, but for the pedsInCavalcades and Merryweather R* uses 0.0f and for the top 3 (Emergency Services) they use 3.0f.
+-- As for the 'police' incident, it will call police cars to you, but unlike PedsInCavalcades & Merryweather they won't start shooting at you unless you shoot first or shoot at them. The top 2 however seem to cancel theirselves if there is noone dead around you or a fire. I only figured them out as I found out the 3rd param is definately the amountOfPeople and they called incident 3 in scripts with 4 people (which the firetruck has) and incident 5 with 2 people (which the ambulence has). The 4 param I cant say is radius, but for the pedsInCavalcades and Merryweather R* uses 0.0f and for the top 3 (Emergency Services) they use 3.0f.
 -- Side Note: It seems calling the pedsInCavalcades or Merryweather then removing it seems to break you from calling the EmergencyEvents and I also believe pedsInCavalcades. (The V cavalcades of course not IV).
 -- Side Note 2: I say it breaks as if you call this proper,
 -- if(CREATE_INCIDENT) etc it will return false if you do as I said above.
@@ -2065,7 +2065,7 @@ end
 -- PedsInCavalcades = 11,
 -- Merryweather = 14
 -- };
--- As for the 'police' incident, it will call police cars to you, but unlike PedsInCavalcades &amp; Merryweather they won't start shooting at you unless you shoot first or shoot at them. The top 2 however seem to cancel theirselves if there is noone dead around you or a fire. I only figured them out as I found out the 3rd param is definately the amountOfPeople and they called incident 3 in scripts with 4 people (which the firetruck has) and incident 5 with 2 people (which the ambulence has). The 4 param I cant say is radius, but for the pedsInCavalcades and Merryweather R* uses 0.0f and for the top 3 (Emergency Services) they use 3.0f.
+-- As for the 'police' incident, it will call police cars to you, but unlike PedsInCavalcades & Merryweather they won't start shooting at you unless you shoot first or shoot at them. The top 2 however seem to cancel theirselves if there is noone dead around you or a fire. I only figured them out as I found out the 3rd param is definately the amountOfPeople and they called incident 3 in scripts with 4 people (which the firetruck has) and incident 5 with 2 people (which the ambulence has). The 4 param I cant say is radius, but for the pedsInCavalcades and Merryweather R* uses 0.0f and for the top 3 (Emergency Services) they use 3.0f.
 -- Side Note: It seems calling the pedsInCavalcades or Merryweather then removing it seems to break you from calling the EmergencyEvents and I also believe pedsInCavalcades. (The V cavalcades of course not IV).
 -- Side Note 2: I say it breaks as if you call this proper,
 -- if(CREATE_INCIDENT) etc it will return false if you do as I said above.
@@ -2185,14 +2185,14 @@ end
 -- p7 - last parameter does not mean ped handle is returned
 -- maybe a quick view in disassembly will tell us what is actually does
 -- *Heading*: 0.0
--- *Heading* is the Z axis spawn rotation of the ped 0-&gt;5th parameter.
+-- *Heading* is the Z axis spawn rotation of the ped 0->5th parameter.
 -- Ped Types:
 -- enum PedTypes
 -- {
--- PED_TYPE_PLAYER_0,				// michael
--- PED_TYPE_PLAYER_1,				// franklin
--- PED_TYPE_NETWORK_PLAYER,			// mp character
--- PED_TYPE_PLAYER_2,				// trevor
+-- PED_TYPE_PLAYER_0,// michael
+-- PED_TYPE_PLAYER_1,// franklin
+-- PED_TYPE_NETWORK_PLAYER,	// mp character
+-- PED_TYPE_PLAYER_2,// trevor
 -- PED_TYPE_CIVMALE,
 -- PED_TYPE_CIVFEMALE,
 -- PED_TYPE_COP,
@@ -2271,8 +2271,8 @@ end
 
 --- Pickup hashes: pastebin.com/8EuSv2r1
 -- flags:
--- 8 (1 &lt;&lt; 3): place on ground
--- 512 (1 &lt;&lt; 9): spin around
+-- 8 (1 << 3): place on ground
+-- 512 (1 << 9): spin around
 function Global.CreatePickupRotate(pickupHash, posX, posY, posZ, rotX, rotY, rotZ, flag, amount, p9, p10, modelHash)
 	return _in(0x891804727E0A98B7, _ch(pickupHash), posX, posY, posZ, rotX, rotY, rotZ, flag, amount, p9, p10, _ch(modelHash), _r, _ri)
 end
@@ -2316,7 +2316,7 @@ end
 --- Creates a runtime texture from a DUI handle.
 -- @param txd A handle to the runtime TXD to create the runtime texture in.
 -- @param txn The name for the texture in the runtime texture dictionary.
--- @param duiHandle The DUI handle returned from GET\_DUI\_HANDLE.
+-- @param duiHandle The DUI handle returned from GET_DUI_HANDLE.
 -- @return The runtime texture handle.
 function Global.CreateRuntimeTextureFromDuiHandle(txd, txn, duiHandle)
 	return _in(0xb135472b, txd, txn, _ts(duiHandle), _r, _rl)
@@ -2332,8 +2332,7 @@ function Global.CreateRuntimeTextureFromImage(txd, txn, fileName)
 end
 
 --- Creates a runtime texture dictionary with the specified name.
--- Example:
--- ```lua
+-- Example:```lua
 -- local txd = CreateRuntimeTxd('meow')
 -- ```
 -- @param name The name for the runtime TXD.
@@ -2411,7 +2410,7 @@ Global.N_0x906b778ca1dc72b6 = Global.DatafileGetFileDict
 -- {
 -- if (!g_109E3)
 -- {
--- if (((sub_d4f() == 2) == 0) &amp;&amp; (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS()))
+-- if (((sub_d4f() == 2) == 0) && (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS()))
 -- {
 -- if (NETWORK::NETWORK_IS_CLOUD_AVAILABLE())
 -- {
@@ -2620,7 +2619,7 @@ end
 -- The vehicle must be a mission entity to delete, so call this before deleting: SET_ENTITY_AS_MISSION_ENTITY(vehicle, true, true);
 -- eg how to use:
 -- SET_ENTITY_AS_MISSION_ENTITY(vehicle, true, true);
--- DELETE_VEHICLE(&amp;vehicle);
+-- DELETE_VEHICLE(&vehicle);
 -- Deletes the specified vehicle, then sets the handle pointed to by the pointer to NULL.
 function Global.DeleteVehicle(vehicle)
 	return _in(0xEA386986E786A54F, _ii(vehicle) --[[ may be optional ]])
@@ -3127,7 +3126,7 @@ end
 -- "Triathlon_2_Start",
 -- "Triathlon_3_Start"
 -- Sometimes used with IS_SCENARIO_GROUP_ENABLED:
--- if (AI::DOES_SCENARIO_GROUP_EXIST("Observatory_Bikers") &amp;&amp; (!AI::IS_SCENARIO_GROUP_ENABLED("Observatory_Bikers"))) {
+-- if (AI::DOES_SCENARIO_GROUP_EXIST("Observatory_Bikers") && (!AI::IS_SCENARIO_GROUP_ENABLED("Observatory_Bikers"))) {
 -- else if (AI::IS_SCENARIO_GROUP_ENABLED("BLIMP")) {
 function Global.DoesScenarioGroupExist(scenarioGroup)
 	return _in(0xF9034C136C9E00D3, _ts(scenarioGroup), _r)
@@ -3206,7 +3205,7 @@ function Global.DoorControl(doorHash, x, y, z, locked, xRotMult, yRotMult, zRotM
 	return _in(0x9B12F9A24FABEDB0, _ch(doorHash), x, y, z, locked, xRotMult, yRotMult, zRotMult)
 end
 
---- Downloads prod.cloud.rockstargames.com/titles/gta5/&lt;platform&gt;/check.json
+--- Downloads prod.cloud.rockstargames.com/titles/gta5/<platform>/check.json
 function Global.DownloadCheck()
 	return _in(0x4F18196C8D38768D)
 end
@@ -3367,7 +3366,7 @@ end
 -- Example C#:
 -- Function.Call(Hash._ADD_TEXT_COMPONENT_STRING3, "Now I need you to bring the ~b~vehicle~w~ back to me!");
 -- ----
--- showInBrief==true: the notification will appear in the "Brief/Info" -&gt; "Notifications" tab in the pause menu.
+-- showInBrief==true: the notification will appear in the "Brief/Info" -> "Notifications" tab in the pause menu.
 -- showInBrief==false: the notification will NOT appear in the pause menu.
 function Global.DrawNotification(blink, showInBrief)
 	return _in(0x2ED7843F8F801023, blink, showInBrief, _r, _ri)
@@ -3380,20 +3379,20 @@ end
 -- {
 -- int iVar2, iVar3;
 -- networkHandleMgr handle;
--- NETWORK_HANDLE_FROM_PLAYER(player, &amp;handle.netHandle, 13);
+-- NETWORK_HANDLE_FROM_PLAYER(player, &handle.netHandle, 13);
 -- networkClanMgr clan;
 -- char *playerName = GET_PLAYER_NAME(player);
 -- _SET_NOTIFICATION_TEXT_ENTRY("STRING");
 -- _SET_NOTIFACTION_COLOR_NEXT(0);
 -- ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(playerName);
--- if (NETWORK_CLAN_PLAYER_GET_DESC(&amp;clan, 35, &amp;handle.netHandle))
+-- if (NETWORK_CLAN_PLAYER_GET_DESC(&clan, 35, &handle.netHandle))
 -- {
 -- iVar2 = 0;
--- if (ARE_STRINGS_EQUAL(clan.unk22, "Leader") &amp;&amp; clan.unk30 == 0)
+-- if (ARE_STRINGS_EQUAL(clan.unk22, "Leader") && clan.unk30 == 0)
 -- {
 -- iVar2 = 1;
 -- }
--- if (clan.unk21 &gt; 0)
+-- if (clan.unk21 > 0)
 -- {
 -- iVar3 = 0;
 -- }
@@ -3401,8 +3400,8 @@ end
 -- {
 -- iVar3 = 1;
 -- }
--- BOOL unused = _0x54E79E9C(&amp;clan.clanHandle, 35);
--- return _DRAW_NOTIFICATION_APARTMENT_INVITE(iVar3, 0 /*unused*/, &amp;clan.unk17, clan.unk30, iVar2, 0, clan.clanHandle, 0, 0, 0);
+-- BOOL unused = _0x54E79E9C(&clan.clanHandle, 35);
+-- return _DRAW_NOTIFICATION_APARTMENT_INVITE(iVar3, 0 /*unused*/, &clan.unk17, clan.unk30, iVar2, 0, clan.clanHandle, 0, 0, 0);
 -- }
 -- }
 function Global.DrawNotificationApartmentInvite(p0, p1, p3, isLeader, unk0, clanDesc, R, G, B)
@@ -3432,11 +3431,11 @@ Global.DrawNotificationIcon = Global.DrawNotificationAward
 -- _SET_NOTIFICATION_TEXT_ENTRY("STRING");
 -- _SET_NOTIFACTION_COLOR_NEXT(1);
 -- ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(playerName);
--- NETWORK_HANDLE_FROM_PLAYER(player, &amp;netHandle.netHandle, 13);
--- if (NETWORK_CLAN_PLAYER_IS_ACTIVE(&amp;netHandle.netHandle))
+-- NETWORK_HANDLE_FROM_PLAYER(player, &netHandle.netHandle, 13);
+-- if (NETWORK_CLAN_PLAYER_IS_ACTIVE(&netHandle.netHandle))
 -- {
--- NETWORK_CLAN_PLAYER_GET_DESC(&amp;clan.clanHandle, 35, &amp;netHandle.netHandle);
--- _DRAW_NOTIFICATION_CLAN_INVITE(0, _0x54E79E9C(&amp;clan.clanHandle, 35), &amp;clan.unk17, clan.isLeader, 0, 0, clan.clanHandle, playerName, 0, 0, 0);
+-- NETWORK_CLAN_PLAYER_GET_DESC(&clan.clanHandle, 35, &netHandle.netHandle);
+-- _DRAW_NOTIFICATION_CLAN_INVITE(0, _0x54E79E9C(&clan.clanHandle, 35), &clan.unk17, clan.isLeader, 0, 0, clan.clanHandle, playerName, 0, 0, 0);
 -- }
 -- }
 function Global.DrawNotificationClanInvite(p0, p1, p3, isLeader, unk0, clanDesc, playerName, R, G, B)
@@ -3840,7 +3839,7 @@ Global.N_0xfcc75460aba29378 = Global.EndTextCommandClearPrint
 
 --- -----------
 -- p3 (duration in MS) was previously mentioned as "shape", but with some more testing it seems that it's more likely to be a duration in MS. (Tested this when not calling it every tick, but instead only once and let it display for the specified duration).
--- -1 seems to be default delay (around 3 seconds), 5000 (ms) seems to be the max. Anything &gt; 5000 will still result in 5 seconds of display time.
+-- -1 seems to be default delay (around 3 seconds), 5000 (ms) seems to be the max. Anything > 5000 will still result in 5 seconds of display time.
 -- Old p3 (shape) description: "shape goes from -1 to 50 (may be more)."
 -- --------------
 -- p0 is always 0.
@@ -3861,7 +3860,7 @@ function Global.EndTextCommandDisplayHelp(p0, loop, beep, duration)
 end
 Global.DisplayHelpTextFromStringLabel = Global.EndTextCommandDisplayHelp
 
---- After applying the properties to the text (See UI::SET_TEXT_), this will draw the text in the applied position. Also 0.0f &lt; x, y &lt; 1.0f, percentage of the axis.
+--- After applying the properties to the text (See UI::SET_TEXT_), this will draw the text in the applied position. Also 0.0f < x, y < 1.0f, percentage of the axis.
 -- Used to be known as _DRAW_TEXT
 function Global.EndTextCommandDisplayText(x, y)
 	return _in(0xCD015E5BB0D96A57, x, y)
@@ -3933,7 +3932,7 @@ Global.N_0xa86911979638106f = Global.EndTextCommandTimer
 -- if (!GAMEPLAY::IS_BIT_SET(g_1870E1._f7B64[a_0/*104*/]._f25, 31)) {
 -- if (!ENTITY::IS_ENTITY_DEAD(v_7)) {
 -- AUDIO::PLAY_SOUND_FROM_ENTITY(-1, "EMP_Vehicle_Hum", v_7, "DLC_HEIST_BIOLAB_DELIVER_EMP_SOUNDS", 0, 0);
--- GAMEPLAY::SET_BIT(&amp;g_1870E1._f7B64[a_0/*104*/]._f25, 31);
+-- GAMEPLAY::SET_BIT(&g_1870E1._f7B64[a_0/*104*/]._f25, 31);
 -- }
 -- }
 -- }
@@ -3951,7 +3950,7 @@ end
 
 --- Will change world AABB so that given point will be inside of the world limits.
 -- Example:
--- You want world limits to be -9000&lt;X&lt;10000 -11000&lt;Y&lt;12000 and leave Z limits as is.
+-- You want world limits to be -9000<X<10000 -11000<Y<12000 and leave Z limits as is.
 -- You should call this function two times:
 -- _EXPAND_WORLD_LIMITS(-9000.0,-11000.0,30.0)
 -- _EXPAND_WORLD_LIMITS(10000.0,12000.0,30.0)
@@ -4066,12 +4065,12 @@ function Global.FilloutPmPlayerListWithNames(p2, p3)
 end
 
 --- In the script "player_scene_t_bbfight.c4":
--- "if (ENTITY::FIND_ANIM_EVENT_PHASE(&amp;l_16E, &amp;l_19F[v_4/*16*/], v_9, &amp;v_A, &amp;v_B))"
--- -- &amp;l_16E (p0) is requested as an anim dictionary earlier in the script.
--- -- &amp;l_19F[v_4/*16*/] (p1) is used in other natives in the script as the "animation" param.
+-- "if (ENTITY::FIND_ANIM_EVENT_PHASE(&l_16E, &l_19F[v_4/*16*/], v_9, &v_A, &v_B))"
+-- -- &l_16E (p0) is requested as an anim dictionary earlier in the script.
+-- -- &l_19F[v_4/*16*/] (p1) is used in other natives in the script as the "animation" param.
 -- -- v_9 (p2) is instantiated as "victim_fall"; I'm guessing that's another anim
--- --v_A and v_B (p3 &amp; p4) are both set as -1.0, but v_A is used immediately after this native for:
--- "if (v_A &lt; ENTITY::GET_ENTITY_ANIM_CURRENT_TIME(...))"
+-- --v_A and v_B (p3 & p4) are both set as -1.0, but v_A is used immediately after this native for:
+-- "if (v_A < ENTITY::GET_ENTITY_ANIM_CURRENT_TIME(...))"
 -- Both v_A and v_B are seemingly used to contain both Vector3's and floats, so I can't say what either really is other than that they are both output parameters. p4 looks more like a *Vector3 though
 -- -alphazolam
 -- Animations list : www.los-santos-multiplayer.com/dev.airdancer?cxt=anim
@@ -4620,15 +4619,15 @@ function Global.GetClosestVehicle(x, y, z, radius, modelHash, flags)
 	return _in(0xF73EB622C4F1689B, x, y, z, radius, _ch(modelHash), flags, _r, _ri)
 end
 
---- FYI: When falling through the map (or however you got under it) you will respawn when your player ped's height is &lt;= -200.0 meters (I think you all know this) and when in a vehicle you will actually respawn at the closest vehicle node.
+--- FYI: When falling through the map (or however you got under it) you will respawn when your player ped's height is <= -200.0 meters (I think you all know this) and when in a vehicle you will actually respawn at the closest vehicle node.
 -- ----------
 -- Vector3 nodePos;
--- GET_CLOSEST_VEHICLE_NODE(x,y,z,&amp;nodePos,...)
+-- GET_CLOSEST_VEHICLE_NODE(x,y,z,&nodePos,...)
 -- p4 is either 0, 1 or 8. 1 means any path/road. 0 means node in the middle of the closest main (asphalt) road.
 -- p5, p6 are always the same:
 -- 0x40400000 (3.0), 0
 -- p5 can also be 100.0 and p6 can be 2.5:
--- PATHFIND::GET_CLOSEST_VEHICLE_NODE(a_0, &amp;v_5, v_9, 100.0, 2.5)
+-- PATHFIND::GET_CLOSEST_VEHICLE_NODE(a_0, &v_5, v_9, 100.0, 2.5)
 -- Known node types: simple path/asphalt road, only asphalt road, water, under the map at always the same coords.
 -- The node types follows a pattern. For example, every fourth node is of the type water i.e. 3, 7, 11, 15, 19, 23, 27, 31, 35, 39... 239. Could not see any difference between nodes within certain types.
 -- Starting at 2, every fourth node is under the map, always same coords.
@@ -4651,7 +4650,7 @@ end
 -- Vector3 coords = ENTITY::GET_ENTITY_COORDS(playerVeh, true);
 -- Vector3 closestVehicleNodeCoords;
 -- float roadHeading;
--- PATHFIND::GET_CLOSEST_VEHICLE_NODE_WITH_HEADING(coords.x, coords.y, coords.z, &amp;closestVehicleNodeCoords, &amp;roadHeading, 1, 3, 0);
+-- PATHFIND::GET_CLOSEST_VEHICLE_NODE_WITH_HEADING(coords.x, coords.y, coords.z, &closestVehicleNodeCoords, &roadHeading, 1, 3, 0);
 -- ENTITY::SET_ENTITY_HEADING(playerVeh, roadHeading);
 -- ENTITY::SET_ENTITY_COORDS(playerVeh, closestVehicleNodeCoords.x, closestVehicleNodeCoords.y, closestVehicleNodeCoords.z, 1, 0, 0, 1);
 -- VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(playerVeh);
@@ -4671,21 +4670,21 @@ function Global.GetCollisionNormalOfLastHitForEntity(entity)
 end
 
 --- p0: Ped Handle
--- p1: int i | 0 &lt;= i &lt;= 27
+-- p1: int i | 0 <= i <= 27
 -- p1 probably refers to the attributes configured in combatbehavior.meta. There are 13. Example:
--- &lt;BlindFireChance value="0.1"/&gt;
--- &lt;WeaponShootRateModifier value="1.0"/&gt;
--- &lt;TimeBetweenBurstsInCover value="1.25"/&gt;
--- &lt;BurstDurationInCover value="2.0"/&gt;
--- &lt;TimeBetweenPeeks value="10.0"/&gt;
--- &lt;WeaponAccuracy value="0.18"/&gt;
--- &lt;FightProficiency value="0.8"/&gt;
--- &lt;StrafeWhenMovingChance value="1.0"/&gt;
--- &lt;WalkWhenStrafingChance value="0.0"/&gt;
--- &lt;AttackWindowDistanceForCover value="55.0"/&gt;
--- &lt;TimeToInvalidateInjuredTarget value="9.0"/&gt;
--- &lt;TriggerChargeTime_Near value="4.0"/&gt;
--- &lt;TriggerChargeTime_Far value="10.0"/&gt;
+-- <BlindFireChance value="0.1"/>
+-- <WeaponShootRateModifier value="1.0"/>
+-- <TimeBetweenBurstsInCover value="1.25"/>
+-- <BurstDurationInCover value="2.0"/>
+-- <TimeBetweenPeeks value="10.0"/>
+-- <WeaponAccuracy value="0.18"/>
+-- <FightProficiency value="0.8"/>
+-- <StrafeWhenMovingChance value="1.0"/>
+-- <WalkWhenStrafingChance value="0.0"/>
+-- <AttackWindowDistanceForCover value="55.0"/>
+-- <TimeToInvalidateInjuredTarget value="9.0"/>
+-- <TriggerChargeTime_Near value="4.0"/>
+-- <TriggerChargeTime_Far value="10.0"/>
 -- -------------Confirmed by editing combatbehavior.meta:
 -- p1:
 -- 0=BlindFireChance
@@ -4747,10 +4746,18 @@ function Global.GetControlValue(inputGroup, control)
 	return _in(0xD95E79E8686D2C27, inputGroup, control, _r, _ri)
 end
 
---- 0 -&gt; up
--- 1 -&gt; lowering down
--- 2 -&gt; down
--- 3 -&gt; raising up
+function Global.GetConvar(varName, default_)
+	return _in(0x6ccd2564, _ts(varName), _ts(default_), _r, _s)
+end
+
+function Global.GetConvarInt(varName, default_)
+	return _in(0x935c0ab2, _ts(varName), default_, _r, _ri)
+end
+
+--- 0 -> up
+-- 1 -> lowering down
+-- 2 -> down
+-- 3 -> raising up
 -- enum RoofState
 -- {
 -- ROOFSTATE_UP = 0;
@@ -4993,7 +5000,7 @@ end
 
 --- Returns the NUI window handle for a specified DUI browser object.
 -- @param duiObject The DUI browser handle.
--- @return The NUI window handle, for use in e.g. CREATE\_RUNTIME\_TEXTURE\_FROM\_DUI\_HANDLE.
+-- @return The NUI window handle, for use in e.g. CREATE_RUNTIME_TEXTURE_FROM_DUI_HANDLE.
 function Global.GetDuiHandle(duiObject)
 	return _in(0x1655d41d, duiObject, _r, _s)
 end
@@ -5084,7 +5091,10 @@ function Global.GetEntityCollisonDisabled(entity)
 end
 Global.N_0xccf1e97befdae480 = Global.GetEntityCollisonDisabled
 
---- p1 = !IS_ENTITY_DEAD
+--- Gets the current coordinates for a specified entity.
+-- @param entity The entity to get the coordinates from.
+-- @param alive Unused by the game, potentially used by debug builds of GTA in order to assert whether or not an entity was alive.
+-- @return The current entity coordinates.
 function Global.GetEntityCoords(entity, alive)
 	return _in(0x3FEF770D40960D5A, entity, alive, _r, _rv)
 end
@@ -5467,11 +5477,11 @@ end
 
 --- Returns a hash representing which part of the map the given coords are located.
 -- Possible return values:
--- (Hash of) city -&gt; -289320599
--- (Hash of) countryside -&gt; 2072609373
+-- (Hash of) city -> -289320599
+-- (Hash of) countryside -> 2072609373
 -- C# Example :
 -- Ped player = Game.Player.Character;
--- Hash h = Function.Call&lt;Hash&gt;(Hash.GET_HASH_OF_MAP_AREA_AT_COORDS, player.Position.X, player.Position.Y, player.Position.Z);
+-- Hash h = Function.Call<Hash>(Hash.GET_HASH_OF_MAP_AREA_AT_COORDS, player.Position.X, player.Position.Y, player.Position.Z);
 function Global.GetHashOfMapAreaAtCoords(x, y, z)
 	return _in(0x7EE64D51E8498728, x, y, z, _r, _ri)
 end
@@ -5520,7 +5530,7 @@ end
 -- If the function returns 0, the end of the enumeration has been reached.
 -- -----------------------------------------------------------------------
 -- Here's an example:
--- std::vector&lt;int&gt; vecCurrentThreads;
+-- std::vector<int> vecCurrentThreads;
 -- void update_current_threads_list()
 -- {
 -- vecCurrentThreads.clear();
@@ -5589,8 +5599,8 @@ function Global.GetInteriorGroupId(interiorID)
 	return _in(0xE4A84ABF135EF91A, interiorID, _r, _ri)
 end
 
---- false = Any resolution &lt; 1280x720
--- true = Any resolution &gt;= 1280x720
+--- false = Any resolution < 1280x720
+-- true = Any resolution >= 1280x720
 function Global.GetIsHidef()
 	return _in(0x84ED31191CC5D2C9, _r)
 end
@@ -5739,7 +5749,7 @@ end
 --- Second Param = LiveryIndex
 -- example
 -- int count = VEHICLE::GET_VEHICLE_LIVERY_COUNT(veh);
--- for (int i = 0; i &lt; count; i++)
+-- for (int i = 0; i < count; i++)
 -- {
 -- char* LiveryName = VEHICLE::GET_LIVERY_NAME(veh, i);
 -- }
@@ -5771,7 +5781,7 @@ end
 -- int minute;
 -- int second;
 -- or use std::tm struct
--- TIME::GET_LOCAL_TIME(&amp;year, &amp;month, &amp;day, &amp;hour, &amp;minute, &amp;second);
+-- TIME::GET_LOCAL_TIME(&year, &month, &day, &hour, &minute, &second);
 function Global.GetLocalTime()
 	return _in(0x50C7A99057A69748, _i, _i, _i, _i, _i, _i)
 end
@@ -5858,10 +5868,10 @@ end
 -- Vector3 GetDimensions(Hash model)
 -- {
 -- Vector3 right, left;
--- GET_MODEL_DIMENSIONS(model, &amp;right, &amp;left);
+-- GET_MODEL_DIMENSIONS(model, &right, &left);
 -- return Vector3::Subtract(left, right);
 -- }
--- Example from the scripts: GAMEPLAY::GET_MODEL_DIMENSIONS(ENTITY::GET_ENTITY_MODEL(PLAYER::PLAYER_PED_ID()), &amp;v_1A, &amp;v_17);
+-- Example from the scripts: GAMEPLAY::GET_MODEL_DIMENSIONS(ENTITY::GET_ENTITY_MODEL(PLAYER::PLAYER_PED_ID()), &v_1A, &v_17);
 function Global.GetModelDimensions(modelHash)
 	return _in(0x03E8D3D5F549087A, _ch(modelHash), _v, _v)
 end
@@ -5871,8 +5881,8 @@ end
 -- {
 -- NativeContext *v1; // rbx@1
 -- v1 = a1;
--- GetAddressOfPedFromScriptHandle(a1-&gt;Args-&gt;Arg1);
--- v1-&gt;Returns-&gt;Item1= 0;
+-- GetAddressOfPedFromScriptHandle(a1->Args->Arg1);
+-- v1->Returns->Item1= 0;
 -- }
 function Global.GetMount(ped)
 	return _in(0xE7E11B8DCBED1058, ped, _r, _ri)
@@ -5890,13 +5900,13 @@ end
 -- scrThread* l_pThread;
 -- // Get the script thread
 -- l_pThread = GetThreadByID(a_iThreadID);
--- if(l_pThread == 0 || l_pThread-&gt;m_iThreadState == 2)
+-- if(l_pThread == 0 || l_pThread->m_iThreadState == 2)
 -- {
 -- strncpy(g_szScriptName, "", 64);
 -- }
 -- else
 -- {
--- strncpy(g_szScriptName, l_pThread-&gt;m_szScriptName, 64);
+-- strncpy(g_szScriptName, l_pThread->m_szScriptName, 64);
 -- }
 -- return g_szScriptName;
 -- }
@@ -6054,11 +6064,11 @@ Global.N_0xba52ff538ed2bc71 = Global.GetNgstatBoolHash
 
 --- Needs more research. Gets the stat name of a masked int?
 -- p4 - Usually one of the following (there may be more that I missed):
--- -----&gt; "_APAPSTAT_INT"
--- -----&gt; "_LRPSTAT_INT"
--- -----&gt; "_NGPSTAT_INT"
--- -----&gt; "_MP_APAPSTAT_INT"
--- -----&gt; "_MP_LRPSTAT_INT"
+-- -----> "_APAPSTAT_INT"
+-- -----> "_LRPSTAT_INT"
+-- -----> "_NGPSTAT_INT"
+-- -----> "_MP_APAPSTAT_INT"
+-- -----> "_MP_LRPSTAT_INT"
 function Global.GetNgstatIntHash(index, spStat, charStat, character, section)
 	return _in(0x2B4CDCA6F07FF3DA, index, spStat, charStat, character, _ts(section), _r, _ri)
 end
@@ -6181,7 +6191,7 @@ function Global.GetNumReservedMissionVehicles(p0)
 end
 
 --- Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
--- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
 -- @param resourceName The resource name.
 -- @param metadataKey The key to look up in the resource manifest.
 function Global.GetNumResourceMetadata(resourceName, metadataKey)
@@ -6392,9 +6402,9 @@ end
 
 --- from fm_mission_controller.c4 (variable names changed for clarity):
 -- int groupID = PLAYER::GET_PLAYER_GROUP(PLAYER::PLAYER_ID());
--- PED::GET_GROUP_SIZE(group, &amp;unused, &amp;groupSize);
--- if (groupSize &gt;= 1) {
--- . . . . for (int memberNumber = 0; memberNumber &lt; groupSize; memberNumber++) {
+-- PED::GET_GROUP_SIZE(group, &unused, &groupSize);
+-- if (groupSize >= 1) {
+-- . . . . for (int memberNumber = 0; memberNumber < groupSize; memberNumber++) {
 -- . . . . . . . . Ped ped1 = PED::GET_PED_AS_GROUP_MEMBER(groupID, memberNumber);
 -- . . . . . . . . //and so on
 function Global.GetPedAsGroupMember(groupID, memberNumber)
@@ -6504,7 +6514,7 @@ function Global.GetPedHeadOverlayValue(ped, overlayID)
 	return _in(0xA60EF3B6461A4D43, ped, overlayID, _r, _ri)
 end
 
---- -1 (driver) &lt;= index &lt; GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(vehicle)
+--- -1 (driver) <= index < GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(vehicle)
 function Global.GetPedInVehicleSeat(vehicle, index)
 	return _in(0xBB40DD2270B65366, vehicle, index, _r, _ri)
 end
@@ -6566,11 +6576,11 @@ end
 -- if (veh != NULL)
 -- {
 -- //Simple loop to go through results
--- for (int i = 0; i &lt; count; i++)
+-- for (int i = 0; i < count; i++)
 -- {
 -- int offsettedID = i * 2 + 2;
 -- //Make sure it exists
--- if (veh[offsettedID] != NULL &amp;&amp; ENTITY::DOES_ENTITY_EXIST(veh[offsettedID]))
+-- if (veh[offsettedID] != NULL && ENTITY::DOES_ENTITY_EXIST(veh[offsettedID]))
 -- {
 -- //Do something
 -- }
@@ -6780,7 +6790,7 @@ end
 -- if (addr)
 -- {
 -- DWORD flag = *(DWORD *)(addr + 0x188);
--- return ((flag &amp; (1 &lt;&lt; 8)) != 0) || ((flag &amp; (1 &lt;&lt; 9)) != 0);
+-- return ((flag & (1 << 8)) != 0) || ((flag & (1 << 9)) != 0);
 -- }
 -- return false;
 -- }
@@ -6942,12 +6952,6 @@ function Global.GetPositionOfVehicleRecordingAtTime(p0, p1, p2)
 	return _in(0xD242728AA6F0FBA2, p0, p1, _ts(p2), _r, _rv)
 end
 
---- Return POSIX timestamp.
-function Global.GetPosixTime()
-	return _in(0x9A73240B49945C76, _r, _ri)
-end
-Global.N_0x9a73240b49945c76 = Global.GetPosixTime
-
 --- Gets system time as year, month, day, hour, minute and second.
 -- Example usage:
 -- int year;
@@ -6956,10 +6960,16 @@ Global.N_0x9a73240b49945c76 = Global.GetPosixTime
 -- int hour;
 -- int minute;
 -- int second;
--- TIME::GET_POSIX_TIME(&amp;year, &amp;month, &amp;day, &amp;hour, &amp;minute, &amp;second);
+-- TIME::GET_POSIX_TIME(&year, &month, &day, &hour, &minute, &second);
 function Global.GetPosixTime()
 	return _in(0xDA488F299A5B164E, _i, _i, _i, _i, _i, _i)
 end
+
+--- Return POSIX timestamp.
+function Global.GetPosixTime()
+	return _in(0x9A73240B49945C76, _r, _ri)
+end
+Global.N_0x9a73240b49945c76 = Global.GetPosixTime
 
 --- Returns current weather name hash
 function Global.GetPrevWeatherTypeHashName()
@@ -7082,8 +7092,7 @@ function Global.GetRandomVehicleNode(x, y, z, radius, p4, p5, p6)
 end
 
 --- Returns all commands that are registered in the command system.
--- The data returned adheres to the following layout:
--- ```
+-- The data returned adheres to the following layout:```
 -- [
 -- {
 -- "name": "cmdlist"
@@ -7095,7 +7104,7 @@ end
 -- ```
 -- @return An object containing registered commands.
 function Global.GetRegisteredCommands()
-	return msgpack.unpack(_in(0xd4bef069, _r, _ro))
+	return _in(0xd4bef069, _r, _ri)
 end
 
 --- Gets the relationship between two groups. This should be called twice (once for each group).
@@ -7152,7 +7161,7 @@ function Global.GetResourceKvpString(key)
 end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
--- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
 -- @param resourceName The resource name.
 -- @param metadataKey The key in the resource manifest.
 -- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
@@ -7278,6 +7287,12 @@ function Global.GetScaleformMovieFunctionReturnInt(method_return)
 end
 Global.N_0x2de7efa66b906036 = Global.GetScaleformMovieFunctionReturnInt
 
+--- This returns the name of the scaleform movie.
+function Global.GetScaleformMovieFunctionReturnString(method_return)
+	return _in(0xE1E258829A885245, method_return, _r, _s)
+end
+Global.SittingTv = Global.GetScaleformMovieFunctionReturnString
+
 --- Convert a world coordinate into its relative screen coordinate.  (WorldToScreen)
 -- Returns a boolean; whether or not the operation was successful. It will return false if the coordinates given are not visible to the rendering camera.
 -- For .NET users...
@@ -7292,8 +7307,8 @@ Global.N_0x2de7efa66b906036 = Global.GetScaleformMovieFunctionReturnInt
 -- {
 -- var x2dp = new OutputArgument();
 -- var y2dp = new OutputArgument();
--- Function.Call&lt;bool&gt;(Hash.GET_SCREEN_COORD_FROM_WORLD_COORD , pos.X, pos.Y, pos.Z, x2dp, y2dp);
--- return new Vector2(x2dp.GetResult&lt;float&gt;(), y2dp.GetResult&lt;float&gt;());
+-- Function.Call<bool>(Hash.GET_SCREEN_COORD_FROM_WORLD_COORD , pos.X, pos.Y, pos.Z, x2dp, y2dp);
+-- return new Vector2(x2dp.GetResult<float>(), y2dp.GetResult<float>());
 -- }
 -- //USE VERY SMALL VALUES FOR THE SCALE OF RECTS/TEXT because it is dramatically larger on screen than in 3D, e.g '0.05' small.
 -- Used to be called _WORLD3D_TO_SCREEN2D
@@ -7318,7 +7333,7 @@ function Global.GetScreenEffectIsActive(effectName)
 end
 
 --- int screenresx,screenresy;
--- GET_SCREEN_RESOLUTION(&amp;screenresx,&amp;screenresy);
+-- GET_SCREEN_RESOLUTION(&screenresx,&screenresy);
 -- Hardcoded to always return 1280 x 720
 function Global.GetScreenResolution()
 	return _in(0x888D57E407E63624, _i, _i)
@@ -7521,7 +7536,7 @@ end
 -- "fm_race_creator.ysc", line 85115:
 -- // parameters modified for clarity
 -- BOOL sub_8e5aa(char *text, int length) {
--- for (i = 0; i &lt;= (length - 2); i += 1) {
+-- for (i = 0; i <= (length - 2); i += 1) {
 -- if (!GAMEPLAY::ARE_STRINGS_EQUAL(UI::_GET_TEXT_SUBSTRING_SAFE(text, i, i + 1, 1), " ")) {
 -- return FALSE;
 -- }
@@ -7574,7 +7589,7 @@ end
 
 --- Returns the time since the character was arrested in (ms) milliseconds.
 -- example
--- var time = Function.call&lt;int&gt;(Hash.GET_TIME_SINCE_LAST_ARREST();
+-- var time = Function.call<int>(Hash.GET_TIME_SINCE_LAST_ARREST();
 -- UI.DrawSubtitle(time.ToString());
 -- if player has not been arrested, the int returned will be -1.
 function Global.GetTimeSinceLastArrest()
@@ -7583,7 +7598,7 @@ end
 
 --- Returns the time since the character died in (ms) milliseconds.
 -- example
--- var time = Function.call&lt;int&gt;(Hash.GET_TIME_SINCE_LAST_DEATH();
+-- var time = Function.call<int>(Hash.GET_TIME_SINCE_LAST_DEATH();
 -- UI.DrawSubtitle(time.ToString());
 -- if player has not died, the int returned will be -1.
 function Global.GetTimeSinceLastDeath()
@@ -7684,13 +7699,13 @@ function Global.GetVariantComponent(componentHash, componentId)
 	return _in(0x6E11F282F11863B6, _ch(componentHash), componentId, _i, _i, _i)
 end
 
+function Global.GetVehicleAcceleration(vehicle)
+	return _in(0x478321, vehicle, _r, _rf)
+end
+
 --- static - max acceleration
 function Global.GetVehicleAcceleration(vehicle)
 	return _in(0x5DD35C8D074E57AE, vehicle, _r, _rf)
-end
-
-function Global.GetVehicleAcceleration(vehicle)
-	return _in(0x478321, vehicle, _r, _rf)
 end
 
 function Global.GetVehicleAlarmTimeLeft(vehicle)
@@ -7727,7 +7742,7 @@ end
 -- example:
 -- v_F = ENTITY::GET_ENTITY_MODEL(v_3);
 -- if (((v_F == ${tanker}) || (v_F == ${armytanker})) || (v_F == ${tanker2})) {
--- if (VEHICLE::_GET_VEHICLE_BODY_HEALTH_2(v_3) &lt;= 1.0) {
+-- if (VEHICLE::_GET_VEHICLE_BODY_HEALTH_2(v_3) <= 1.0) {
 -- NETWORK::NETWORK_EXPLODE_VEHICLE(v_3, 1, 1, -1);
 -- }
 -- }
@@ -7928,31 +7943,31 @@ end
 --- Returns the effective handling data of a vehicle as a floating-point value.
 -- Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
 -- @param vehicle The vehicle to obtain data for.
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
 -- @return A floating-point value.
-function Global.GetVehicleHandlingFloat(vehicle, class, fieldName)
-	return _in(0x642fc12f, vehicle, _ts(class), _ts(fieldName), _r, _rf)
+function Global.GetVehicleHandlingFloat(vehicle, class_, fieldName)
+	return _in(0x642fc12f, vehicle, _ts(class_), _ts(fieldName), _r, _rf)
 end
 
 --- Returns the effective handling data of a vehicle as an integer value.
 -- Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
 -- @param vehicle The vehicle to obtain data for.
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
 -- @return An integer.
-function Global.GetVehicleHandlingInt(vehicle, class, fieldName)
-	return _in(0x27396c75, vehicle, _ts(class), _ts(fieldName), _r, _ri)
+function Global.GetVehicleHandlingInt(vehicle, class_, fieldName)
+	return _in(0x27396c75, vehicle, _ts(class_), _ts(fieldName), _r, _ri)
 end
 
 --- Returns the effective handling data of a vehicle as a vector value.
 -- Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
 -- @param vehicle The vehicle to obtain data for.
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
 -- @return An integer.
-function Global.GetVehicleHandlingVector(vehicle, class, fieldName)
-	return _in(0xfb341304, vehicle, _ts(class), _ts(fieldName), _r, _rv)
+function Global.GetVehicleHandlingVector(vehicle, class_, fieldName)
+	return _in(0xfb341304, vehicle, _ts(class_), _ts(fieldName), _r, _rv)
 end
 
 function Global.GetVehicleHighGear(vehicle)
@@ -8369,7 +8384,7 @@ end
 -- Use it like this:
 -- char cClipSize[32];
 -- Hash cur;
--- if (WEAPON::GET_CURRENT_PED_WEAPON(playerPed, &amp;cur, 1))
+-- if (WEAPON::GET_CURRENT_PED_WEAPON(playerPed, &cur, 1))
 -- {
 -- if (WEAPON::IS_WEAPON_VALID(cur))
 -- {
@@ -8424,7 +8439,7 @@ Global.N_0x08f96ca6c551ad51 = Global.GetWeaponHashFromPickup
 -- };
 -- Usage:
 -- WeaponHudStatsData data;
--- if (GET_WEAPON_HUD_STATS(weaponHash, (Any*)&amp;data))
+-- if (GET_WEAPON_HUD_STATS(weaponHash, (Any*)&data))
 -- {
 -- // uint8_t damagePercentage = data.hudDamage etc...
 -- }
@@ -8452,7 +8467,7 @@ end
 
 --- Returns the model of any weapon.
 -- Can also take an ammo hash?
--- sub_6663a(&amp;l_115B, WEAPON::GET_WEAPONTYPE_MODEL(${ammo_rpg}));
+-- sub_6663a(&l_115B, WEAPON::GET_WEAPONTYPE_MODEL(${ammo_rpg}));
 function Global.GetWeapontypeModel(weaponHash)
 	return _in(0xF46CDC33180FDA94, _ch(weaponHash), _r, _ri)
 end
@@ -8461,8 +8476,8 @@ function Global.GetWeapontypeSlot(weaponHash)
 	return _in(0x4215460B9B8B7FA0, _ch(weaponHash), _r, _ri)
 end
 
---- changed any --&gt; hash
--- progress_or_time --&gt; percentWeather2, is not time but percent of the 2nd weather (0-1).
+--- changed any --> hash
+-- progress_or_time --> percentWeather2, is not time but percent of the 2nd weather (0-1).
 -- weatherType1 is same as GAMEPLAY::GET_PREV_WEATHER_TYPE_HASH_NAME()
 -- and weatherType 2 GAMEPLAY::GET_NEXT_WEATHER_TYPE_HASH_NAME()
 -- -QuantFC
@@ -8814,7 +8829,7 @@ end
 -- There is other codes used for traceType:
 -- 19 - in jewelry_prep1a
 -- 126 - in am_hunt_the_beast
--- 256 &amp; 287 - in fm_mission_controller
+-- 256 & 287 - in fm_mission_controller
 function Global.HasEntityClearLosToEntity(entity1, entity2, traceType)
 	return _in(0xFCDFF7B72D23A1AC, entity1, entity2, traceType, _r)
 end
@@ -9000,7 +9015,7 @@ function Global.HasVehicleAssetLoaded(vehicleAsset)
 end
 
 --- Third Parameter = unsure, but pretty sure it is weapon hash
--- --&gt; get_hash_key("weapon_stickybomb")
+-- --> get_hash_key("weapon_stickybomb")
 -- Fourth Parameter = unsure, almost always -1
 function Global.HasVehicleGotProjectileAttached(driver, vehicle, weaponHash, p3)
 	return _in(0x717C8481234E3B88, driver, vehicle, _ch(weaponHash), p3, _r)
@@ -9200,7 +9215,7 @@ function Global.IsAudioSceneActive(scene)
 end
 
 --- if (GAMEPLAY::IS_AUSSIE_VERSION()) {
--- sub_127a9(&amp;l_31, 1024); // l_31 |= 1024
+-- sub_127a9(&l_31, 1024); // l_31 |= 1024
 -- l_129 = 3;
 -- sub_129d2("AUSSIE VERSION IS TRUE!?!?!"); // DEBUG
 -- }
@@ -9221,8 +9236,8 @@ end
 -- Example:
 -- GAMEPLAY::IS_BIT_SET(bitAddress, 1);
 -- To enable and disable bits, see:
--- GAMEPLAY::SET_BIT(&amp;bitAddress, 1);   // enable
--- GAMEPLAY::CLEAR_BIT(&amp;bitAddress, 1); // disable
+-- GAMEPLAY::SET_BIT(&bitAddress, 1);   // enable
+-- GAMEPLAY::CLEAR_BIT(&bitAddress, 1); // disable
 function Global.IsBitSet(address, offset)
 	return _in(0xA921AA820C25702F, address, offset, _r)
 end
@@ -9363,7 +9378,7 @@ end
 --- Usage:
 -- public bool isCopInRange(Vector3 Location, float Range)
 -- {
--- return Function.Call&lt;bool&gt;(Hash.IS_COP_PED_IN_AREA_3D, Location.X - Range, Location.Y - Range, Location.Z - Range, Location.X + Range, Location.Y + Range, Location.Z + Range);
+-- return Function.Call<bool>(Hash.IS_COP_PED_IN_AREA_3D, Location.X - Range, Location.Y - Range, Location.Z - Range, Location.X + Range, Location.Y + Range, Location.Z + Range);
 -- }
 function Global.IsCopVehicleInArea_3d(x1, x2, y1, y2, z1, z2)
 	return _in(0x7EEF65D5F153E26A, x1, x2, y1, y2, z1, z2, _r)
@@ -9512,7 +9527,7 @@ end
 -- Angle is measured in degrees.
 -- These values are constant, most likely bogus:
 -- p8 = 0, p9 = 1, p10 = 0
--- This method can also take two float&lt;3&gt; instead of 6 floats.
+-- This method can also take two float<3> instead of 6 floats.
 function Global.IsEntityInAngledArea(entity, originX, originY, originZ, edgeX, edgeY, edgeZ, angle, p8, p9, p10)
 	return _in(0x51210CED3DA1C78A, entity, originX, originY, originZ, edgeX, edgeY, edgeZ, angle, p8, p9, p10, _r)
 end
@@ -9577,7 +9592,7 @@ end
 -- pEntity = getEntityAddressIfPhysical(e);
 -- if (pEntity) {
 -- bIsUpright = 0;
--- if (pEntity-&gt;Matrix.up.z &gt;= cosf(angle * 0.017453292)) // radians(angle)
+-- if (pEntity->Matrix.up.z >= cosf(angle * 0.017453292)) // radians(angle)
 -- bIsUpright = 1;
 -- }
 -- return bIsUpright;
@@ -10058,7 +10073,7 @@ end
 
 --- Presumably returns the Entity that the Ped is currently diving out of the way of.
 -- var num3;
--- if (PED::IS_PED_EVASIVE_DIVING(A_0, &amp;num3) != 0)
+-- if (PED::IS_PED_EVASIVE_DIVING(A_0, &num3) != 0)
 -- if (ENTITY::IS_ENTITY_A_VEHICLE(num3) != 0)
 function Global.IsPedEvasiveDiving(ped, evadingEntity)
 	return _in(0x414641C26E105898, ped, _ii(evadingEntity) --[[ may be optional ]], _r)
@@ -10670,7 +10685,7 @@ Global.N_0x93028f1db42bfd08 = Global.IsScInboxValid
 -- "SEW_MACHINE",
 -- "SOLOMON_GATE"
 -- Sometimes used with DOES_SCENARIO_GROUP_EXIST:
--- if (AI::DOES_SCENARIO_GROUP_EXIST("Observatory_Bikers") &amp;&amp;   (!AI::IS_SCENARIO_GROUP_ENABLED("Observatory_Bikers"))) {
+-- if (AI::DOES_SCENARIO_GROUP_EXIST("Observatory_Bikers") &&   (!AI::IS_SCENARIO_GROUP_ENABLED("Observatory_Bikers"))) {
 -- else if (AI::IS_SCENARIO_GROUP_ENABLED("BLIMP")) {
 function Global.IsScenarioGroupEnabled(scenarioGroup)
 	return _in(0x367A09DED4E05B99, _ts(scenarioGroup), _r)
@@ -11502,7 +11517,7 @@ function Global.N_0x0035bb914316f1e3(p0, p1, p2, p3)
 	return _in(0x0035BB914316F1E3, p0, p1, p2, p3)
 end
 
---- if ((NETWORK::_597F8DBA9B206FC7() &gt; 0) &amp;&amp; DATAFILE::_01095C95CD46B624(0)) {
+--- if ((NETWORK::_597F8DBA9B206FC7() > 0) && DATAFILE::_01095C95CD46B624(0)) {
 -- v_10 = DATAFILE::_GET_ROOT_OBJECT();
 -- v_11 = DATAFILE::_OBJECT_VALUE_GET_INTEGER(v_10, "pt");
 -- sub_20202(2, v_11);
@@ -12476,7 +12491,7 @@ end
 
 --- Seems to return the current type of view
 -- example: // checks if you're currently in first person
--- if ((CAM::_EE778F8C7E1142E2(CAM::_19CAFA3C87F7C2FF()) == 4) &amp;&amp; (!__463_$28ED382849B17AFC())) {
+-- if ((CAM::_EE778F8C7E1142E2(CAM::_19CAFA3C87F7C2FF()) == 4) && (!__463_$28ED382849B17AFC())) {
 -- UI::_FDEC055AB549E328();
 -- UI::_SET_NOTIFICATION_TEXT_ENTRY("REC_FEED_WAR");
 -- l_CE[0/*1*/] = UI::_DRAW_NOTIFICATION(0, 1);
@@ -12772,7 +12787,7 @@ function Global.N_0x213aeb2b90cba7ac(p0, p1, p2)
 end
 
 --- example
--- if (UI::IS_HELP_MESSAGE_BEING_DISPLAYED()&amp;&amp;(!UI::_214CD562A939246A())) {
+-- if (UI::IS_HELP_MESSAGE_BEING_DISPLAYED()&&(!UI::_214CD562A939246A())) {
 -- return 0;
 -- }
 function Global.N_0x214cd562a939246a()
@@ -12873,7 +12888,7 @@ end
 -- Console Hash: 0x0AF83036
 -- Only used once in scripts, in maintransition.
 -- maintransition.c4, line ~82432:
--- if (PED::_7350823473013C02(PLAYER::PLAYER_PED_ID()) &amp;&amp; (DECORATOR::_241FCA5B1AA14F75() == 0)) {
+-- if (PED::_7350823473013C02(PLAYER::PLAYER_PED_ID()) && (DECORATOR::_241FCA5B1AA14F75() == 0)) {
 -- g_2542A5 = a_1; // 'g_2542A5' used in 'building_controller.ysc' for IPL stuff?
 -- return 1;
 -- }
@@ -12995,7 +13010,7 @@ end
 -- STATS::0x343B27E2(5);
 -- STATS::0x343B27E2(6);
 -- STATS::0x343B27E2(7);
--- Identical in ingamehud &amp; maintransition.
+-- Identical in ingamehud & maintransition.
 function Global.N_0x26d7399b9587fe89(p0)
 	return _in(0x26D7399B9587FE89, p0)
 end
@@ -13149,7 +13164,7 @@ function Global.N_0x2a86a0475b6a1434(p0, p1)
 	return _in(0x2A86A0475B6A1434, p0, p1)
 end
 
---- 2 matches across 2 scripts. Only showed in appcamera &amp; appmedia. Both were 0.
+--- 2 matches across 2 scripts. Only showed in appcamera & appmedia. Both were 0.
 -- Dr. Underscore (1/6/18):
 -- I've found a reference in maintransition with 1, plus in appcamera and appmedia.
 -- Takes and returns a bool.
@@ -13455,7 +13470,7 @@ function Global.N_0x31727907b2c43c55(p0)
 end
 
 --- From the decompiled scripts, called 61 times:
--- UI::_317EBA71D7543F52(&amp;v_13, &amp;v_13, &amp;v_3, &amp;v_3);
+-- UI::_317EBA71D7543F52(&v_13, &v_13, &v_3, &v_3);
 function Global.N_0x317eba71d7543f52()
 	return _in(0x317EBA71D7543F52, _i, _i, _i, _i)
 end
@@ -13691,7 +13706,7 @@ function Global.N_0x37deb0aa183fb6d8()
 end
 
 --- Sets some values in a vehicle gadget (tow arm, digger arm, etc.). Don't know which one though.
--- I've tested on the towtruck 1 &amp; 2, Dock Lift (Crate Arm), Dozer, and such have no effect. However when used on a Forklift it sets the height of the forks. 0.0 = Lowest 1.0 = Highest. This is best to be used if you wanna pick-up a car since un-realistically on GTA V forklifts can't pick up much of anything due to vehicle mass. If you put this under a car then set it above 0.0 to a 'lifted-value' it will raise the car with no issue lol
+-- I've tested on the towtruck 1 & 2, Dock Lift (Crate Arm), Dozer, and such have no effect. However when used on a Forklift it sets the height of the forks. 0.0 = Lowest 1.0 = Highest. This is best to be used if you wanna pick-up a car since un-realistically on GTA V forklifts can't pick up much of anything due to vehicle mass. If you put this under a car then set it above 0.0 to a 'lifted-value' it will raise the car with no issue lol
 function Global.N_0x37ebbf3117bd6a25(vehicle, height)
 	return _in(0x37EBBF3117BD6A25, vehicle, height)
 end
@@ -14001,7 +14016,7 @@ end
 
 --- if (!ENTITY::DOES_ENTITY_BELONG_TO_THIS_SCRIPT(g_10A5A._f8B[a_0/*1*/], 1)) {
 -- sub_20af7("No longer needed: Vehicle owned by other script");
--- if ((((a_0 == 24) &amp;&amp; (!sub_3a04(g_10A5A._f8B[a_0/*1*/]))) &amp;&amp; (!sub_39c9(g_10A5A._f8B[a_0/*1*/]))) &amp;&amp; (ENTITY::GET_ENTITY_MODEL(g_10A5A._f8B[a_0/*1*/]) != ${monster})) {
+-- if ((((a_0 == 24) && (!sub_3a04(g_10A5A._f8B[a_0/*1*/]))) && (!sub_39c9(g_10A5A._f8B[a_0/*1*/]))) && (ENTITY::GET_ENTITY_MODEL(g_10A5A._f8B[a_0/*1*/]) != ${monster})) {
 -- VEHICLE::_428BACCDF5E26EAD(g_10A5A._f8B[a_0/*1*/], 1);
 -- }
 -- g_10A5A._f8B[a_0/*1*/] = 0;
@@ -14089,7 +14104,7 @@ function Global.N_0x44f1012b69313374(p0, p1, p2, p3)
 end
 
 --- yoga.ysc
--- if (PED::IS_PED_WEARING_HELMET(iParam0) &amp;&amp; PED::_0x451294E859ECC018(iParam0) != -1)
+-- if (PED::IS_PED_WEARING_HELMET(iParam0) && PED::_0x451294E859ECC018(iParam0) != -1)
 -- {
 -- *uParam2 = PED::_0x451294E859ECC018(iParam0);
 -- *uParam3 = PED::_0x9D728C1E12BF5518(iParam0);
@@ -14251,8 +14266,8 @@ end
 
 --- Only found 3 times in decompiled scripts. Not a whole lot to go off of.
 -- GAMEPLAY::_48F069265A0E4BEC(a_0, "Movie_Name_For_This_Player");
--- GAMEPLAY::_48F069265A0E4BEC(&amp;a_0._fB, "Ringtone_For_This_Player");
--- GAMEPLAY::_48F069265A0E4BEC(&amp;a_0._f1EC4._f12[v_A/*6*/], &amp;v_13); // where v_13 is "MPATMLOGSCRS0" thru "MPATMLOGSCRS15"
+-- GAMEPLAY::_48F069265A0E4BEC(&a_0._fB, "Ringtone_For_This_Player");
+-- GAMEPLAY::_48F069265A0E4BEC(&a_0._f1EC4._f12[v_A/*6*/], &v_13); // where v_13 is "MPATMLOGSCRS0" thru "MPATMLOGSCRS15"
 function Global.N_0x48f069265a0e4bec(name)
 	return _in(0x48F069265A0E4BEC, _i, _ts(name))
 end
@@ -15681,8 +15696,8 @@ end
 -- result = EntityAsCVehicle(a1);
 -- if ( result )
 -- {
--- result-&gt;field_886 &amp;= 0xEFu;
--- result-&gt;field_886 |= 16 * (a2 &amp; 1);
+-- result->field_886 &= 0xEFu;
+-- result->field_886 |= 16 * (a2 & 1);
 -- }
 -- return result;
 -- }
@@ -15723,9 +15738,9 @@ function Global.N_0x6f72cd94f7b5b68c()
 end
 
 --- Seems to have the same functionality as REGISTER_TEXT_LABEL_TO_SAVE?
--- GAMEPLAY::_6F7794F28C6B2535(&amp;a_0._f1, "tlPlateText");
--- GAMEPLAY::_6F7794F28C6B2535(&amp;a_0._f1C, "tlPlateText_pending");
--- GAMEPLAY::_6F7794F28C6B2535(&amp;a_0._f10B, "tlCarAppPlateText");
+-- GAMEPLAY::_6F7794F28C6B2535(&a_0._f1, "tlPlateText");
+-- GAMEPLAY::_6F7794F28C6B2535(&a_0._f1C, "tlPlateText_pending");
+-- GAMEPLAY::_6F7794F28C6B2535(&a_0._f10B, "tlCarAppPlateText");
 -- "tl" prefix sounds like "Text Label"
 function Global.N_0x6f7794f28c6b2535(name)
 	return _in(0x6F7794F28C6B2535, _i, _ts(name))
@@ -16231,10 +16246,10 @@ end
 -- result = GetVehicleAddress(vehicle);
 -- if ( result )
 -- {
--- if ( v3 || (v6 = *(_WORD *)(result + 0xDA), (v6 &amp; 0xFu) - 6 &lt;= 1) )
+-- if ( v3 || (v6 = *(_WORD *)(result + 0xDA), (v6 & 0xFu) - 6 <= 1) )
 -- {
--- *(_BYTE *)(result + 0x89B) &amp;= 0xDFu;
--- *(_BYTE *)(result + 0x89B) |= 32 * (v4 &amp; 1);
+-- *(_BYTE *)(result + 0x89B) &= 0xDFu;
+-- *(_BYTE *)(result + 0x89B) |= 32 * (v4 & 1);
 -- }
 -- }
 -- return result;
@@ -16387,7 +16402,7 @@ function Global.N_0x815f18ad865f057f(p0)
 	return _in(0x815F18AD865F057F, p0, _r, _ri)
 end
 
---- UI::_817B86108EB94E51(1, &amp;g_189F36._f10CD1[0/*16*/], &amp;g_189F36._f10CD1[1/*16*/], &amp;g_189F36._f10CD1[2/*16*/], &amp;g_189F36._f10CD1[3/*16*/], &amp;g_189F36._f10CD1[4/*16*/], &amp;g_189F36._f10CD1[5/*16*/], &amp;g_189F36._f10CD1[6/*16*/], &amp;g_189F36._f10CD1[7/*16*/]);
+--- UI::_817B86108EB94E51(1, &g_189F36._f10CD1[0/*16*/], &g_189F36._f10CD1[1/*16*/], &g_189F36._f10CD1[2/*16*/], &g_189F36._f10CD1[3/*16*/], &g_189F36._f10CD1[4/*16*/], &g_189F36._f10CD1[5/*16*/], &g_189F36._f10CD1[6/*16*/], &g_189F36._f10CD1[7/*16*/]);
 function Global.N_0x817b86108eb94e51(p0)
 	return _in(0x817B86108EB94E51, p0, _i, _i, _i, _i, _i, _i, _i, _i)
 end
@@ -16422,8 +16437,8 @@ function Global.N_0x82377b65e943f72d(p0)
 end
 
 --- Only found 2 times in decompiled scripts. Not a whole lot to go off of.
--- GAMEPLAY::_8269816F6CFD40F8(&amp;a_0._f1F5A._f6[0/*8*/], "TEMPSTAT_LABEL"); // gets saved in a struct called "g_SaveData_STRING_ScriptSaves"
--- GAMEPLAY::_8269816F6CFD40F8(&amp;a_0._f4B4[v_1A/*8*/], &amp;v_5); // where v_5 is "Name0" thru "Name9", gets saved in a struct called "OUTFIT_Name"
+-- GAMEPLAY::_8269816F6CFD40F8(&a_0._f1F5A._f6[0/*8*/], "TEMPSTAT_LABEL"); // gets saved in a struct called "g_SaveData_STRING_ScriptSaves"
+-- GAMEPLAY::_8269816F6CFD40F8(&a_0._f4B4[v_1A/*8*/], &v_5); // where v_5 is "Name0" thru "Name9", gets saved in a struct called "OUTFIT_Name"
 function Global.N_0x8269816f6cfd40f8(name)
 	return _in(0x8269816F6CFD40F8, _i, _ts(name))
 end
@@ -16433,7 +16448,7 @@ function Global.N_0x826d1ee4d1cafc78(p0, p1)
 end
 
 --- HUD_COLOUR_CONTROLLER_CHOP = 174;
--- UI::GET_HUD_COLOUR(174, &amp;v_6, &amp;v_7, &amp;v_8, &amp;v_9);
+-- UI::GET_HUD_COLOUR(174, &v_6, &v_7, &v_8, &v_9);
 -- CONTROLS::_8290252FFF36ACB5(0, v_6, v_7, v_8);
 function Global.N_0x8290252fff36acb5(p0, red, green, blue)
 	return _in(0x8290252FFF36ACB5, p0, red, green, blue)
@@ -16476,19 +16491,19 @@ end
 -- DATAFILE::DATAFILE_CREATE();
 -- v_5 = DATAFILE::_GET_ROOT_OBJECT();
 -- DATAFILE::_OBJECT_VALUE_ADD_INTEGER(v_5, "in", a_2);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "st", &amp;a_2._f1);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "mp", &amp;a_2._f2);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "ms", &amp;a_2._f3);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "sc", &amp;a_2._f5);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "pr", &amp;a_2._f6);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "fa", &amp;a_2._f7);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "sm", &amp;a_2._f8);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "kp", &amp;a_2._f9);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "sv", &amp;a_2._fA);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "yo", &amp;a_2._fB);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "fi", &amp;a_2._fC);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "rc", &amp;a_2._fD);
--- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "co", &amp;a_2._fE);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "st", &a_2._f1);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "mp", &a_2._f2);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "ms", &a_2._f3);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "sc", &a_2._f5);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "pr", &a_2._f6);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "fa", &a_2._f7);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "sm", &a_2._f8);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "kp", &a_2._f9);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "sv", &a_2._fA);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "yo", &a_2._fB);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "fi", &a_2._fC);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "rc", &a_2._fD);
+-- DATAFILE::_OBJECT_VALUE_ADD_STRING(v_5, "co", &a_2._fE);
 -- DATAFILE::_OBJECT_VALUE_ADD_INTEGER(v_5, "su", a_2._fF);
 -- DATAFILE::_83BCCE3224735F05("gta5/psych/index.json"); // saves the file?
 function Global.N_0x83bcce3224735f05(filename)
@@ -16831,7 +16846,7 @@ function Global.N_0x8ef5573a1f801a5c(p0)
 end
 
 --- Example, only occurrence in the scripts:
--- UI::_8EFCCF6EC66D85E4(&amp;v_23, &amp;v_13, &amp;v_13, 1, v_34);
+-- UI::_8EFCCF6EC66D85E4(&v_23, &v_13, &v_13, 1, v_34);
 function Global.N_0x8efccf6ec66d85e4(p3, p4)
 	return _in(0x8EFCCF6EC66D85E4, _i, _i, _i, p3, p4, _r, _ri)
 end
@@ -16911,11 +16926,11 @@ end
 
 --- bool?
 -- am_crate_drop.c
--- &lt;...&gt;
+-- <...>
 -- if (network::_network_are_ros_available())
 -- {
 -- if (network::_0x91B87C55093DE351())
--- &lt;..&gt;
+-- <..>
 function Global.N_0x91b87c55093de351()
 	return _in(0x91B87C55093DE351, _r, _ri)
 end
@@ -17229,7 +17244,7 @@ function Global.N_0x9cb0bfa7a9342c3d(p0, p1)
 	return _in(0x9CB0BFA7A9342C3D, p0, p1, _r)
 end
 
---- Only appeared in Golf &amp; Golf_mp. Parameters were all ptrs
+--- Only appeared in Golf & Golf_mp. Parameters were all ptrs
 function Global.N_0x9cfdd90b2b844bf7(p0, p1, p2, p3, p4)
 	return _in(0x9CFDD90B2B844BF7, p0, p1, p2, p3, p4)
 end
@@ -17459,7 +17474,7 @@ end
 --- Needs more research. If the "phone_cam12" filter is applied, this function is called with "TRUE"; otherwise, "FALSE".
 -- Example (XBOX 360):
 -- // check current filter selection
--- if (GAMEPLAY::ARE_STRINGS_EQUAL(getElem(g_2471024, &amp;l_17, 4), "phone_cam12") != 0)
+-- if (GAMEPLAY::ARE_STRINGS_EQUAL(getElem(g_2471024, &l_17, 4), "phone_cam12") != 0)
 -- {
 -- MOBILE::_0xC273BB4D(0); // FALSE
 -- }
@@ -17500,7 +17515,7 @@ function Global.N_0xa3c53804bdb68ed2(p0, p1)
 end
 
 --- Only called once in the scripts:
--- if (sub_1abd() &amp;&amp; (!PED::_A3F3564A5B3646C0(l_8C))) {
+-- if (sub_1abd() && (!PED::_A3F3564A5B3646C0(l_8C))) {
 -- if (sub_52e3("RESNA_CELLR", 0)) {
 -- PED::SET_PED_CAN_PLAY_GESTURE_ANIMS(l_8C, 1);
 -- PED::SET_PED_CAN_PLAY_AMBIENT_ANIMS(l_8C, 1);
@@ -18038,7 +18053,7 @@ function Global.N_0xb328dcc3a3aa401b(p0)
 end
 
 --- This line found 48 times in the scripts:
--- GAMEPLAY::_B335F761606DB47C(&amp;v_4, &amp;v_7, a_0, v_A);
+-- GAMEPLAY::_B335F761606DB47C(&v_4, &v_7, a_0, v_A);
 function Global.N_0xb335f761606db47c(p3, p4)
 	return _in(0xB335F761606DB47C, _i, _i, p3, p4, _r)
 end
@@ -18076,7 +18091,7 @@ function Global.N_0xb4271092ca7edf48(p0)
 	return _in(0xB4271092CA7EDF48, p0, _r, _ri)
 end
 
---- PLAYER::0xBF6993C7(rPtr((&amp;l_122) + 71)); // Found in decompilation
+--- PLAYER::0xBF6993C7(rPtr((&l_122) + 71)); // Found in decompilation
 -- ***
 -- In "am_hold_up.ysc" used once:
 -- l_8d._f47 = GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(18.0, 28.0);
@@ -18339,7 +18354,7 @@ end
 --- var num3 = PLAYER::GET_PLAYER_PED(l_2171); // proof l_2171 is a player
 -- var num17 = PLAYER::0x9DF75B2A(l_2171, 100, 0); // l_2171
 -- .ysc:
--- if (PLAYER::GET_PLAYER_WANTED_LEVEL(l_6EF) &lt; v_4) { // l_6EF is a player
+-- if (PLAYER::GET_PLAYER_WANTED_LEVEL(l_6EF) < v_4) { // l_6EF is a player
 -- PLAYER::SET_PLAYER_WANTED_LEVEL(l_6EF, v_4, 0); // l_6EF
 -- PLAYER::SET_PLAYER_WANTED_LEVEL_NOW(l_6EF, 0); // l_6EF
 -- } else {
@@ -19558,7 +19573,7 @@ function Global.N_0xdf6ca0330f2e737b(p0, p1)
 end
 
 --- Outputs 2 Vector3's.
--- Scripts check if out2.x - out1.x &gt; someshit.x
+-- Scripts check if out2.x - out1.x > someshit.x
 -- Could be suspension related, as in max suspension height and min suspension height, considering the natives location.
 function Global.N_0xdf7e3eeb29642c38(vehicle)
 	return _in(0xDF7E3EEB29642C38, vehicle, _v, _v)
@@ -20078,7 +20093,7 @@ end
 
 --- interprets the result of CAM::_0x19CAFA3C87F7C2FF()
 -- example: // checks if you're currently in first person
--- if ((CAM::_EE778F8C7E1142E2(CAM::_19CAFA3C87F7C2FF()) == 4) &amp;&amp; (!__463_$28ED382849B17AFC())) {
+-- if ((CAM::_EE778F8C7E1142E2(CAM::_19CAFA3C87F7C2FF()) == 4) && (!__463_$28ED382849B17AFC())) {
 -- UI::_FDEC055AB549E328();
 -- UI::_SET_NOTIFICATION_TEXT_ENTRY("REC_FEED_WAR");
 -- l_CE[0/*1*/] = UI::_DRAW_NOTIFICATION(0, 1);
@@ -20565,15 +20580,15 @@ end
 
 --- Another unknown label type...
 -- GAMEPLAY::_FAA457EF263E8763(a_0, "Thumb_label");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f10, "Photo_label");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f10, "Photo_label");
 -- GAMEPLAY::_FAA457EF263E8763(a_0, "GXTlabel");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f21, "StringComp");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f43, "SecondStringComp");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f53, "ThirdStringComp");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f32, "SenderStringComp");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f726[v_1A/*16*/], &amp;v_20); // where v_20 is "LastJobTL_0_1" thru "LastJobTL_2_1", gets saved in a struct called "LAST_JobGamer_TL"
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f4B, "PAID_PLAYER");
--- GAMEPLAY::_FAA457EF263E8763(&amp;a_0._f5B, "RADIO_STATION");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f21, "StringComp");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f43, "SecondStringComp");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f53, "ThirdStringComp");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f32, "SenderStringComp");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f726[v_1A/*16*/], &v_20); // where v_20 is "LastJobTL_0_1" thru "LastJobTL_2_1", gets saved in a struct called "LAST_JobGamer_TL"
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f4B, "PAID_PLAYER");
+-- GAMEPLAY::_FAA457EF263E8763(&a_0._f5B, "RADIO_STATION");
 function Global.N_0xfaa457ef263e8763(name)
 	return _in(0xFAA457EF263E8763, _i, _ts(name))
 end
@@ -21119,18 +21134,18 @@ end
 -- {
 -- int membership;
 -- networkHandleMgr handle;
--- NETWORK_HANDLE_FROM_PLAYER(iSelectedPlayer, &amp;handle.netHandle, 13);
+-- NETWORK_HANDLE_FROM_PLAYER(iSelectedPlayer, &handle.netHandle, 13);
 -- if (!_NETWORK_IS_CLAN_MEMBERSHIP_FINISHED_DOWNLOADING())
 -- {
--- if (NETWORK_CLAN_REMOTE_MEMBERSHIPS_ARE_IN_CACHE(&amp;Param))
+-- if (NETWORK_CLAN_REMOTE_MEMBERSHIPS_ARE_IN_CACHE(&Param))
 -- {
--- if (NETWORK_CLAN_GET_MEMBERSHIP_COUNT(&amp;Param) &gt; 0)
+-- if (NETWORK_CLAN_GET_MEMBERSHIP_COUNT(&Param) > 0)
 -- {
--- if (NETWORK_CLAN_GET_MEMBERSHIP_VALID(&amp;Param, 0))
+-- if (NETWORK_CLAN_GET_MEMBERSHIP_VALID(&Param, 0))
 -- {
--- if (NETWORK_CLAN_GET_MEMBERSHIP(&amp;Param, &amp;membership, -1))
+-- if (NETWORK_CLAN_GET_MEMBERSHIP(&Param, &membership, -1))
 -- {
--- _0xF633805A(&amp;membership, 35, &amp;handle.netHandle);
+-- _0xF633805A(&membership, 35, &handle.netHandle);
 -- }
 -- }
 -- }
@@ -21138,7 +21153,7 @@ end
 -- }
 -- else
 -- {
--- NETWORK_CLAN_DOWNLOAD_MEMBERSHIP(&amp;handle.netHandle);
+-- NETWORK_CLAN_DOWNLOAD_MEMBERSHIP(&handle.netHandle);
 -- }
 -- }
 function Global.NetworkClanGetMembership(p2)
@@ -21151,9 +21166,9 @@ end
 
 --- networkMembershipMgr memShip;
 -- int maxMemship = _GET_NUM_MEMBERSHIP_DESC();
--- for (int i = 0; i &lt; maxMemship; i++)
+-- for (int i = 0; i < maxMemship; i++)
 -- {
--- NETWORK_CLAN_GET_MEMBERSHIP_DESC(&amp;memShip.memHandle, i);
+-- NETWORK_CLAN_GET_MEMBERSHIP_DESC(&memShip.memHandle, i);
 -- }
 function Global.NetworkClanGetMembershipDesc(p1)
 	return _in(0x48DE78AF2C8885B8, _i, p1, _r)
@@ -21255,7 +21270,7 @@ end
 --- hash collision???
 -- I did this and I didn't see anything happening
 -- int pindex;
--- for (int i = 0; i &lt; 32; i++)
+-- for (int i = 0; i < 32; i++)
 -- {
 -- if (NETWORK_IS_PARTICIPANT_ACTIVE(INT_TO_PARTICIPANTINDEX(i)))
 -- {
@@ -21473,7 +21488,7 @@ end
 -- am_plane_takedown.c
 -- network_explode_vehicle(net_to_veh(Local_40.imm_2), 1, 1, 0);
 -- armenian2.c
--- network_explode_vehicle(Local_80[6 &lt;2&gt;], 1, 0, 0);
+-- network_explode_vehicle(Local_80[6 <2>], 1, 0, 0);
 -- fm_horde_controler.c
 -- network_explode_vehicle(net_to_veh(*uParam0), 1, 0, *uParam0);
 -- fm_mission_controller.c, has 6 hits so not going to list them.
@@ -21630,7 +21645,7 @@ function Global.NetworkGetNumParticipants()
 end
 
 --- Seems to always return 0, but it's used in quite a few loops.
--- for (num3 = 0; num3 &lt; NETWORK::0xCCD8C02D(); num3++)
+-- for (num3 = 0; num3 < NETWORK::0xCCD8C02D(); num3++)
 -- {
 -- if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::0x98F3B274(num3)) != 0)
 -- {
@@ -21804,14 +21819,14 @@ end
 --- Returns a handle to networkHandle* from the specified player handle and stores it in a given buffer.
 -- * Currently unknown struct
 -- Example:
--- std::vector&lt;UINT64&gt; GetPlayerNetworkHandle(Player player) {
+-- std::vector<UINT64> GetPlayerNetworkHandle(Player player) {
 -- const int size = 13;
--- uint64_t *buffer = std::make_unique&lt;uint64_t[]&gt;(size).get();
--- NETWORK::NETWORK_HANDLE_FROM_PLAYER(player, reinterpret_cast&lt;int *&gt;(buffer), 13);
--- for (int i = 0; i &lt; size; i++) {
+-- uint64_t *buffer = std::make_unique<uint64_t[]>(size).get();
+-- NETWORK::NETWORK_HANDLE_FROM_PLAYER(player, reinterpret_cast<int *>(buffer), 13);
+-- for (int i = 0; i < size; i++) {
 -- Log::Msg("networkhandle[%i]: %llx", i, buffer[i]);
 -- }
--- std::vector&lt;UINT64&gt; result(buffer, buffer + sizeof(buffer));
+-- std::vector<UINT64> result(buffer, buffer + sizeof(buffer));
 -- return result;
 -- }
 function Global.NetworkHandleFromPlayer(player, bufferSize)
@@ -21899,7 +21914,7 @@ Global.N_0x3da5ecd1a56cba6d = Global.NetworkInitializeCash
 --- //nothing doin
 -- int Global_1837683 = GlobalVariable::Get(1837683);
 -- int Global_1837683_f_404 = GlobalVariable::Get(1837683 + 404);
--- NETWORK_INVITE_GAMERS(&amp;Global_1837683, Global_1837683_f_404, 0, 0);
+-- NETWORK_INVITE_GAMERS(&Global_1837683, Global_1837683_f_404, 0, 0);
 function Global.NetworkInviteGamers(p1)
 	return _in(0x9D80CD1D0E6327DE, _i, p1, _i, _i, _r)
 end
@@ -22021,7 +22036,7 @@ function Global.NetworkIsInMpCutscene()
 end
 
 --- Note according to IDA TU27 X360(Console),
--- This native &amp; 'NETWORK_IS_PARTY_MEMBER' both jump to the same location.
+-- This native & 'NETWORK_IS_PARTY_MEMBER' both jump to the same location.
 -- Side note: This location just stops where it's at once jumped to.
 -- Screenshot for side note,
 -- h t t p ://i.imgur.com/m2ci1mF.png
@@ -22064,7 +22079,7 @@ function Global.NetworkIsParticipantActive(p0)
 end
 
 --- Note according to IDA TU27 X360(Console),
--- This native &amp; 'NETWORK_IS_PARTY_MEMBER' both jump to the same location.
+-- This native & 'NETWORK_IS_PARTY_MEMBER' both jump to the same location.
 -- Side note: This location just stops where it's at once jumped to.
 -- Screenshot for side note,
 -- h t t p ://i.imgur.com/m2ci1mF.png
@@ -22201,8 +22216,8 @@ end
 Global.N_0xa06509a691d12be4 = Global.NetworkJoinGroupActivity
 
 --- int handle[76];
--- NETWORK_HANDLE_FROM_FRIEND(iSelectedPlayer, &amp;handle[0], 13);
--- Player uVar2 = NETWORK_GET_PLAYER_FROM_GAMER_HANDLE(&amp;handle[0]);
+-- NETWORK_HANDLE_FROM_FRIEND(iSelectedPlayer, &handle[0], 13);
+-- Player uVar2 = NETWORK_GET_PLAYER_FROM_GAMER_HANDLE(&handle[0]);
 -- NETWORK_JOIN_TRANSITION(uVar2);
 -- nothing doin.
 function Global.NetworkJoinTransition(player)
@@ -22320,7 +22335,7 @@ end
 
 --- Checks if a specific value (BYTE) in CPlayerInfo is nonzero.
 -- Returns always false in Singleplayer.
--- No longer used for dev checks since first mods were released on PS3 &amp; 360.
+-- No longer used for dev checks since first mods were released on PS3 & 360.
 -- R* now checks with the is_dlc_present native for the dlc hash 2532323046,
 -- if that is present it will unlock dev stuff.
 function Global.NetworkPlayerIsRockstarDev(player)
@@ -22485,13 +22500,13 @@ Global.N_0xc116ff9b4d488291 = Global.NetworkSendPresenceTransitionInvite
 
 --- how can I increase the character limit on this native?
 -- --------------------------------
--- return - it's possible for it to have an error and return a value. One error is if it cannot find space to create the event it doesn't send the text and returns zero. It also returns 0 is the strlen is 0 or the strlen &gt; 0x100 (I thought it was 64 so idk why it's checking 265. I may just be dumb :P ) There are other ways it could return 0 also but who the hell cares cuz it's very unlikely, but it returns a bool.
+-- return - it's possible for it to have an error and return a value. One error is if it cannot find space to create the event it doesn't send the text and returns zero. It also returns 0 is the strlen is 0 or the strlen > 0x100 (I thought it was 64 so idk why it's checking 265. I may just be dumb :P ) There are other ways it could return 0 also but who the hell cares cuz it's very unlikely, but it returns a bool.
 -- to the top guy, idk if it is possible. It is probably read a max of 64 characters on the recieving end so even if we did modify it to send more it probably wouldn't work. One of the other problems is that in part of the function it copies the string to the local stack which means we would have to change that to make it work.
 function Global.NetworkSendTextMessage(message, networkHandle)
 	return _in(0x3A214F2EC889B100, _ts(message), _ii(networkHandle) --[[ may be optional ]], _r)
 end
 
---- the first arg seems to be the network player handle (&amp;handle) and the second var is pretty much always "" and the third seems to be a number between 0 and ~10 and the 4th is is something like 0 to 5 and I guess the 5th is a bool cuz it is always 0 or 1
+--- the first arg seems to be the network player handle (&handle) and the second var is pretty much always "" and the third seems to be a number between 0 and ~10 and the 4th is is something like 0 to 5 and I guess the 5th is a bool cuz it is always 0 or 1
 -- does this send an invite to a player?
 function Global.NetworkSendTransitionGamerInstruction(p1, p2, p3, p4)
 	return _in(0x31D1D2B858D25E6B, _i, _ts(p1), p2, p3, p4, _r)
@@ -22537,7 +22552,7 @@ end
 -- p4 = 0 (Always in every script it's found in atleast.)
 -- p5 = 0 or 1. (1 if network_can_enter_multiplayer, but set to 0 if other checks after that are passed.)
 -- p5 is reset to 0 if,
--- Global_1315318 = 0 or Global_1315323 = 9 or 12 or (Global_1312629 = 0 &amp;&amp; Global_1312631 = true/1) those are passed.
+-- Global_1315318 = 0 or Global_1315323 = 9 or 12 or (Global_1312629 = 0 && Global_1312631 = true/1) those are passed.
 function Global.NetworkSessionEnter(p0, p1, p2, maxPlayers, p4, p5)
 	return _in(0x330ED4D05491934F, p0, p1, p2, maxPlayers, p4, p5, _r, _ri)
 end
@@ -22780,7 +22795,7 @@ function Global.NetworkShopBasketAddItem(p1)
 end
 Global.N_0xf30980718c8ed876 = Global.NetworkShopBasketAddItem
 
---- p0 =&gt; unk3::_network_shop_basket_apply_server_data(Global_2590199[iParam0 /*76*/], &amp;uVar6); =&gt; script array
+--- p0 => unk3::_network_shop_basket_apply_server_data(Global_2590199[iParam0 /*76*/], &uVar6); => script array
 function Global.NetworkShopBasketApplyServerData(p0, p1)
 	return _in(0xE1A0450ED46A7812, p0, _ii(p1) --[[ may be optional ]], _r)
 end
@@ -22885,8 +22900,8 @@ Global.NetworkShopEndService = Global.NetworkShopTerminateService
 
 --- Example:
 -- int playerHandle;
--- NETWORK_HANDLE_FROM_PLAYER(selectedPlayer, &amp;playerHandle, 13);
--- NETWORK_SHOW_PROFILE_UI(&amp;playerHandle);
+-- NETWORK_HANDLE_FROM_PLAYER(selectedPlayer, &playerHandle, 13);
+-- NETWORK_SHOW_PROFILE_UI(&playerHandle);
 function Global.NetworkShowProfileUi(networkHandle)
 	return _in(0x859ED1CEA343FCA8, _ii(networkHandle) --[[ may be optional ]])
 end
@@ -22984,10 +22999,10 @@ Global.N_0xd5bb406f4e04019f = Global.NetworkSpentNoCops
 --- According to how I understood this in the freemode script alone,
 -- The first parameter is determined by a function named, func_5749 within the freemode script which has a list of all the vehicles and a set price to return which some vehicles deals with globals as well. So the first parameter is basically the set in stone insurance cost it's gonna charge you for that specific vehicle model.
 -- The second parameter whoever put it was right, they call GET_ENTITY_MODEL with the vehicle as the paremeter.
--- The third parameter is the network handle as they call their little struct&lt;13&gt; func or atleast how the script decompiled it to look which in lamens terms just returns the network handle of the previous owner based on DECOR_GET_INT(vehicle, "Previous_Owner").
+-- The third parameter is the network handle as they call their little struct<13> func or atleast how the script decompiled it to look which in lamens terms just returns the network handle of the previous owner based on DECOR_GET_INT(vehicle, "Previous_Owner").
 -- The fourth parameter is a bool that returns true/false depending on if your bank balance is greater then 0.
 -- The fifth and last parameter is a bool that returns true/false depending on if you have the money for the car based on the cost returned by func_5749. In the freemode script eg,
--- bool hasTheMoney = NETWORKCASH::_GET_BANK_BALANCE() &lt; carCost.
+-- bool hasTheMoney = NETWORKCASH::_GET_BANK_BALANCE() < carCost.
 function Global.NetworkSpentPayVehicleInsurancePremium(amount, vehicleModel, notBankrupt, hasTheMoney)
 	return _in(0x9FF28D88C766E3E8, amount, _ch(vehicleModel), _i, notBankrupt, hasTheMoney)
 end
@@ -23043,7 +23058,7 @@ end
 
 --- used in atm_trigger script.
 -- usage:
--- int iVar0;		STATS::STAT_GET_INT(GAMEPLAY::GET_HASH_KEY("mpply_last_mp_char"), &amp;iVar0, -1);
+-- int iVar0;STATS::STAT_GET_INT(GAMEPLAY::GET_HASH_KEY("mpply_last_mp_char"), &iVar0, -1);
 -- UNK3::_NETWORK_TRANSFER_WALLET_TO_BANK(iVar0, amount);
 -- used to deposit money into bank from wallet, shows up in transaction log.
 function Global.NetworkTransferBankToWallet(charStatInt, amount)
@@ -23053,7 +23068,7 @@ Global.N_0xd47a2c1ba117471d = Global.NetworkTransferBankToWallet
 
 --- used in atm_trigger script.
 -- usage:
--- int iVar0; 		STATS::STAT_GET_INT(GAMEPLAY::GET_HASH_KEY("mpply_last_mp_char"), &amp;iVar0, -1);
+-- int iVar0; STATS::STAT_GET_INT(GAMEPLAY::GET_HASH_KEY("mpply_last_mp_char"), &iVar0, -1);
 -- UNK3::_NETWORK_TRANSFER_BANK_TO_WALLET(iVar0, amount);
 -- used to withdraw money from bank into wallet, shows up in transaction log.
 function Global.NetworkTransferWalletToBank(charStatInt, amount)
@@ -23074,7 +23089,7 @@ end
 -- auto sub_cb43(auto a_0, auto a_1) {
 -- if (g_2594CB._f1) {
 -- if (NETWORK::_855BC38818F6F684()) {
--- NETWORK::_ABD5E88B8A2D3DB2(&amp;a_0._fB93);
+-- NETWORK::_ABD5E88B8A2D3DB2(&a_0._fB93);
 -- g_2594CB._f14/*{13}*/ = a_0._fB93;
 -- g_2594CB._f4/*"64"*/ = a_1;
 -- return 1;
@@ -23100,7 +23115,7 @@ function Global.NewLoadSceneStart(p0, p1, p2, p3, p4, p5, p6, p7)
 end
 
 --- if (!sub_8f12("START LOAD SCENE SAFE")) {
--- if (CUTSCENE::GET_CUTSCENE_TIME() &gt; 4178) {
+-- if (CUTSCENE::GET_CUTSCENE_TIME() > 4178) {
 -- STREAMING::_ACCFB4ACF53551B0(1973.845458984375, 3818.447265625, 32.43629837036133, 15.0, 2);
 -- sub_8e9e("START LOAD SCENE SAFE", 1);
 -- }
@@ -23412,7 +23427,7 @@ function Global.PlayEndCreditsMusic(play)
 end
 
 --- delta and bitset are guessed fields. They are based on the fact that most of the calls have 0 or nil field types passed in.
--- The only time bitset has a value is 0x4000 and the only time delta has a value is during stealth with usually &lt;1.0f values.
+-- The only time bitset has a value is 0x4000 and the only time delta has a value is during stealth with usually <1.0f values.
 -- Animations list : www.los-santos-multiplayer.com/dev.airdancer?cxt=anim
 function Global.PlayEntityAnim(entity, animName, animDict, p3, loop, stayInAnim, p6, delta, bitset)
 	return _in(0x7FB218262B810701, entity, _ts(animName), _ts(animDict), p3, loop, stayInAnim, p6, delta, bitset, _r)
@@ -23772,7 +23787,7 @@ function Global.RegisterBoolToSave(name)
 end
 
 function Global.RegisterCommand(commandName, handler, restricted)
-	return _in(0x5fa79b0f, _ts(commandName), _mfr(handler), restricted)
+	return _in(0x5fa79b0f, _ts(commandName), handler, restricted)
 end
 
 function Global.RegisterEntityForCutscene(cutscenePed, cutsceneEntName, p2, modelHash, p4)
@@ -23796,7 +23811,7 @@ end
 
 --- Registers a specified font name for use with text draw commands.
 -- @param fontName The name of the font in the GFx font library.
--- @return An index to use with [SET\_TEXT\_FONT](#_0x66E0276CC5F6B9DA) and similar natives.
+-- @return An index to use with [SET_TEXT_FONT](#_0x66E0276CC5F6B9DA) and similar natives.
 function Global.RegisterFontId(fontName)
 	return _in(0xacf6d8ee, _ts(fontName), _r, _ri)
 end
@@ -23932,14 +23947,14 @@ end
 -- works fine.
 -- But later attempting to delete it with:
 -- Blip b = UI::GET_BLIP_FROM_ENTITY(v);
--- if (UI::DOES_BLIP_EXIST(b)) UI::REMOVE_BLIP(&amp;b);
+-- if (UI::DOES_BLIP_EXIST(b)) UI::REMOVE_BLIP(&b);
 -- doesn't work. And yes, doesn't work without the DOES_BLIP_EXIST check either. Also, if you attach multiple blips to the same thing (say, a vehicle), and that thing disappears, the blips randomly attach to other things (in my case, a vehicle).
--- Thus for me, UI::REMOVE_BLIP(&amp;b) only works if there's one blip, (in my case) the vehicle is marked as no longer needed, you drive away from it and it eventually despawns, AND there is only one blip attached to it. I never intentionally attach multiple blips but if the user saves the car, this adds a blip. Then if they delete it, it is supposed to remove the blip, but it doesn't. Then they can immediately save it again, causing another blip to re-appear.
+-- Thus for me, UI::REMOVE_BLIP(&b) only works if there's one blip, (in my case) the vehicle is marked as no longer needed, you drive away from it and it eventually despawns, AND there is only one blip attached to it. I never intentionally attach multiple blips but if the user saves the car, this adds a blip. Then if they delete it, it is supposed to remove the blip, but it doesn't. Then they can immediately save it again, causing another blip to re-appear.
 -- -------------
 -- Passing the address of the variable instead of the value works for me.
 -- e.g.
 -- int blip = UI::ADD_BLIP_FOR_ENTITY(ped);
--- UI::REMOVE_BLIP(&amp;blip);
+-- UI::REMOVE_BLIP(&blip);
 -- Remove blip will currently crash your game, just artificially remove the blip by setting the sprite to a id that is 'invisible'.
 -- --
 -- It crashes my game.
@@ -24146,8 +24161,8 @@ end
 --- Used to remove a speedzone.
 -- This is the speed zone native.
 -- Example usage C#:
--- uint speedZone = Function.Call&lt;uint&gt;((Hash) 0x2CE544C68FB812A0, Game.PlayerPed.Position.X, Game.PlayerPed.Position.Y, Game.PlayerPed.Position.Z, 100.0f, 0.0f, false);
--- bool speedZoneClosed = Function.Call&lt;bool&gt;((Hash) 0x1033371FC8E842A7, speedZone);
+-- uint speedZone = Function.Call<uint>((Hash) 0x2CE544C68FB812A0, Game.PlayerPed.Position.X, Game.PlayerPed.Position.Y, Game.PlayerPed.Position.Z, 100.0f, 0.0f, false);
+-- bool speedZoneClosed = Function.Call<bool>((Hash) 0x1033371FC8E842A7, speedZone);
 -- (Thanks to alexguirre for his help!)
 function Global.RemoveSpeedZone(speedzone)
 	return _in(0x1033371FC8E842A7, speedzone, _r)
@@ -24700,18 +24715,18 @@ end
 -- switch (timerIndex)
 -- {
 -- case 0:
--- unknownClassInVehicle-&gt;FirstStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->FirstStuckTimer = (WORD)0u;
 -- case 1:
--- unknownClassInVehicle-&gt;SecondStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->SecondStuckTimer = (WORD)0u;
 -- case 2:
--- unknownClassInVehicle-&gt;ThirdStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->ThirdStuckTimer = (WORD)0u;
 -- case 3:
--- unknownClassInVehicle-&gt;FourthStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->FourthStuckTimer = (WORD)0u;
 -- case 4:
--- unknownClassInVehicle-&gt;FirstStuckTimer = (WORD)0u;
--- unknownClassInVehicle-&gt;SecondStuckTimer = (WORD)0u;
--- unknownClassInVehicle-&gt;ThirdStuckTimer = (WORD)0u;
--- unknownClassInVehicle-&gt;FourthStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->FirstStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->SecondStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->ThirdStuckTimer = (WORD)0u;
+-- unknownClassInVehicle->FourthStuckTimer = (WORD)0u;
 -- break;
 -- };
 -- }
@@ -24735,7 +24750,7 @@ end
 
 --- Before using this native click the native above and look at the decription.
 -- Example:
--- int GetHash = Function.Call&lt;int&gt;(Hash.GET_HASH_KEY, "fe_menu_version_corona_lobby");
+-- int GetHash = Function.Call<int>(Hash.GET_HASH_KEY, "fe_menu_version_corona_lobby");
 -- Function.Call(Hash.ACTIVATE_FRONTEND_MENU, GetHash, 0, -1);
 -- Function.Call(Hash.RESTART_FRONTEND_MENU(GetHash, -1);
 -- This native refreshes the frontend menu.
@@ -24956,14 +24971,14 @@ function Global.ScriptIsMovingMobilePhoneOffscreen(toggle)
 	return _in(0xF511F759238A5122, toggle)
 end
 
---- Sends a message to the specific DUI root page. This is similar to SEND\_NUI\_MESSAGE.
+--- Sends a message to the specific DUI root page. This is similar to SEND_NUI_MESSAGE.
 -- @param duiObject The DUI browser handle.
 -- @param jsonString The message, encoded as JSON.
 function Global.SendDuiMessage(duiObject, jsonString)
 	return _in(0xcd380da9, duiObject, _ts(jsonString))
 end
 
---- Injects a 'mouse down' event for a DUI object. Coordinates are expected to be set using SEND\_DUI\_MOUSE\_MOVE.
+--- Injects a 'mouse down' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
 -- @param duiObject The DUI browser handle.
 -- @param button Either `'left'`, `'middle'` or `'right'`.
 function Global.SendDuiMouseDown(duiObject, button)
@@ -24978,7 +24993,7 @@ function Global.SendDuiMouseMove(duiObject, x, y)
 	return _in(0xd9d7a0aa, duiObject, x, y)
 end
 
---- Injects a 'mouse up' event for a DUI object. Coordinates are expected to be set using SEND\_DUI\_MOUSE\_MOVE.
+--- Injects a 'mouse up' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
 -- @param duiObject The DUI browser handle.
 -- @param button Either `'left'`, `'middle'` or `'right'`.
 function Global.SendDuiMouseUp(duiObject, button)
@@ -25278,7 +25293,7 @@ end
 --- This sets bit [offset] of [address] to on.
 -- The offsets used are different bits to be toggled on and off, typically there is only one address used in a script.
 -- Example:
--- GAMEPLAY::SET_BIT(&amp;bitAddress, 1);
+-- GAMEPLAY::SET_BIT(&bitAddress, 1);
 -- To check if this bit has been enabled:
 -- GAMEPLAY::IS_BIT_SET(bitAddress, 1); // will return 1 afterwards
 -- Please note, this method may assign a value to [address] when used.
@@ -25429,7 +25444,7 @@ function Global.SetBlipHighDetail(blip, toggle)
 	return _in(0xE2590BC29220CEBB, blip, toggle)
 end
 
---- Doesn't work if the label text of gxtEntry is &gt;= 80.
+--- Doesn't work if the label text of gxtEntry is >= 80.
 function Global.SetBlipNameFromTextFile(blip, gxtEntry)
 	return _in(0xEAA0FFE120D92784, blip, _ts(gxtEntry))
 end
@@ -25579,7 +25594,7 @@ end
 
 --- The native seems to only be called once.
 -- The native is used as so,
--- CAM::SET_CAM_INHERIT_ROLL_VEHICLE(l_544, getElem(2, &amp;l_525, 4));
+-- CAM::SET_CAM_INHERIT_ROLL_VEHICLE(l_544, getElem(2, &l_525, 4));
 -- In the exile1 script.
 function Global.SetCamInheritRollVehicle(cam, p1)
 	return _in(0x45F1DE9C34B93AE6, cam, p1)
@@ -25632,8 +25647,8 @@ Global.N_0xf9d02130ecdd1d77 = Global.SetCameraRange
 
 --- Setting ped to true allows the ped to shoot "friendlies".
 -- p2 set to true when toggle is also true seams to make peds permanently unable to aim at, even if you set p2 back to false.
--- p1 = false &amp; p2 = false for unable to aim at.
--- p1 = true &amp; p2 = false for able to aim at.
+-- p1 = false & p2 = false for unable to aim at.
+-- p1 = true & p2 = false for able to aim at.
 function Global.SetCanAttackFriendly(ped, toggle, p2)
 	return _in(0xB3B1CB349FF9C75D, ped, toggle, p2)
 end
@@ -25703,7 +25718,7 @@ end
 --- p0 - Scale? Looks to be a normalized value (0.0 - 1.0)
 -- offroad_races.c4, line ~67407:
 -- a_3._f7 = GRAPHICS::CREATE_CHECKPOINT(v_D, v_A, a_4, a_7, v_E, v_F, v_10, sub_62b2(v_A, 220, 255), 0);
--- UI::GET_HUD_COLOUR(134, &amp;v_E, &amp;v_F, &amp;v_10, &amp;v_11);
+-- UI::GET_HUD_COLOUR(134, &v_E, &v_F, &v_10, &v_11);
 -- GRAPHICS::_SET_CHECKPOINT_ICON_RGBA(a_3._f7, v_E, v_F, v_10, sub_62b2(v_A, 70, 210));
 -- GRAPHICS::_4B5B4DA5D79F1943(a_3._f7, 0.95);
 -- GRAPHICS::SET_CHECKPOINT_CYLINDER_HEIGHT(a_3._f7, 4.0, 4.0, 100.0);
@@ -25925,7 +25940,6 @@ end
 Global.N_0x465bf26ab9684352 = Global.SetDisableVehiclePetrolTankFires
 
 --- This native sets the app id for the discord rich presence implementation.
--- @param appId A valid Discord API App Id, can be generated at https://discordapp.com/developers/applications/
 function Global.SetDiscordAppId(appId)
 	return _in(0x6a02254d, _ts(appId))
 end
@@ -26010,7 +26024,7 @@ function Global.SetDriveTaskMaxCruiseSpeed(p0, p1)
 	return _in(0x404A5AA9B9F0B746, p0, p1)
 end
 
---- For p1 &amp; p2 (Ped, Vehicle). I could be wrong, as the only time this native is called in scripts is once and both are 0, but I assume this native will work like SET_MOUNTED_WEAPON_TARGET in which has the same exact amount of parameters and the 1st and last 3 parameters are right and the same for both natives.
+--- For p1 & p2 (Ped, Vehicle). I could be wrong, as the only time this native is called in scripts is once and both are 0, but I assume this native will work like SET_MOUNTED_WEAPON_TARGET in which has the same exact amount of parameters and the 1st and last 3 parameters are right and the same for both natives.
 function Global.SetDrivebyTaskTarget(shootingPed, targetPed, targetVehicle, x, y, z)
 	return _in(0xE5B302114D8162EE, shootingPed, targetPed, targetVehicle, x, y, z)
 end
@@ -26155,7 +26169,7 @@ function Global.SetEntityHeading(entity, heading)
 	return _in(0x8E2530AA8ADA980E, entity, heading)
 end
 
---- health &gt;= 0
+--- health >= 0
 function Global.SetEntityHealth(entity, health)
 	return _in(0x6B76DC1F3AE6E6A3, entity, health)
 end
@@ -26170,7 +26184,7 @@ end
 
 --- Sets a ped or an object totally invincible. It doesn't take any kind of damage. Peds will not ragdoll on explosions and the tazer animation won't apply either.
 -- If you use this for a ped and you want Ragdoll to stay enabled, then do:
--- *(DWORD *)(pedAddress + 0x188) |= (1 &lt;&lt; 9);
+-- *(DWORD *)(pedAddress + 0x188) |= (1 << 9);
 -- Use this if you want to get the invincibility status:
 -- bool IsPedInvincible(Ped ped)
 -- {
@@ -26178,7 +26192,7 @@ end
 -- if (addr)
 -- {
 -- DWORD flag = *(DWORD *)(addr + 0x188);
--- return ((flag &amp; (1 &lt;&lt; 8)) != 0) || ((flag &amp; (1 &lt;&lt; 9)) != 0);
+-- return ((flag & (1 << 8)) != 0) || ((flag & (1 << 9)) != 0);
 -- }
 -- return false;
 -- }
@@ -26243,7 +26257,7 @@ end
 
 --- Enable / disable each type of damage.
 -- --------------
--- p7 is to to '1' in am_mp_property_ext/int: entity::set_entity_proofs(uParam0-&gt;f_19, true, true, true, true, true, true, 1, true);
+-- p7 is to to '1' in am_mp_property_ext/int: entity::set_entity_proofs(uParam0->f_19, true, true, true, true, true, true, 1, true);
 function Global.SetEntityProofs(entity, bulletProof, fireProof, explosionProof, collisionProof, meleeProof, p6, p7, p8)
 	return _in(0xFAEE099C6F890BB8, entity, bulletProof, fireProof, explosionProof, collisionProof, meleeProof, p6, p7, p8)
 end
@@ -26279,7 +26293,7 @@ end
 -- {
 -- DWORD flag = *(DWORD *)(addr + 0x48D);
 -- printf("flag: 0x%X \n", flag);
--- return ((flag &amp; (1 &lt;&lt; 3)) != 0) || ((flag &amp; (1 &lt;&lt; 30)) != 0);
+-- return ((flag & (1 << 3)) != 0) || ((flag & (1 << 30)) != 0);
 -- }
 -- return false;
 -- }
@@ -26369,7 +26383,7 @@ function Global.SetFadeOutAfterDeath(toggle)
 end
 
 --- Sets a visually fake wanted level on the user interface. Used by Rockstar's scripts to "override" regular wanted levels and make custom ones while the real wanted level and multipliers are ignored.
--- Max is 6. Also the mini-map gets the red &amp; blue flashing effect.
+-- Max is 6. Also the mini-map gets the red & blue flashing effect.
 function Global.SetFakeWantedLevel(fakeWantedLevel)
 	return _in(0x1454F2448DE30163, fakeWantedLevel)
 end
@@ -26529,7 +26543,7 @@ function Global.SetGameplayCoordHint(x, y, z, duration, blendOutDuration, blendI
 	return _in(0xD51ADCD2D8BC0FB3, x, y, z, duration, blendOutDuration, blendInDuration, unk)
 end
 
---- p6 &amp; p7 - possibly length or time
+--- p6 & p7 - possibly length or time
 function Global.SetGameplayEntityHint(entity, xOffset, yOffset, zOffset, p4, p5, p6, p7, p8)
 	return _in(0x189E955A8313E298, entity, xOffset, yOffset, zOffset, p4, p5, p6, p7, p8)
 end
@@ -26609,40 +26623,40 @@ end
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The value to set.
-function Global.SetHandlingField(vehicle, class, fieldName, value)
-	return _in(0xfe8064e3, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingField(vehicle, class_, fieldName, value)
+	return _in(0xfe8064e3, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The floating-point value to set.
-function Global.SetHandlingFloat(vehicle, class, fieldName, value)
-	return _in(0x90dd01c, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingFloat(vehicle, class_, fieldName, value)
+	return _in(0x90dd01c, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The integer value to set.
-function Global.SetHandlingInt(vehicle, class, fieldName, value)
-	return _in(0x8ab3f46c, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingInt(vehicle, class_, fieldName, value)
+	return _in(0x8ab3f46c, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
 -- @param vehicle The vehicle class to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The Vector3 value to set.
-function Global.SetHandlingVector(vehicle, class, fieldName, value)
-	return _in(0x7f9d543, _ts(vehicle), _ts(class), _ts(fieldName), value)
+function Global.SetHandlingVector(vehicle, class_, fieldName, value)
+	return _in(0x7f9d543, _ts(vehicle), _ts(class_), _ts(fieldName), value)
 end
 
 --- Harcoded limit for radius is 30.0f
@@ -26793,9 +26807,9 @@ end
 -- @param miniMap The minimap overlay ID.
 -- @param x The X position for the overlay. This is equivalent to a game coordinate X.
 -- @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
--- @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
--- @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
--- @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+-- @param xScale The X scale for the overlay. This is equivalent to the Flash \_xscale property, therefore 100 = 100%.
+-- @param yScale The Y scale for the overlay. This is equivalent to the Flash \_yscale property.
+-- @param alpha The alpha value for the overlay. This is equivalent to the Flash \_alpha property, therefore 100 = 100%.
 function Global.SetMinimapOverlayDisplay(miniMap, x, y, xScale, yScale, alpha)
 	return _in(0x6a48b3ca, miniMap, x, y, xScale, yScale, alpha)
 end
@@ -27146,7 +27160,7 @@ Global.N_0xc6f580e4c94926ac = Global.SetNotificationMessage_3
 
 --- NOTE: 'duration' is a multiplier, so 1.0 is normal, 2.0 is twice as long (very slow), and 0.5 is half as long.
 -- Example, only occurrence in the scripts:
--- v_8 = UI::_1E6611149DB3DB6B("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, &amp;v_9, "", a_5);
+-- v_8 = UI::_1E6611149DB3DB6B("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, &v_9, "", a_5);
 function Global.SetNotificationMessage_4(picName1, picName2, flash, iconType, sender, subject, duration)
 	return _in(0x1E6611149DB3DB6B, _ts(picName1), _ts(picName2), flash, iconType, _ts(sender), _ts(subject), duration, _r, _ri)
 end
@@ -27186,25 +27200,29 @@ function Global.SetObjectPhysicsParams(object, weight, p2, p3, p4, p5, gravity, 
 	return _in(0xF6DF6E90DE7DF90F, object, weight, p2, p3, p4, p5, gravity, p7, p8, p9, p10, buoyancy)
 end
 
---- i don't know what this does
--- ```&lt;pre&gt;
+--- `
+-- i don't know what this does
+-- ```<pre>
 -- void __fastcall OBJECT___0x77F33F2CCF64B3AA_START(scrNativeCallContext *args)
 -- {
 -- bool p2; // bl@1
 -- CObject *pObject; // rax@1
 -- scrNativeCallContextArgStruct *pArgs; // rax@1
--- pArgs = args-&gt;pArgs;
--- p2 = pArgs-&gt;a2.BOOL != 0;
--- pObject = getAddressOfObject(pArgs-&gt;a1.Object);
+-- pArgs = args->pArgs;
+-- p2 = pArgs->a2.BOOL != 0;
+-- pObject = getAddressOfObject(pArgs->a1.Object);
 -- if ( pObject )
 -- {
--- pObject-&gt;field_425 &amp;= 0xDFu;                // 1101 1111 (clear bit 6)
--- pObject-&gt;field_425 |= 32 * p2;              // bit 6 = p2
+-- pObject->field_425 &= 0xDFu;                // 1101 1111 (clear bit 6)
+-- pObject->field_425 |= 32 * p2;              // bit 6 = p2
 -- }
 -- }
 -- // sfink
 -- // note to AB: please set "white-space: pre" in css
--- ```
+-- ```````
+-- ## Parameters
+-- * **object**:
+-- * **p1**:
 function Global.SetObjectSomething(object, p1)
 	return _in(0x77F33F2CCF64B3AA, object, p1)
 end
@@ -27723,21 +27741,21 @@ end
 -- overlay - Item name hash
 -- Example:
 -- Entry inside "mpbeach_overlays.xml" -
--- &lt;Item&gt;
--- &lt;uvPos x="0.500000" y="0.500000" /&gt;
--- &lt;scale x="0.600000" y="0.500000" /&gt;
--- &lt;rotation value="0.000000" /&gt;
--- &lt;nameHash&gt;FM_Hair_Fuzz&lt;/nameHash&gt;
--- &lt;txdHash&gt;mp_hair_fuzz&lt;/txdHash&gt;
--- &lt;txtHash&gt;mp_hair_fuzz&lt;/txtHash&gt;
--- &lt;zone&gt;ZONE_HEAD&lt;/zone&gt;
--- &lt;type&gt;TYPE_TATTOO&lt;/type&gt;
--- &lt;faction&gt;FM&lt;/faction&gt;
--- &lt;garment&gt;All&lt;/garment&gt;
--- &lt;gender&gt;GENDER_DONTCARE&lt;/gender&gt;
--- &lt;award /&gt;
--- &lt;awardLevel /&gt;
--- &lt;/Item&gt;
+-- <Item>
+-- <uvPos x="0.500000" y="0.500000" />
+-- <scale x="0.600000" y="0.500000" />
+-- <rotation value="0.000000" />
+-- <nameHash>FM_Hair_Fuzz</nameHash>
+-- <txdHash>mp_hair_fuzz</txdHash>
+-- <txtHash>mp_hair_fuzz</txtHash>
+-- <zone>ZONE_HEAD</zone>
+-- <type>TYPE_TATTOO</type>
+-- <faction>FM</faction>
+-- <garment>All</garment>
+-- <gender>GENDER_DONTCARE</gender>
+-- <award />
+-- <awardLevel />
+-- </Item>
 -- Code:
 -- PED::_0x5F5D1665E352A839(PLAYER::PLAYER_PED_ID(), GAMEPLAY::GET_HASH_KEY("mpbeach_overlays"), GAMEPLAY::GET_HASH_KEY("fm_hair_fuzz"))
 function Global.SetPedDecoration(ped, collection, overlay)
@@ -27866,7 +27884,7 @@ end
 
 --- Sets the various freemode face features, e.g. nose length, chin shape. Scale ranges from -1.0 to 1.0.
 -- Index can be 0
--- Edit:----&gt;Thanks to the first user.
+-- Edit:---->Thanks to the first user.
 -- Enum Face_Feature
 -- Nose_Width
 -- Nose_Peak_Hight
@@ -27976,7 +27994,7 @@ end
 -- !!!Can someone add working example for this???
 -- try this:
 -- headBlendData headData;
--- _GET_PED_HEAD_BLEND_DATA(PLAYER_PED_ID(), &amp;headData);
+-- _GET_PED_HEAD_BLEND_DATA(PLAYER_PED_ID(), &headData);
 -- SET_PED_HEAD_BLEND_DATA(PLAYER_PED_ID(), headData.shapeFirst, headData.shapeSecond, headData.shapeThird, headData.skinFirst, headData.skinSecond
 -- , headData.skinThird, headData.shapeMix, headData.skinMix, headData.skinThird, 0);
 -- For more info please refer to this topic.
@@ -28074,7 +28092,7 @@ end
 -- As mentioned above, this only sets the drunk sound to ped/player.
 -- To give the Ped a drunk effect with drunk walking animation try using SET_PED_MOVEMENT_CLIPSET
 -- Below is an example
--- if (!Function.Call&lt;bool&gt;(Hash.HAS_ANIM_SET_LOADED, "move_m@drunk@verydrunk"))
+-- if (!Function.Call<bool>(Hash.HAS_ANIM_SET_LOADED, "move_m@drunk@verydrunk"))
 -- {
 -- Function.Call(Hash.REQUEST_ANIM_SET, "move_m@drunk@verydrunk");
 -- }
@@ -28291,9 +28309,9 @@ end
 Global.N_0x8421eb4da7e391b9 = Global.SetPedPreferredCoverSet
 
 --- This is only called once in the scripts.
--- sub_1CD9(&amp;l_49, 0, getElem(3, &amp;l_34, 4), "MICHAEL", 0, 1);
+-- sub_1CD9(&l_49, 0, getElem(3, &l_34, 4), "MICHAEL", 0, 1);
 -- sub_1CA8("WORLD_HUMAN_SMOKING", 2);
--- PED::SET_PED_PRIMARY_LOOKAT(getElem(3, &amp;l_34, 4), PLAYER::PLAYER_PED_ID());
+-- PED::SET_PED_PRIMARY_LOOKAT(getElem(3, &l_34, 4), PLAYER::PLAYER_PED_ID());
 function Global.SetPedPrimaryLookat(ped, lookAt)
 	return _in(0xCD17B554996A8D9E, ped, lookAt)
 end
@@ -28623,7 +28641,7 @@ end
 -- Flags(0, 4, 16, 24, 32, 56, 60, 64, 128, 134, 512, 640, 1024, 2048, 2560)
 -- - Disables camera rotation as well.
 -- Flags(256, 260, 384, 768, 896, 900, 952, 1280)
--- [ translation: cameraRotation = flags &amp; (1 &lt;&lt; 8) - sfink]
+-- [ translation: cameraRotation = flags & (1 << 8) - sfink]
 function Global.SetPlayerControl(player, toggle, flags)
 	return _in(0x8D32347D6D4C40A2, player, toggle, flags)
 end
@@ -28655,7 +28673,7 @@ end
 
 --- Simply sets you as invincible (Health will not deplete).
 -- Use 0x733A643B5B0C53C1 instead if you want Ragdoll enabled, which is equal to:
--- *(DWORD *)(playerPedAddress + 0x188) |= (1 &lt;&lt; 9);
+-- *(DWORD *)(playerPedAddress + 0x188) |= (1 << 9);
 function Global.SetPlayerInvincible(player, toggle)
 	return _in(0x239528EACDC3E7DE, player, toggle)
 end
@@ -28906,7 +28924,7 @@ function Global.SetRadarAsExteriorThisFrame()
 end
 
 --- List of interior hashes: pastebin.com/1FUyXNqY
--- Not for every interior zoom &gt; 0 available.
+-- Not for every interior zoom > 0 available.
 function Global.SetRadarAsInteriorThisFrame(interior, x, y, heading, zoom)
 	return _in(0x59E727A1C9D3E31A, _ch(interior), x, y, heading, zoom)
 end
@@ -29338,12 +29356,6 @@ function Global.SetTextDropShadow()
 	return _in(0x1CA3E9EAC9D93E5E)
 end
 
---- distance - shadow distance in pixels, both horizontal and vertical
--- r, g, b, a
-function Global.SetTextDropshadow(distance, r, g, b, a)
-	return _in(0x465C84BC39F1C351, distance, r, g, b, a)
-end
-
 function Global.SetTextEdge(p0, r, g, b, a)
 	return _in(0x441603240D202FA6, p0, r, g, b, a)
 end
@@ -29617,7 +29629,7 @@ function Global.SetVehicleColourCombination(vehicle, colorCombination)
 	return _in(0x33E8CD3322E2FE31, vehicle, colorCombination)
 end
 
---- colorPrimary &amp; colorSecondary are the paint index for the vehicle.
+--- colorPrimary & colorSecondary are the paint index for the vehicle.
 -- For a list of valid paint indexes, view: pastebin.com/pwHci0xK
 -- -------------------------------------------------------------------------
 -- Use this to get the number of color indices: pastebin.com/RQEeqTSM
@@ -29796,7 +29808,7 @@ end
 
 --- 1000 is max health
 -- Begins leaking gas at around 650 health
--- -999.90002441406 appears to be minimum health, although nothing special occurs &lt;- false statement
+-- -999.90002441406 appears to be minimum health, although nothing special occurs <- false statement
 -- -------------------------
 -- Minimum: -4000
 -- Maximum: 1000
@@ -29837,9 +29849,9 @@ function Global.SetVehicleEngineTemperature(vehicle, temperature)
 	return _in(0x6c93c4a9, vehicle, temperature)
 end
 
---- &lt;1.0 - Decreased torque
+--- <1.0 - Decreased torque
 -- =1.0 - Default torque
--- &gt;1.0 - Increased torque
+-- >1.0 - Increased torque
 -- Negative values will cause the vehicle to go backwards instead of forwards while accelerating.
 -- value - is between 0.2 and 1.8 in the decompiled scripts.
 -- This needs to be called every frame to take effect.
@@ -29944,39 +29956,39 @@ end
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
 -- Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The value to set.
-function Global.SetVehicleHandlingField(vehicle, class, fieldName, value)
-	return _in(0x2ba40795, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingField(vehicle, class_, fieldName, value)
+	return _in(0x2ba40795, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
 -- Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The floating-point value to set.
-function Global.SetVehicleHandlingFloat(vehicle, class, fieldName, value)
-	return _in(0x488c86d2, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingFloat(vehicle, class_, fieldName, value)
+	return _in(0x488c86d2, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The integer value to set.
-function Global.SetVehicleHandlingInt(vehicle, class, fieldName, value)
-	return _in(0xc37f4cf9, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingInt(vehicle, class_, fieldName, value)
+	return _in(0xc37f4cf9, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
 -- @param vehicle The vehicle to set data for.
--- @param class The handling class to set. Only "CHandlingData" is supported at this time.
+-- @param class_ The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
 -- @param value The Vector3 value to set.
-function Global.SetVehicleHandlingVector(vehicle, class, fieldName, value)
-	return _in(0x12497890, vehicle, _ts(class), _ts(fieldName), value)
+function Global.SetVehicleHandlingVector(vehicle, class_, fieldName, value)
+	return _in(0x12497890, vehicle, _ts(class_), _ts(fieldName), value)
 end
 
 function Global.SetVehicleHasBeenOwnedByPlayer(vehicle, owned)
@@ -30034,13 +30046,13 @@ end
 -- bool bOn; // bl@1
 -- CVehicle *pVehicle; // rax@1
 -- scrNativeCallContextArgStruct *pArgs; // rax@1
--- pArgs = args-&gt;pArgs;
--- bOn = pArgs-&gt;a2.INT32 != 0;
--- pVehicle = getEntityAddressIfVehicle(pArgs-&gt;a1.INT32);
+-- pArgs = args->pArgs;
+-- bOn = pArgs->a2.INT32 != 0;
+-- pVehicle = getEntityAddressIfVehicle(pArgs->a1.INT32);
 -- if ( pVehicle )
 -- {
--- pVehicle-&gt;bitmapBulletProofTires &amp;= 0xFBu;
--- pVehicle-&gt;bitmapBulletProofTires |= 4 * bOn;
+-- pVehicle->bitmapBulletProofTires &= 0xFBu;
+-- pVehicle->bitmapBulletProofTires |= 4 * bOn;
 -- }
 -- } // sfink
 function Global.SetVehicleJetEngineOn(vehicle, toggle)
@@ -30283,7 +30295,7 @@ function Global.SetVehicleSearchlight(heli, toggle, canBeUsedByAI)
 end
 
 --- Commands the driver of an armed vehicle (p0) to shoot its weapon at a target (p1). p3, p4 and p5 are the coordinates of the target. Example:
--- WEAPON::SET_CURRENT_PED_VEHICLE_WEAPON(pilot,GAMEPLAY::GET_HASH_KEY("VEHICLE_WEAPON_PLANE_ROCKET"));						VEHICLE::SET_VEHICLE_SHOOT_AT_TARGET(pilot, target, targPos.x, targPos.y, targPos.z);
+-- WEAPON::SET_CURRENT_PED_VEHICLE_WEAPON(pilot,GAMEPLAY::GET_HASH_KEY("VEHICLE_WEAPON_PLANE_ROCKET"));VEHICLE::SET_VEHICLE_SHOOT_AT_TARGET(pilot, target, targPos.x, targPos.y, targPos.z);
 function Global.SetVehicleShootAtTarget(driver, entity, xTarget, yTarget, zTarget)
 	return _in(0x74CD9A9327A282EA, driver, entity, xTarget, yTarget, zTarget)
 end
@@ -30414,8 +30426,7 @@ end
 
 --- Adjusts the offset of the specified wheel relative to the wheel's axle center.
 -- Needs to be called every frame in order to function properly, as GTA will reset the offset otherwise.
--- This function can be especially useful to set the track width of a vehicle, for example:
--- ```
+-- This function can be especially useful to set the track width of a vehicle, for example:```
 -- function SetVehicleFrontTrackWidth(vehicle, width)
 -- SetVehicleWheelXOffset(vehicle, 0, -width/2)
 -- SetVehicleWheelXOffset(vehicle, 1, width/2)
@@ -30813,13 +30824,6 @@ function Global.Sin(value)
 	return _in(0x0BADBFA3B172435F, value, _r, _rf)
 end
 
---- Unsurprisingly, this native is incorrectly named. Instead, this returns the name of the scaleform movie.
--- HASH COLLISION. PLEASE REMOVE NATIVE NAME.
--- Name to: _GET_SCALEFORM_MOVIE_FUNCTION_RETURN_STRING
-function Global.SittingTv(method_return)
-	return _in(0xE1E258829A885245, method_return, _r, _s)
-end
-
 function Global.SkipRadioForward()
 	return _in(0x6DDBBDD98E2E9C25)
 end
@@ -30867,7 +30871,7 @@ function Global.SpecialAbilityChargeLarge(player, p1, p2)
 	return _in(0xF733F45FA4497D93, player, p1, p2)
 end
 
---- Only 1 match. Both p1 &amp; p2 were true.
+--- Only 1 match. Both p1 & p2 were true.
 function Global.SpecialAbilityChargeMedium(player, p1, p2)
 	return _in(0xF113E3AA9BC54613, player, p1, p2)
 end
@@ -30879,7 +30883,7 @@ function Global.SpecialAbilityChargeNormalized(player, normalizedValue, p2)
 end
 Global.ResetSpecialAbilityControlsCinematic = Global.SpecialAbilityChargeNormalized
 
---- Every occurrence of p1 &amp; p2 were both true.
+--- Every occurrence of p1 & p2 were both true.
 function Global.SpecialAbilityChargeSmall(player, p1, p2)
 	return _in(0x2E7B9B683481687D, player, p1, p2)
 end
@@ -31063,14 +31067,14 @@ end
 -- list: pastebin.com/N9unUFWY
 -- -------------------------------------------------------------------
 -- C#
--- Function.Call&lt;int&gt;(Hash.START_PARTICLE_FX_NON_LOOPED_AT_COORD, = you are calling this function.
+-- Function.Call<int>(Hash.START_PARTICLE_FX_NON_LOOPED_AT_COORD, = you are calling this function.
 -- char *effectname = This is an in-game effect name, for e.g. "scr_fbi4_trucks_crash" is used to give the effects when truck crashes etc
 -- float x, y, z pos = this one is Simple, you just have to declare, where do you want this effect to take place at, so declare the ordinates
 -- float xrot, yrot, zrot = Again simple? just mention the value in case if you want the effect to rotate.
 -- float scale = is declare the scale of the effect, this may vary as per the effects for e.g 1.0f
 -- bool xaxis, yaxis, zaxis = To bool the axis values.
 -- example:
--- Function.Call&lt;int&gt;(Hash.START_PARTICLE_FX_NON_LOOPED_AT_COORD, "scr_fbi4_trucks_crash", GTA.Game.Player.Character.Position.X, GTA.Game.Player.Character.Position.Y, GTA.Game.Player.Character.Position.Z + 4f, 0, 0, 0, 5.5f, 0, 0, 0);
+-- Function.Call<int>(Hash.START_PARTICLE_FX_NON_LOOPED_AT_COORD, "scr_fbi4_trucks_crash", GTA.Game.Player.Character.Position.X, GTA.Game.Player.Character.Position.Y, GTA.Game.Player.Character.Position.Z + 4f, 0, 0, 0, 5.5f, 0, 0, 0);
 function Global.StartParticleFxNonLoopedAtCoord(effectName, xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis)
 	return _in(0x25129531F77B9ED3, _ts(effectName), xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis, _r, _ri)
 end
@@ -31291,7 +31295,7 @@ end
 --- Please change to "void"!
 -- ---------------------------------
 -- Example:
--- for (v_2 = 0; v_2 &lt;= 4; v_2 += 1) {
+-- for (v_2 = 0; v_2 <= 4; v_2 += 1) {
 -- STATS::STAT_CLEAR_SLOT_FOR_RELOAD(v_2);
 -- }
 function Global.StatClearSlotForReload(statSlot)
@@ -31490,13 +31494,13 @@ function Global.StatSetGxtLabel(statName, value, save)
 end
 
 --- Add Cash example:
--- for (int i = 0; i &lt; 3; i++)
+-- for (int i = 0; i < 3; i++)
 -- {
 -- char statNameFull[32];
 -- sprintf_s(statNameFull, "SP%d_TOTAL_CASH", i);
 -- Hash hash = GAMEPLAY::GET_HASH_KEY(statNameFull);
 -- int val;
--- STATS::STAT_GET_INT(hash, &amp;val, -1);
+-- STATS::STAT_GET_INT(hash, &val, -1);
 -- val += 1000000;
 -- STATS::STAT_SET_INT(hash, val, 1);
 -- }
@@ -32060,7 +32064,7 @@ function Global.TaskGoToCoordWhileAimingAtEntity(p0, p1, p2, p3, p4, p5, p6, p7,
 end
 
 --- The entity will move towards the target until time is over (duration) or get in target's range (distance). p5 and p6 are unknown, but you could leave p5 = 1073741824 or 100 or even 0 (didn't see any difference but on the decompiled scripts, they use 1073741824 mostly) and p6 = 0
--- Note: I've only tested it on entity -&gt; ped and target -&gt; vehicle. It could work differently on other entities, didn't try it yet.
+-- Note: I've only tested it on entity -> ped and target -> vehicle. It could work differently on other entities, didn't try it yet.
 -- Example: AI::TASK_GO_TO_ENTITY(pedHandle, vehicleHandle, 5000, 4.0, 100, 1073741824, 0)
 -- Ped will run towards the vehicle for 5 seconds and stop when time is over or when he gets 4 meters(?) around the vehicle (with duration = -1, the task duration will be ignored).
 function Global.TaskGoToEntity(entity, target, duration, distance, speed, p5, p6)
@@ -32336,16 +32340,16 @@ function Global.TaskPlantBomb(ped, x, y, z, heading)
 end
 
 --- Animations list : www.los-santos-multiplayer.com/dev.airdancer?cxt=anim
--- float speed &gt; normal speed is 8.0f
+-- float speed > normal speed is 8.0f
 -- ----------------------
--- float speedMultiplier &gt; multiply the playback speed
+-- float speedMultiplier > multiply the playback speed
 -- ----------------------
 -- int duration: time in millisecond
 -- ----------------------
--- -1 _ _ _ _ _ _ _&gt; Default (see flag)
--- 0 _ _ _ _ _ _ _ &gt; Not play at all
--- Small value _ _ &gt; Slow down animation speed
--- Other _ _ _ _ _ &gt; freeze player control until specific time (ms) has
+-- -1 _ _ _ _ _ _ _> Default (see flag)
+-- 0 _ _ _ _ _ _ _ > Not play at all
+-- Small value _ _ > Slow down animation speed
+-- Other _ _ _ _ _ > freeze player control until specific time (ms) has
 -- _ _ _ _ _ _ _ _ _ passed. (No effect if flag is set to be
 -- _ _ _ _ _ _ _ _ _ controllable.)
 -- int flag:
@@ -32362,19 +32366,19 @@ end
 -- Odd number : loop infinitely
 -- Even number : Freeze at last frame
 -- Multiple of 4: Freeze at last frame but controllable
--- 01 to 15 &gt; Full body
--- 10 to 31 &gt; Upper body
--- 32 to 47 &gt; Full body &gt; Controllable
--- 48 to 63 &gt; Upper body &gt; Controllable
+-- 01 to 15 > Full body
+-- 10 to 31 > Upper body
+-- 32 to 47 > Full body > Controllable
+-- 48 to 63 > Upper body > Controllable
 -- ...
--- 001 to 255 &gt; Normal
--- 256 to 511 &gt; Garbled
+-- 001 to 255 > Normal
+-- 256 to 511 > Garbled
 -- ...
 -- playbackRate:
 -- values are between 0.0 and 1.0
 -- lockX:
 -- 0 in most cases 1 for rcmepsilonism8 and rcmpaparazzo_3
--- &gt; 1 for mini@sprunk
+-- > 1 for mini@sprunk
 -- lockY:
 -- 0 in most cases
 -- 1 for missfam5_yoga, missfra1mcs_2_crew_react
@@ -32385,7 +32389,7 @@ function Global.TaskPlayAnim(ped, animDictionary, animationName, speed, speedMul
 	return _in(0xEA47FE3719165B94, ped, _ts(animDictionary), _ts(animationName), speed, speedMultiplier, duration, flag, playbackRate, lockX, lockY, lockZ)
 end
 
---- It's similar to the one above, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position). animTime is a float from 0.0 -&gt; 1.0, lets you start an animation from given point. The rest as in AI::TASK_PLAY_ANIM.
+--- It's similar to the one above, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position). animTime is a float from 0.0 -> 1.0, lets you start an animation from given point. The rest as in AI::TASK_PLAY_ANIM.
 -- Rotation information : rotX and rotY don't seem to have any effect, only rotZ works.
 -- Animations list : www.los-santos-multiplayer.com/dev.airdancer?cxt=anim
 function Global.TaskPlayAnimAdvanced(ped, animDict, animName, posX, posY, posZ, rotX, rotY, rotZ, speed, speedMultiplier, duration, flag, animTime, p14, p15)
@@ -32396,7 +32400,7 @@ end
 -- AI::TASK_PLAY_PHONE_GESTURE_ANIMATION(PLAYER::PLAYER_PED_ID(), v_3, v_2, v_4, 0.25, 0.25, 0, 0);
 -- =========================================================
 -- ^^ No offense, but Idk how that would really help anyone.
--- As for the animDict &amp; animation, they're both store in a global in all 5 scripts. So if anyone would be so kind as to read that global and comment what strings they use. Thanks.
+-- As for the animDict & animation, they're both store in a global in all 5 scripts. So if anyone would be so kind as to read that global and comment what strings they use. Thanks.
 -- Known boneMaskTypes'
 -- "BONEMASK_HEADONLY"
 -- "BONEMASK_HEAD_NECK_AND_ARMS"
@@ -32439,7 +32443,7 @@ end
 --- The 2nd param (unused) is not implemented.
 -- -----------------------------------------------------------------------
 -- The only occurrence I found in a R* script ("assassin_construction.ysc.c4"):
--- if (((v_3 &lt; v_4) &amp;&amp; (AI::GET_SCRIPT_TASK_STATUS(PLAYER::PLAYER_PED_ID(), 0x6a67a5cc) != 1)) &amp;&amp; (v_5 &gt; v_3)) {
+-- if (((v_3 < v_4) && (AI::GET_SCRIPT_TASK_STATUS(PLAYER::PLAYER_PED_ID(), 0x6a67a5cc) != 1)) && (v_5 > v_3)) {
 -- AI::TASK_RELOAD_WEAPON(PLAYER::PLAYER_PED_ID(), 1);
 -- }
 function Global.TaskReloadWeapon(ped, unused)
@@ -32450,7 +32454,7 @@ end
 -- reserve_network_mission_objects(get_num_reserved_mission_objects(0) + 1);
 -- vVar28 = {0.094f, 0.02f, -0.005f};
 -- vVar29 = {-92.24f, 63.64f, 150.24f};
--- func_253(&amp;uVar30, joaat("prop_ld_case_01"), Global_1592429.imm_34757[iParam1 &lt;268&gt;], 1, 1, 0, 1);
+-- func_253(&uVar30, joaat("prop_ld_case_01"), Global_1592429.imm_34757[iParam1 <268>], 1, 1, 0, 1);
 -- set_entity_lod_dist(net_to_ent(uVar30), 500);
 -- attach_entity_to_entity(net_to_ent(uVar30), iParam0, get_ped_bone_index(iParam0, 28422), vVar28, vVar29, 1, 0, 0, 0, 2, 1);
 -- Var31.imm_4 = 1065353216;
@@ -32477,7 +32481,7 @@ end
 -- Var31.imm_20 = 1048633;
 -- Var31.imm_4 = 0.5f;
 -- Var31.imm_16 = get_hash_key("BONEMASK_ARMONLY_R");
--- task_scripted_animation(iParam0, &amp;Var31, &amp;Var32, &amp;Var32, 0f, 0.25f);
+-- task_scripted_animation(iParam0, &Var31, &Var32, &Var32, 0f, 0.25f);
 -- set_model_as_no_longer_needed(joaat("prop_ld_case_01"));
 -- remove_anim_dict("anim@heists@biolab@");
 function Global.TaskScriptedAnimation(ped, p4, p5)
@@ -32532,7 +32536,7 @@ end
 --- //this part of the code is to determine at which entity the player is aiming, for example if you want to create a mod where you give orders to peds
 -- Entity aimedentity;
 -- Player player = PLAYER::PLAYER_ID();
--- PLAYER::_GET_AIMED_ENTITY(player, &amp;aimedentity);
+-- PLAYER::_GET_AIMED_ENTITY(player, &aimedentity);
 -- //bg is an array of peds
 -- AI::TASK_SHOOT_AT_ENTITY(bg[i], aimedentity, 5000, GAMEPLAY::GET_HASH_KEY("FIRING_PATTERN_FULL_AUTO"));
 -- in practical usage, getting the entity the player is aiming at and then task the peds to shoot at the entity, at a button press event would be better.
@@ -32643,7 +32647,7 @@ end
 -- }
 -- Only known script using this native: fbi4_prep2
 -- EXAMPLE:
--- ai::task_stealth_kill(iParam1, Local_252, gameplay::get_hash_key("AR_stealth_kill_a"), 1f, 0);				ai::task_stealth_kill(iParam1, Local_252, gameplay::get_hash_key("AR_stealth_kill_knife"), 1f, 0);
+-- ai::task_stealth_kill(iParam1, Local_252, gameplay::get_hash_key("AR_stealth_kill_a"), 1f, 0);ai::task_stealth_kill(iParam1, Local_252, gameplay::get_hash_key("AR_stealth_kill_knife"), 1f, 0);
 -- Also it may be important to note, that each time this task is called, it's followed by AI::CLEAR_PED_TASKS on the target
 function Global.TaskStealthKill(killer, target, actionType, p3, p4)
 	return _in(0xAA5DC05579D60BD9, killer, target, _ch(actionType), p3, p4)
@@ -32686,7 +32690,7 @@ end
 -- It seems that - in the decompiled scripts - this native was used on a ped who was in a vehicle to throw a projectile out the window at the player. This is something any ped will naturally do if they have a throwable and they are doing driveby-combat (although not very accurately).
 -- It is possible, however, that this is how SWAT throws smoke grenades at the player when in cover.
 -- ----------------------------------------------------
--- The first comment is right it definately is the ped as if you look in script finale_heist2b.c line 59628 in Xbox Scripts atleast you will see task_throw_projectile and the first param is Local_559[2 &lt;14&gt;] if you look above it a little bit line 59622 give_weapon_to_ped uses the same exact param Local_559[2 &lt;14&gt;] and we all know the first param of that native is ped. So it guaranteed has to be ped. 0 just may mean to use your ped by default for some reason.
+-- The first comment is right it definately is the ped as if you look in script finale_heist2b.c line 59628 in Xbox Scripts atleast you will see task_throw_projectile and the first param is Local_559[2 <14>] if you look above it a little bit line 59622 give_weapon_to_ped uses the same exact param Local_559[2 <14>] and we all know the first param of that native is ped. So it guaranteed has to be ped. 0 just may mean to use your ped by default for some reason.
 function Global.TaskThrowProjectile(ped, x, y, z)
 	return _in(0x7285951DBF6B5A51, ped, x, y, z)
 end
@@ -32770,7 +32774,7 @@ function Global.TaskVehicleDriveWander(ped, vehicle, speed, drivingStyle)
 	return _in(0x480142959D337D00, ped, vehicle, speed, drivingStyle)
 end
 
---- Makes a ped follow the targetVehicle with &lt;minDistance&gt; in between.
+--- Makes a ped follow the targetVehicle with <minDistance> in between.
 -- note: minDistance is ignored if drivingstyle is avoiding traffic, but Rushed is fine.
 -- Mode: The mode defines the relative position to the targetVehicle. The ped will try to position its vehicle there.
 -- -1 = behind
@@ -33281,7 +33285,7 @@ function Global.WasCutsceneSkipped()
 	return _in(0x40C8656EDAEDD569, _r)
 end
 
---- Returns whether or not the currently executing event was canceled. See https://wiki.fivem.net/wiki/WasEventCanceled
+--- Returns whether or not the currently executing event was canceled.
 -- @return A boolean.
 function Global.WasEventCanceled()
 	return _in(0x58382a19, _r)
