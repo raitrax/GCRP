@@ -26,9 +26,9 @@ Config.GangStations = {
 
     AuthorizedWeapons = {
       { name = 'WEAPON_SWITCHBLADE',        price = 10000 },
-	 -- { name = 'WEAPON_APPISTOL',           price = 35000 },
+	  { name = 'WEAPON_APPISTOL',           price = 35000 },
 	 -- { name = 'WEAPON_SAWNOFFSHOTGUN',     price = 40000 },
-   --   { name = 'WEAPON_MICROSMG',           price = 50000 },
+      { name = 'WEAPON_MICROSMG',           price = 50000 },
 	 -- { name = 'WEAPON_CARBINERIFLE',       price = 70000 },
      -- { name = 'WEAPON_STUNGUN',          price = 50000 },
      -- { name = 'WEAPON_FLASHLIGHT',       price = 800 },
