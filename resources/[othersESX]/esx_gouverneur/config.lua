@@ -13,7 +13,7 @@ Config.Locale = 'fr'
 Config.Zones = {
 
     CloakRoom = { --Vestaire
-        Pos   = {x = 156.54219055176, y = -757.73333740234, z = 257.15194702148},
+        Pos   = {x = 929.341796875, y = 1256.1413574219, z = 365.1194152832},
         Size  = {x = 1.5, y = 1.5, z = 1.0},
         Color = {r = 0, g = 204, b = 3},
         Type  = 1
@@ -46,7 +46,7 @@ Config.Zones = {
     },
 
     OfficeActions = { -- Marqueur action boss
-        Pos   = {x = 117.39820098877, y = -755.71740722656, z = 257.15209960938},
+        Pos   = {x = 943.70666503906, y = 1240.2282714844, z = 365.11959838867},
         Size  = {x = 1.5, y = 1.5, z = 1.0},
         Color = {r = 0, g = 204, b = 3},
         Type  = 1
@@ -83,14 +83,14 @@ Config.Zones = {
 	},
 
 	VehicleSpawner = { -- Menu dans le garage pour les véhicules
-		Pos   = {x = 233.05233764648, y = -977.39697265625, z = -99.999954223633},
+		Pos   = {x = 904.80059814453, y = 1253.0959472656, z = 361.10955810547},
 		Size  = {x = 1.5, y = 1.5, z = 1.0},
 		Color = {r = 242, g = 255, b = 0},
 		Type  = 1
 	},
 
 	VehicleSpawnPoint = { --Spawn du véhicule dans le garage
-		Pos   = {x = 228.47023010254, y = -988.41326904297, z = -98.999954223633},
+		Pos   = {x = 914.10266113281, y = 1244.7375488281, z = 361.10952758789},
 		Size  = {x = 1.5, y = 1.5, z = 1.0},
 		Color = {r = 0, g = 204, b = 3},
 		Type  = -1
