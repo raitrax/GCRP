@@ -1085,7 +1085,6 @@ function Global.BeginReplayStats(p0, p1)
 end
 
 --- Push a function from the Scaleform onto the stack
--- Old Name: _PUSH_SCALEFORM_MOVIE_FUNCTION
 function Global.BeginScaleformMovieMethod(scaleform, functionName)
 	return _in(0xF6E48914C7A8694E, scaleform, _ts(functionName), _r)
 end
@@ -3799,7 +3798,6 @@ function Global.EndReplayStats()
 end
 
 --- Pops and calls the Scaleform function on the stack
--- Old Name: _POP_SCALEFORM_MOVIE_FUNCTION_VOID
 function Global.EndScaleformMovieMethod()
 	return _in(0xC6796A8FFA375E53)
 end
@@ -7104,7 +7102,7 @@ end
 -- ```
 -- @return An object containing registered commands.
 function Global.GetRegisteredCommands()
-	return _in(0xd4bef069, _r, _ri)
+	return msgpack.unpack(_in(0xd4bef069, _r, _ro))
 end
 
 --- Gets the relationship between two groups. This should be called twice (once for each group).
@@ -8347,9 +8345,10 @@ function Global.GetVehicleWheelXOffset(vehicle, wheelIndex)
 	return _in(0xcc90cbca, vehicle, wheelIndex, _r, _rf)
 end
 
-function Global.GetVehicleWheelXrot(vehicle, wheelIndex)
-	return _in(0x15ecc0ab, vehicle, wheelIndex, _r, _rf)
+function Global.GetVehicleWheelYRotation(vehicle, wheelIndex)
+	return _in(0x2ea4affe, vehicle, wheelIndex, _r, _rf)
 end
+Global.GetVehicleWheelXrot = Global.GetVehicleWheelYRotation
 
 function Global.GetVehicleWindowTint(vehicle)
 	return _in(0x0EE21293DAD47C95, vehicle, _r, _ri)
@@ -13705,12 +13704,6 @@ function Global.N_0x37deb0aa183fb6d8()
 	return _in(0x37DEB0AA183FB6D8)
 end
 
---- Sets some values in a vehicle gadget (tow arm, digger arm, etc.). Don't know which one though.
--- I've tested on the towtruck 1 & 2, Dock Lift (Crate Arm), Dozer, and such have no effect. However when used on a Forklift it sets the height of the forks. 0.0 = Lowest 1.0 = Highest. This is best to be used if you wanna pick-up a car since un-realistically on GTA V forklifts can't pick up much of anything due to vehicle mass. If you put this under a car then set it above 0.0 to a 'lifted-value' it will raise the car with no issue lol
-function Global.N_0x37ebbf3117bd6a25(vehicle, height)
-	return _in(0x37EBBF3117BD6A25, vehicle, height)
-end
-
 function Global.N_0x38491439b6ba7f7d(p0, p1)
 	return _in(0x38491439B6BA7F7D, p0, p1, _r, _rf)
 end
@@ -13770,10 +13763,6 @@ end
 
 function Global.N_0x3a8b55fda4c8ddef(p0, p1, p2)
 	return _in(0x3A8B55FDA4C8DDEF, p0, p1, p2, _r, _ri)
-end
-
-function Global.N_0x3b2fd68db5f8331c(p0, p1)
-	return _in(0x3B2FD68DB5F8331C, p0, p1)
 end
 
 function Global.N_0x3b39236746714134(p0)
@@ -19359,10 +19348,6 @@ function Global.N_0xd821056b9acf8052(p0, p1)
 	return _in(0xD821056B9ACF8052, p0, p1)
 end
 
-function Global.N_0xd8295af639fd9cb8(p0)
-	return _in(0xD8295AF639FD9CB8, p0)
-end
-
 function Global.N_0xd8c3be3ee94caf2d(p0, p1, p2, p3, p4)
 	return _in(0xD8C3BE3EE94CAF2D, p0, p1, p2, p3, p4)
 end
@@ -23787,7 +23772,7 @@ function Global.RegisterBoolToSave(name)
 end
 
 function Global.RegisterCommand(commandName, handler, restricted)
-	return _in(0x5fa79b0f, _ts(commandName), handler, restricted)
+	return _in(0x5fa79b0f, _ts(commandName), _mfr(handler), restricted)
 end
 
 function Global.RegisterEntityForCutscene(cutscenePed, cutsceneEntName, p2, modelHash, p4)
@@ -26486,6 +26471,13 @@ function Global.SetForceVehicleTrails(toggle)
 	return _in(0x4CC7F0FEA5283FE0, toggle)
 end
 
+--- Sets some values in a vehicle gadget (tow arm, digger arm, etc.). Don't know which one though.
+-- I've tested on the towtruck 1 & 2, Dock Lift (Crate Arm), Dozer, and such have no effect. However when used on a Forklift it sets the height of the forks. 0.0 = Lowest 1.0 = Highest. This is best to be used if you wanna pick-up a car since un-realistically on GTA V forklifts can't pick up much of anything due to vehicle mass. If you put this under a car then set it above 0.0 to a 'lifted-value' it will raise the car with no issue lol
+function Global.SetForkliftForkHeight(vehicle, height)
+	return _in(0x37EBBF3117BD6A25, vehicle, height)
+end
+Global.N_0x37ebbf3117bd6a25 = Global.SetForkliftForkHeight
+
 function Global.SetFrontendActive(active)
 	return _in(0x745711A75AB09277, active)
 end
@@ -27189,6 +27181,16 @@ end
 function Global.SetObjectAsNoLongerNeeded(object)
 	return _in(0x3AE22DEB5BA5A3E6, _ii(object) --[[ may be optional ]])
 end
+
+--- Seems to set the colour of the prop. Haven't really tested it on other props.
+-- Only appears in am_mp_nightclub.c for the nightclub dancefloor.Not sure what p1 does, seems to only ever be '1' in scripts.
+-- @param R :
+-- @param G :
+-- @param B :
+function Global.SetObjectColour(entity, p1, R, G, B)
+	return _in(0x3B2FD68DB5F8331C, entity, p1, R, G, B)
+end
+Global.NN_0x3b2fd68db5f8331c = Global.SetObjectColour
 
 --- Adjust the physics parameters of a prop, or otherwise known as "object". This is useful for simulated gravity.
 -- Other parameters seem to be unknown.
@@ -29356,6 +29358,16 @@ function Global.SetTextDropShadow()
 	return _in(0x1CA3E9EAC9D93E5E)
 end
 
+--- Sets the drop shadow for the current text style.
+-- @param distance Shadow distance in pixels, both horizontal and vertical.
+-- @param r Red color.
+-- @param g Green color.
+-- @param b Blue color.
+-- @param a Alpha.
+function Global.SetTextDropshadow(distance, r, g, b, a)
+	return _in(0x465C84BC39F1C351, distance, r, g, b, a)
+end
+
 function Global.SetTextEdge(p0, r, g, b, a)
 	return _in(0x441603240D202FA6, p0, r, g, b, a)
 end
@@ -29638,19 +29650,6 @@ function Global.SetVehicleColours(vehicle, colorPrimary, colorSecondary)
 	return _in(0x4F1D4BE3A7F24601, vehicle, colorPrimary, colorSecondary)
 end
 
---- Money pickups are created around cars when they explodes. Only works when the vehicle model is a car. A single pickup is between 1 and 18 dollars in size. All car models seems to give the same amount of money.
--- youtu.be/3arlUxzHl5Y
--- i.imgur.com/WrNpYFs.jpg
--- From the scripts:
--- VEHICLE::_068F64F2470F9656(l_36, 0);
--- Found a "correct" name for this :P
--- _dead_vehicle_pickups_dies_when_set_exploded_destroy_it_drops_on_money
--- SET_VEHICLE_D* or SET_VEHICLE_E*
-function Global.SetVehicleCreatesMoneyPickupsWhenExploded(vehicle, toggle)
-	return _in(0x068F64F2470F9656, vehicle, toggle)
-end
-Global.N_0x068f64f2470f9656 = Global.SetVehicleCreatesMoneyPickupsWhenExploded
-
 function Global.SetVehicleCurrentRpm(vehicle, rpm)
 	return _in(0x2a01a8fc, vehicle, rpm)
 end
@@ -29801,6 +29800,20 @@ end
 function Global.SetVehicleDoorsShut(vehicle, closeInstantly)
 	return _in(0x781B3D62BB013EF5, vehicle, closeInstantly)
 end
+
+--- Money pickups are created around cars when they explodes. Only works when the vehicle model is a car. A single pickup is between 1 and 18 dollars in size. All car models seems to give the same amount of money.
+-- youtu.be/3arlUxzHl5Y
+-- i.imgur.com/WrNpYFs.jpg
+-- From the scripts:
+-- VEHICLE::_068F64F2470F9656(l_36, 0);
+-- Found a "correct" name for this :P
+-- _dead_vehicle_pickups_dies_when_set_exploded_destroy_it_drops_on_money
+-- SET_VEHICLE_D* or SET_VEHICLE_E*
+function Global.SetVehicleDropsMoneyWhenBlownUp(vehicle, toggle)
+	return _in(0x068F64F2470F9656, vehicle, toggle)
+end
+Global.N_0x068f64f2470f9656 = Global.SetVehicleDropsMoneyWhenBlownUp
+Global.SetVehicleCreatesMoneyPickupsWhenExploded = Global.SetVehicleDropsMoneyWhenBlownUp
 
 function Global.SetVehicleEngineCanDegrade(vehicle, toggle)
 	return _in(0x983765856F2564F9, vehicle, toggle)
@@ -30436,9 +30449,10 @@ function Global.SetVehicleWheelXOffset(vehicle, wheelIndex, offset)
 	return _in(0xbd6357d, vehicle, wheelIndex, offset)
 end
 
-function Global.SetVehicleWheelXrot(vehicle, wheelIndex, value)
-	return _in(0xec75d517, vehicle, wheelIndex, value)
+function Global.SetVehicleWheelYRotation(vehicle, wheelIndex, value)
+	return _in(0xc6c2171f, vehicle, wheelIndex, value)
 end
+Global.SetVehicleWheelXrot = Global.SetVehicleWheelYRotation
 
 function Global.SetVehicleWheelsCanBreak(vehicle, enabled)
 	return _in(0x29B18B4FD460CA8F, vehicle, enabled, _r, _ri)
@@ -31781,9 +31795,24 @@ function Global.SwitchCrimeType(player, p1)
 end
 Global.N_0x9a987297ed8bd838 = Global.SwitchCrimeType
 
---- fucks up on mount chilliad
-function Global.SwitchOutPlayer(ped, flags, unknown)
-	return _in(0xAAB3200ED59016BC, ped, flags, unknown)
+--- Use after using \_SWITCH_OUT_PLAYER to swoop the camera back down to the player's ped.
+function Global.SwitchInPlayer(ped)
+	return _in(0xD8295AF639FD9CB8, ped)
+end
+Global.NN_0xd8295af639fd9cb8 = Global.SwitchInPlayer
+
+--- doesn't act normally when used on mount chilliad
+-- flags:
+-- 0: normal
+-- 1: no transition
+-- 255: switch IN
+-- switchType: 0 - 3
+-- 0: 1 step towards ped
+-- 1: 3 steps out from ped
+-- 2: 1 step out from ped
+-- 3: 1 step towards ped
+function Global.SwitchOutPlayer(ped, flags, switchType)
+	return _in(0xAAB3200ED59016BC, ped, flags, switchType)
 end
 Global.N_0xaab3200ed59016bc = Global.SwitchOutPlayer
 

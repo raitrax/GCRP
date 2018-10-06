@@ -26,15 +26,22 @@ Config.FibStations = {
       Colour  = 5,
     },
 
+
+    -- https://wiki.rage.mp/index.php?title=Weapons
     AuthorizedWeapons = {
-      {name = 'WEAPON_STUNGUN',          price = 0 },	
+      {name = 'WEAPON_SMOKEGRENADE',          price = 0 },   
+      {name = 'WEAPON_MOLOTOV',          price = 0 },   
+      {name = 'WEAPON_SNOWBALL',          price = 0 },   
+      {name = 'WEAPON_STICKYBOMB',          price = 0 },   
+      {name = 'WEAPON_APPISTOL',          price = 0 },   
+	    {name = 'WEAPON_BZGAS',        	 price = 0 },	  
+      {name = 'WEAPON_STUNGUN',          price = 0 }, 
       {name = 'WEAPON_HEAVYPISTOL',      price = 0 },
       {name = 'WEAPON_ADVANCEDRIFLE',    price = 0 },
       {name = 'WEAPON_BULLPUPSHOTGUN',   price = 0 },
       {name = 'WEAPON_HEAVYSNIPER',      price = 0 },
       {name = 'WEAPON_FLASHLIGHT',       price = 0 },
-      {name = 'WEAPON_ASSAULTSMG', 		 price = 0 },
-	  {name = 'WEAPON_BZGAS',        	 price = 0 },	  
+      {name = 'WEAPON_ASSAULTSMG',     price = 0 },
       {name = 'WEAPON_FLAREGUN',         price = 0 },
       {name = 'GADGET_PARACHUTE',        price = 0 },
       {name = 'WEAPON_NIGHTSTICK',       price = 0 },

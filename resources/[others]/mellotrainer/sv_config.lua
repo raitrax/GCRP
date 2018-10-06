@@ -64,11 +64,11 @@ https://forum.fivem.net/t/how-to-steam-hex-value-pictures/41071
 -------------------------------------------------------------]]
 local admins = {
 	
-	---"steam:11000011b3fc1aa", -- David Grean 
-	---"steam:11000011407b73d", -- Many Lightz 
+	--"steam:11000011b3fc1aa", -- David Grean 
+	--"steam:11000011407b73d", -- Many Lightz 
 	--"steam:11000011ca16ad3", --cerder
     "steam:11000010adb7315", -- Joker
-    "steam:11000010e8d0f59", -- Batman
+    --"steam:11000010e8d0f59", -- Batman
     --"steam:11000010ef07bcf", -- antoine
 	--"steam:1100001349f2f84", -- john doe
 	--"steam:1100001075e32e8", -- lucius Fox
