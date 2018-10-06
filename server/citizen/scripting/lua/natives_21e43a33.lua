@@ -3543,7 +3543,7 @@ end
 -- ```
 -- @return An object containing registered commands.
 function Global.GetRegisteredCommands()
-	return _in(0xd4bef069, _r, _ri)
+	return msgpack.unpack(_in(0xd4bef069, _r, _ro))
 end
 
 function Global.GetRelationshipBetweenGroups(group1, group2)
@@ -3843,12 +3843,12 @@ function Global.GetVariantComponent(componentHash, componentId)
 	return _in(0x6E11F282F11863B6, _ch(componentHash), componentId, _i, _i, _i)
 end
 
-function Global.GetVehicleAcceleration(p0)
-	return _in(0x5DD35C8D074E57AE, p0, _r, _rf)
-end
-
 function Global.GetVehicleAcceleration(vehicle)
 	return _in(0x478321, vehicle, _r, _rf)
+end
+
+function Global.GetVehicleAcceleration(p0)
+	return _in(0x5DD35C8D074E57AE, p0, _r, _rf)
 end
 
 function Global.GetVehicleAlarmTimeLeft(vehicle)
@@ -4239,9 +4239,10 @@ function Global.GetVehicleWheelXOffset(vehicle, wheelIndex)
 	return _in(0xcc90cbca, vehicle, wheelIndex, _r, _rf)
 end
 
-function Global.GetVehicleWheelXrot(vehicle, wheelIndex)
-	return _in(0x15ecc0ab, vehicle, wheelIndex, _r, _rf)
+function Global.GetVehicleWheelYRotation(vehicle, wheelIndex)
+	return _in(0x2ea4affe, vehicle, wheelIndex, _r, _rf)
 end
+Global.GetVehicleWheelXrot = Global.GetVehicleWheelYRotation
 
 function Global.GetVehicleWindowTint(vehicle)
 	return _in(0x0EE21293DAD47C95, vehicle, _r, _ri)
@@ -18344,7 +18345,7 @@ function Global.RegisterBoolToSave(name)
 end
 
 function Global.RegisterCommand(commandName, handler, restricted)
-	return _in(0x5fa79b0f, _ts(commandName), handler, restricted)
+	return _in(0x5fa79b0f, _ts(commandName), _mfr(handler), restricted)
 end
 
 function Global.RegisterEntityForCutscene(p0, p2, p3, p4)
@@ -22248,9 +22249,10 @@ function Global.SetVehicleWheelXOffset(vehicle, wheelIndex, offset)
 	return _in(0xbd6357d, vehicle, wheelIndex, offset)
 end
 
-function Global.SetVehicleWheelXrot(vehicle, wheelIndex, value)
-	return _in(0xec75d517, vehicle, wheelIndex, value)
+function Global.SetVehicleWheelYRotation(vehicle, wheelIndex, value)
+	return _in(0xc6c2171f, vehicle, wheelIndex, value)
 end
+Global.SetVehicleWheelXrot = Global.SetVehicleWheelYRotation
 
 function Global.SetVehicleWheelsCanBreak(vehicle, enabled)
 	return _in(0x29B18B4FD460CA8F, vehicle, enabled, _r, _ri)
