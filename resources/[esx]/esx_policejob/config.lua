@@ -15,7 +15,7 @@ Config.EnableLicenses             = true -- enable if you're using esx_license
 Config.EnableHandcuffTimer        = true -- enable handcuff timer? will unrestrain player after the time ends
 Config.HandcuffTimer              = 10 * 60000 -- 10 mins
 
-Config.EnableJobBlip              = true -- enable blips for colleagues, requires esx_society
+Config.EnableJobBlip              = false -- enable blips for colleagues, requires esx_society
 
 Config.MaxInService               = -1
 Config.Locale                     = 'fr'
@@ -126,6 +126,18 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'police3',
 			label = 'Véhicule de patrouille 3'
+		},
+		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
 		}
 	},
 
@@ -133,6 +145,18 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'police3',
 			label = 'Véhicule de patrouille 3'
+		},
+		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
 		},
 		{
 			model = 'policet',
@@ -150,6 +174,18 @@ Config.AuthorizedVehicles = {
 			label = 'Véhicule de patrouille 3'
 		},
 		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
+		},
+		{
 			model = 'policet',
 			label = 'fourgon transport divers'
 		},
@@ -161,8 +197,28 @@ Config.AuthorizedVehicles = {
 
 	boss = {
 		{
+			model = 'polp1',
+			label = 'Police P1'
+		},
+		{
+			model = 'polchiron',
+			label = 'Police Chiron'
+		},
+		{
 			model = 'police3',
 			label = 'Véhicule de patrouille 3'
+		},
+		{
+			model = '2015POLSTANG',
+			label = 'Police Mustang 2015'
+		},
+		{
+			model = 'policegt350r',
+			label = 'Police GT350R'
+		},
+		{
+			model = 'ghispo2',
+			label = 'Police Maserati'
 		},
 		{
 			model = 'policet',
