@@ -11,7 +11,7 @@ local KeyToucheCloseEvent = {
   { code = 176, event = 'Enter' },
   { code = 177, event = 'Backspace' },
 }
-local KeyOpenClose = 244 -- M
+local KeyOpenClose = 168 -- M
 local KeyTakeCall = 38 -- E
 local menuIsOpen = false
 local contacts = {}

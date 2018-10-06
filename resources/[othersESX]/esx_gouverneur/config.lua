@@ -112,7 +112,7 @@ Config.Zones = {
 	},
 
 	VehicleDeleter = { -- Marker pour ranger la voiture
-		Pos   = {x = -397.39294433594, y = 1174.0627441406, z = 324.64169311523},
+		Pos   = {x = 897.89752197266, y = 1239.9478759766, z = 361.10955810547},
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 0, b = 0},
 		Type  = 1
