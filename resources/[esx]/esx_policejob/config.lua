@@ -126,18 +126,6 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'police3',
 			label = 'Véhicule de patrouille 3'
-		},
-		{
-			model = '2015POLSTANG',
-			label = 'Police Mustang 2015'
-		},
-		{
-			model = 'policegt350r',
-			label = 'Police GT350R'
-		},
-		{
-			model = 'ghispo2',
-			label = 'Police Maserati'
 		}
 	},
 
@@ -145,18 +133,6 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'police3',
 			label = 'Véhicule de patrouille 3'
-		},
-		{
-			model = '2015POLSTANG',
-			label = 'Police Mustang 2015'
-		},
-		{
-			model = 'policegt350r',
-			label = 'Police GT350R'
-		},
-		{
-			model = 'ghispo2',
-			label = 'Police Maserati'
 		},
 		{
 			model = 'policet',
@@ -174,18 +150,6 @@ Config.AuthorizedVehicles = {
 			label = 'Véhicule de patrouille 3'
 		},
 		{
-			model = '2015POLSTANG',
-			label = 'Police Mustang 2015'
-		},
-		{
-			model = 'policegt350r',
-			label = 'Police GT350R'
-		},
-		{
-			model = 'ghispo2',
-			label = 'Police Maserati'
-		},
-		{
 			model = 'policet',
 			label = 'fourgon transport divers'
 		},
@@ -197,28 +161,8 @@ Config.AuthorizedVehicles = {
 
 	boss = {
 		{
-			model = 'polp1',
-			label = 'Police P1'
-		},
-		{
-			model = 'polchiron',
-			label = 'Police Chiron'
-		},
-		{
 			model = 'police3',
 			label = 'Véhicule de patrouille 3'
-		},
-		{
-			model = '2015POLSTANG',
-			label = 'Police Mustang 2015'
-		},
-		{
-			model = 'policegt350r',
-			label = 'Police GT350R'
-		},
-		{
-			model = 'ghispo2',
-			label = 'Police Maserati'
 		},
 		{
 			model = 'policet',
