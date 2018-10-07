@@ -56,6 +56,8 @@ function CloakRoom()
 				{label = _U('clothes_civil'), value = 'citizen_wear'},
 				{label = 'Deadpool', value = 'DeadPool'},
 				{label = 'Night', value = 'arkhamknight'},
+				{label = 'Red Hood', value = 'redhoodi2'},
+				{label = 'Green Arrow', value = 'CWArrowS4'},
 			},
 		},
 		function(data, menu)
@@ -67,6 +69,42 @@ function CloakRoom()
 
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 			  local model = GetHashKey("DeadPool")
+			      RequestModel(model)
+			      while not HasModelLoaded(model) do
+			          RequestModel(model)
+			          Citizen.Wait(0)
+			      end
+
+			      SetPlayerModel(PlayerId(), model)
+			      SetModelAsNoLongerNeeded(model)
+			      TriggerEvent('skinchanger:loadSkin', skin)
+			      TriggerEvent('esx:restoreLoadout')
+
+			end)
+			end
+			--Taken from SuperCoolNinja
+			if data.current.value == 'CWArrowS4' then
+
+			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+			  local model = GetHashKey("CWArrowS4")
+			      RequestModel(model)
+			      while not HasModelLoaded(model) do
+			          RequestModel(model)
+			          Citizen.Wait(0)
+			      end
+
+			      SetPlayerModel(PlayerId(), model)
+			      SetModelAsNoLongerNeeded(model)
+			      TriggerEvent('skinchanger:loadSkin', skin)
+			      TriggerEvent('esx:restoreLoadout')
+
+			end)
+			end
+			--Taken from SuperCoolNinja
+			if data.current.value == 'redhoodi2' then
+
+			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+			  local model = GetHashKey("redhoodi2")
 			      RequestModel(model)
 			      while not HasModelLoaded(model) do
 			          RequestModel(model)
