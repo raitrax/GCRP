@@ -76,8 +76,8 @@ function CloakRoom()
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_MUSKET')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_ADVANCEDRIFLE')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_COMBATMG_MK2')
-				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HEAVYSNIPER_MK2')
-				TriggerServerEvent('esx_gouverneur:removeWeapon','GILET_WEAR')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HEAVYSNIPER')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_PUMPSHOTGUN_MK2')
 				
 				end
 
@@ -197,8 +197,8 @@ function CloakRoom()
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_MUSKET', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_ADVANCEDRIFLE', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_COMBATMG_MK2', 2000)
-				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HEAVYSNIPER_MK2', 2000)
-				TriggerServerEvent('esx_gouverneur:giveWeapon','GILET_WEAR', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HEAVYSNIPER', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_PUMPSHOTGUN_MK2', 2000)
 				end
 
 			CurrentAction     = 'cloakroom_menu'
@@ -385,11 +385,11 @@ function OpenVehicleSpawnerMenu()
 					else
 
 						local elements = {
-							{label = 'arrow', value = 'arrow'},
+							{label = 'x6m', value = 'x6m'},
 							{label = 'trezor1', value = 'trezor1'},
 							{label = 'Limousine', value = 'Stretch'},
-							{label = 'Voiture personnelle', value = 's63w222'}, --Cog552
-							{label = 'SUV', value = 'FBI2'} --FBI2 / Baller6 
+							{label = 'tmax', value = 'tmax'},
+							{label = 'SUV', value = 'FBI2'}
 						}
 
 						ESX.UI.Menu.CloseAll()
