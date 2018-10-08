@@ -76,7 +76,7 @@ function OpenCloakroomMenu()
     table.insert(elements, {label = 'Deathstroke', value = 'deathstroke'})
   end
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'righthand' then --RedHood
-    table.insert(elements, {label = 'RedHood', value = 'redhoodi2'})
+    table.insert(elements, {label = 'Sbire du Joker', value = 'ig_bankman'})
   end
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Joker
     table.insert(elements, {label = 'Joker', value = 'JokerBAO'})
