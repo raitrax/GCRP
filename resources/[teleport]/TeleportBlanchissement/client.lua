@@ -1,6 +1,6 @@
 local TeleportFromTo = {
 	["offshore-production"] = {
-		positionFrom = { ['x'] = -1846.666, ['y'] = -1190.655, ['z'] = 14.3230, nom = "Rentrer dans la blanchisserie"},
+		positionFrom = { ['x'] = 722.34448242188, ['y'] = 4190.1469726563, ['z'] = 40.092884063721, nom = "Rentrer dans la blanchisserie"},
 		positionTo = { ['x'] = 1138.096, ['y'] = -3198.774, ['z'] = -39.665, nom = "Sortir de la blanchisserie"},
 	
       },

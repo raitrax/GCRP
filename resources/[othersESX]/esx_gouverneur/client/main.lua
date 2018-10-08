@@ -58,11 +58,28 @@ function CloakRoom()
 				{label = 'Night', value = 'arkhamknight'},
 				{label = 'Red Hood', value = 'redhoodi2'},
 				{label = 'Green Arrow', value = 'CWArrowS4'},
+				{label = 'Armurerie', value = 'weapon_wear'},
 			},
 		},
 		function(data, menu)
 
 			menu.close()
+
+			if data.current.value == 'citizen_wear' then
+
+				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+					TriggerEvent('skinchanger:loadSkin', skin)
+				end)
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_PISTOL_MK2')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_ASSAULTSMG')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HATCHET')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_MUSKET')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_ADVANCEDRIFLE')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_COMBATMG_MK2')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HEAVYSNIPER_MK2')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','GILET_WEAR')
+				
+				end
 
 	               --Taken from SuperCoolNinja
 			if data.current.value == 'DeadPool' then
@@ -172,6 +189,17 @@ function CloakRoom()
 
                 end)
             end
+
+            if data.current.value == 'weapon_wear' then
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_PISTOL_MK2', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_ASSAULTSMG', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HATCHET', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_MUSKET', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_ADVANCEDRIFLE', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_COMBATMG_MK2', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HEAVYSNIPER_MK2', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','GILET_WEAR', 2000)
+				end
 
 			CurrentAction     = 'cloakroom_menu'
 			CurrentActionMsg  = _U('cloakroom')

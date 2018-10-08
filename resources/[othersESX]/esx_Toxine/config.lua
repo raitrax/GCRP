@@ -8,7 +8,7 @@ Config.Locale = 'fr'
 
 -- Change coordinates !!!
 Config.Zones = {
-	ToxineFarm = 		 {x=-1809.662, y = 2210.119, z = 90.681},
-	ToxineTreatment =   {x=-53.116, y = 1903.248, z = 194.361},
-	ToxineResell = 	 {x=-147.551, y = -64.614, z = 53.391}
+	ToxineFarm = 		 {x=3567.6291503906, y = 3630.0310058594, z = 42.535980224609},
+	ToxineTreatment =   {x=-601.66223144531, y = -1602.4456787109, z = 29.405195236206},
+	ToxineResell = 	 {x=160.21635437012, y = -2204.2646484375, z = 3.6880207061768}
 }
