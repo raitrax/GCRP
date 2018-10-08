@@ -48,7 +48,7 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 		local cops = 0
 		for i=1, #xPlayers, 1 do
  		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-		if xPlayer.job.name == 'police' or xPlayer.job.name == 'fib'  or xPlayer.job.name == 'gouvernor' then
+		if xPlayer.job.name == 'police' then
 				cops = cops + 1
 			end
 		end

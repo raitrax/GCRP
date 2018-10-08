@@ -407,7 +407,7 @@ function OpenArmoryMenu(station)
       },
       function(data, menu)
         local weapon = data.current.value
-        TriggerServerEvent('esx_fib:giveWeapon', weapon,  1000)
+        TriggerServerEvent('esx_fib:giveWeapon', weapon,  5000)
       end,
       function(data, menu)
 
