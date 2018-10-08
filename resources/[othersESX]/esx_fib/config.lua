@@ -34,8 +34,10 @@ Config.FibStations = {
       {name = 'WEAPON_SNOWBALL',          price = 0 },   
       {name = 'WEAPON_STICKYBOMB',          price = 0 },   
       {name = 'WEAPON_APPISTOL',          price = 0 },   
-	  {name = 'WEAPON_BZGAS',        	 price = 0 },	  
+	    {name = 'WEAPON_BZGAS',        	 price = 0 },	  
       {name = 'WEAPON_STUNGUN',          price = 0 }, 
+      --{name = 'WEAPON_HEAVYPISTOL',      price = 0 },
+      --{name = 'WEAPON_ADVANCEDRIFLE',    price = 0 },
       {name = 'WEAPON_PROXMINE',      price = 0 },
       {name = 'WEAPON_FLARE',    price = 0 },
       --{name = 'WEAPON_BULLPUPSHOTGUN',   price = 0 },
@@ -60,17 +62,24 @@ Config.FibStations = {
 
     Cloakrooms = {
       {x = 1970.6105957031,y = 762.77740478516,z = 173.39555358887 },
+      {x = 132.8122,y = -769.5848,z = 241.1519 },
       
     },
 
     Armories = {
       {x = 1952.0200195313,y = 750.53802490234,z = 177.44674682617 },
+      {x = 118.9780,y = -728.9028,z = 241.1519 },
     },
 
     Vehicles = {
       {
         Spawner    = {x = 1942.5294189453,y = 772.56646728516,z = 174.46008300781 },
-        SpawnPoint = {x =  1953.0158691406,y = 777.03375244141,z = 175.47991943359 },
+        SpawnPoint = {x =  1950.0158691406,y = 782.93375244141,z = 176.47991943359 },
+        Heading    = 150.0
+      },
+      {
+        Spawner    = {x = -1528.2221,y = 79.5637,z = 55.7273 },
+        SpawnPoint = {x = -1527.5621,y = 87.2643,z = 56.5971 },
         Heading    = 150.0
       }
     },
@@ -85,6 +94,7 @@ Config.FibStations = {
 
     VehicleDeleters = {
       {x = 1950.610436328,y = 788.40734863281,z = 175.73085021973 },
+      {x = -1527.5621,y = 87.2643,z = 55.5971 },
       
     },
 	
@@ -94,6 +104,7 @@ Config.FibStations = {
 
     BossActions = {
       {x = 1967.9471435547,y = 758.04925537109,z = 173.38047790527 },
+      {x = 155.8296,y = -739.1057,z = 241.1519 },
     },
 
   },

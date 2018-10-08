@@ -67,10 +67,8 @@ function OpenCloakroomMenu()
   end
   
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
-    table.insert(elements, {label = 'Robin', value = 'blademasterrobin'})
-    table.insert(elements, {label = 'Nightwing', value = 'nightwing'})
-    table.insert(elements, {label = 'batman', value = 'batman'})
-    table.insert(elements, {label = 'BatmanAK', value = 'BatmanAK'})
+    --table.insert(elements, {label = 'batman', value = 'batman'})
+    table.insert(elements, {label = 'Batman', value = 'BatmanAK'})
   end
   
 
@@ -407,7 +405,7 @@ function OpenArmoryMenu(station)
       },
       function(data, menu)
         local weapon = data.current.value
-        TriggerServerEvent('esx_fib:giveWeapon', weapon,  5000)
+        TriggerServerEvent('esx_fib:giveWeapon', weapon,  1000)
       end,
       function(data, menu)
 
