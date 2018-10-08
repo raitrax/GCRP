@@ -721,7 +721,7 @@ Citizen.CreateThread(function()
 	while true do
 		
 		Wait(0)
-		if PlayerData.job ~= nil then
+		if PlayerData.job ~= nil and PlayerData.job.name == 'gouvernor' then
 
 			local coords = GetEntityCoords(GetPlayerPed(-1))
 			for k,v in pairs(Config.Zones) do

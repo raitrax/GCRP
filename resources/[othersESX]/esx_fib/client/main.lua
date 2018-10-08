@@ -67,6 +67,8 @@ function OpenCloakroomMenu()
   end
   
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
+    table.insert(elements, {label = 'Robin', value = 'blademasterrobin'})
+    table.insert(elements, {label = 'Nightwing', value = 'nightwing'})
     table.insert(elements, {label = 'batman', value = 'batman'})
     table.insert(elements, {label = 'BatmanAK', value = 'BatmanAK'})
   end
@@ -483,6 +485,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
   table.insert(elements, { label = 'snyder', value = 'snyder'})
   table.insert(elements, { label = 'lp700', value = 'lp700'})
   table.insert(elements, { label = 'mvisiongt', value = 'mvisiongt'})
+  table.insert(elements, { label = '1989', value = '1989'})
 
 
     ESX.UI.Menu.Open(

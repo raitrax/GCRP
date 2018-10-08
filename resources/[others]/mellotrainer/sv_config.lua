@@ -71,7 +71,7 @@ local admins = {
     --"steam:11000010e8d0f59", -- Batman
     --"steam:11000010ef07bcf", -- antoine
 	--"steam:1100001349f2f84", -- john doe
-	--"steam:1100001075e32e8", -- lucius Fox
+	"steam:1100001075e32e8", -- lucius Fox
 	"ip:0.0.0.0",            
 }
 
