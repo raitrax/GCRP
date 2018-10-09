@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ShopVehicleDataArray>
+	<Vehicles>
+		<Item>
+			<lockHash>CU_VEH_BMWS</lockHash>
+			<modelNameHash>bmws</modelNameHash>
+			<cost value="100"/>
+			<textLabel>BMWS</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_D99</lockHash>
+			<modelNameHash>d99</modelNameHash>
+			<cost value="100"/>
+			<textLabel>D99</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_DIAVEL</lockHash>
+			<modelNameHash>diavel</modelNameHash>
+			<cost value="100"/>
+			<textLabel>DIAVEL</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_GSXR_HCBR</lockHash>
+			<modelNameHash>gsxr</modelNameHash>
+			<cost value="100"/>
+			<textLabel>GSXR</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_HCBR</lockHash>
+			<modelNameHash>hcbr</modelNameHash>
+			<cost value="100"/>
+			<textLabel>HCBR</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_KE400</lockHash>
+			<modelNameHash>ke400</modelNameHash>
+			<cost value="100"/>
+			<textLabel>KE400</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_KNH22</lockHash>
+			<modelNameHash>knh22</modelNameHash>
+			<cost value="100"/>
+			<textLabel>KNH22</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_KTMRC</lockHash>
+			<modelNameHash>ktmrc</modelNameHash>
+			<cost value="100"/>
+			<textLabel>KTMRC</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_R6</lockHash>
+			<modelNameHash>r6</modelNameHash>
+			<cost value="100"/>
+			<textLabel>R6</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_RSV4</lockHash>
+			<modelNameHash>rsv4</modelNameHash>
+			<cost value="100"/>
+			<textLabel>RSV4</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_VINDI</lockHash>
+			<modelNameHash>vindi</modelNameHash>
+			<cost value="100"/>
+			<textLabel>VINDI</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_YFZ8</lockHash>
+			<modelNameHash>yfz8</modelNameHash>
+			<cost value="100"/>
+			<textLabel>YFZ8</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_YR1</lockHash>
+			<modelNameHash>yr1</modelNameHash>
+			<cost value="100"/>
+			<textLabel>YR1</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_VEH_ZX10</lockHash>
+			<modelNameHash>zx10</modelNameHash>
+			<cost value="100"/>
+			<textLabel>ZX10</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+	</Vehicles>	
+</ShopVehicleDataArray>
