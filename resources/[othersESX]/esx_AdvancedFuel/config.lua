@@ -44,10 +44,10 @@ settings["fr"] = {
 
 
 showBar = false
-showText = true
+showText = false
 
 
-hud_form = 2 -- 1 : Vertical | 2 = Horizontal
+hud_form = 1 -- 1 : Vertical | 2 = Horizontal
 hud_x = 0.175 
 hud_y = 0.885
 
@@ -57,5 +57,5 @@ text_y = 0.975
 
 electricityPrice = 1 -- NOT RANOMED !!
 
-randomPrice = true --Random the price of each stations
-price = 1 --If random price is on False, set the price here for 1 liter
+randomPrice = false --Random the price of each stations
+price = 6 --If random price is on False, set the price here for 1 liter

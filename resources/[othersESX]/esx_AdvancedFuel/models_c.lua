@@ -5,7 +5,10 @@ blacklistedModels = { -- Vehicles which doesn't need fuel
 	"FIXTER",
 	"SCORCHER",
 	"TRIBIKE3",
-	"TRIBIKE"
+	"TRIBIKE",
+	"POLMAV",
+	"AMBULANCE",
+	"BENSON",
 }
 
 
@@ -16,7 +19,8 @@ electric_model = {
 	"KHAMELION",
 	"CADDY",
 	"CADDY2",
-	"AIRTUG"
+	"AIRTUG",
+	"CYCLONE"
 }
 
 
@@ -53,7 +57,6 @@ heli_model = {
 	"FROGGER",
 	"FROGGER2",
 	"MAVERICK",
-	"POLMAV",
 	"SAVAGE",
 	"SKYLIFT",
 	"SVOLITO",

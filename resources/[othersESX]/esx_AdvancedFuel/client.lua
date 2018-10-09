@@ -335,13 +335,13 @@ Citizen.CreateThread(function()
 			elseif(vitesse >= 20 and vitesse <50) then
 				stade = 0.00002
 			elseif(vitesse >= 50 and vitesse < 70) then
-				stade = 0.000003
+				stade = 0.00003
 			elseif(vitesse >= 70 and vitesse <90) then
-				stade = 0.000004
+				stade = 0.00004
 			elseif(vitesse >=90 and vitesse <130) then
-				stade = 0.000005
+				stade = 0.00005
 			elseif(vitesse >= 130) then
-				stade = 0.000006
+				stade = 0.00006
 			elseif(vitesse == 0 and IsVehicleEngineOn(veh)) then
 				stade = 0.0000001
 			end
@@ -404,7 +404,7 @@ function renderBoxes()
 			if(showText) then
 				local percent = (essence/0.142)*100
 
-				DrawAdvancedText(text_x, text_y, 0.680, 0.0028, 0.4,round(percent,1).."%", 255, 255, 255, 255, 0, 1)
+				DrawAdvancedText(text_x, text_y, 0.005, 0.0028, 0.4,round(percent,1).."%", 255, 255, 255, 255, 0, 1)
 			end
 		else
 			if(showBar) then
@@ -416,7 +416,7 @@ function renderBoxes()
 			if(showText) then
 				local percent = (essence/0.142)*100
 
-				DrawAdvancedText(text_x, text_y, 0.680, 0.0028, 0.4,round(percent,1).."%", 255, 255, 255, 255, 0, 1)
+				DrawAdvancedText(text_x, text_y, 0.005, 0.0028, 0.4,round(percent,1).."%", 255, 255, 255, 255, 0, 1)
 			end
 		end
 	end

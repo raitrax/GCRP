@@ -31,14 +31,11 @@ local blips = {
     {name=blipNameFuel, id=361, x=1181.381, y= -330.847,  z=69.316},
     {name=blipNameFuel, id=361, x=620.843,  y= 269.100,  z=103.089},
     {name=blipNameFuel, id=361, x=2581.321, y=362.039, z=108.468},
-    {name=blipNameFuel, id=361, x=643.081, y=-1344.355, z=10.000},
-
 
     --------- BOATS ---------
     {name=blipNameFuelBoat, id=427, x=-802.513, y=-1504.675,z=1.305},
-    {name=blipNameFuelBoat, id=427, x=7.313,y=-2777.435,z=3.451},
-    {name=blipNameFuelBoat, id=427, x=1326.863,y=4218.219,z=33.55},
-    {name=blipNameFuelBoat, id=427, x=-1667.567, y=-1218.979, z=4.000},
+    {name=blipNameFuelBoat, id=427,x=7.313,y=-2777.435,z=3.451},
+    {name=blipNameFuelBoat,id=427,x=1326.863,y=4218.219,z=33.55},
 
     --------- AVIONS ---------
     {name = blipNameFuelAvions, id=251,x=2133.268,y=4783.649,z=40.97},
@@ -48,6 +45,7 @@ local blips = {
     --------- Helicopters ---------
     {name = blipNameFuelHeli, id=43,x=1770.241,y=3239.716,z=42.127},
     {name = blipNameFuelHeli, id=43,x=-1112.407,y=-2883.893,z=13.946},
+	--{name = blipNameFuelHeli, id=43,x=1138.061,y=-1607.882,z= 34.692},
 }
 
 
@@ -290,13 +288,7 @@ station = {
     {x=-98.26,y=6417.974,z=31.458,s=25},
     {x=-92.331,y=6423.958,z=31.459,s=25},
     {x=-90.086,y=6421.26,z=31.484,s=25},
-    {x=-95.719,y=6415.342,z=31.482,s=25},
-
-    {x=-1303.641,y=-2294.899,z=12.528,s=25},
-    {x=-1306.564,y=-2299.748,z=12.528,s=25},
-    {x=-1308.869,y=-2303.574,z=12.528,s=25},
-    {x=644.935,y=-1349.256,z=9.728,s=25},
-    {x=643.081,y=-1344.355,z=9.728,s=25}
+    {x=-95.719,y=6415.342,z=31.482,s=25}
 }
 
 
@@ -337,7 +329,6 @@ boat_stations = {
 
     {x=1337.098,y=4218.219,z=31.05,s=28},
     {x=1322.839,y=4221.219,z=31.05,s=28},
-    {x=-1667.567,y=-1218.979,z=2.00,s=28},
 }
 
 
@@ -380,14 +371,12 @@ stationsText[22] = {x=1687.317,y=4929.79,z=43.837}
 stationsText[23] = {x=1701.67,y=6416.484,z=35.091}
 stationsText[24] = {x=179.988,y=6602.996,z=33.918}
 stationsText[25] = {x=-94.239,y=6419.58,z=32.615}
-stationsText[25] = {x=-1304.831,y=-2300.233,z=15.000}
 
 
 --- Boats stations
 stationsText[26] = {x=-802.513, y=-1504.675,z=2}
 stationsText[27] = {x=7.313,y=-2777.435,z=3.451} 
-stationsText[28] = {x=1326.863,y=4218.219,z=33.55} 
-stationsText[28] = {x=-1667.567,y=-1218.979,z=01.00}
+stationsText[28] = {x=1326.863,y=4218.219,z=33.55}
 
 
 --- Avions stations
@@ -398,6 +387,8 @@ stationsText[31] = {x=-1229.625,y=-2877.264,z=15.921}
 --- Helicopters stations
 stationsText[32] = {x=1770.241,y=3239.716,z=45.127}
 stationsText[33] = {x=-1112.407,y=-2883.893,z=15.921}
+stationsText[34] = {x=1138.061,y=-1607.882,z= 34.692}
+
 
 --[[
 ================================================= FUNCTIONS =================================================
@@ -411,6 +402,7 @@ Citizen.CreateThread(function()
       item.blip = AddBlipForCoord(item.x, item.y, item.z)
       SetBlipSprite(item.blip, item.id)
       SetBlipAsShortRange(item.blip, true)
+	  SetBlipColour(item.blip, 59)
       BeginTextCommandSetBlipName("STRING")
       AddTextComponentString(item.name)
       EndTextCommandSetBlipName(item.blip)
@@ -423,7 +415,7 @@ Citizen.CreateThread(function()
         for _, item in pairs(station) do
         	local near, dist = isNearStationMarker(item)
             if(near) then
-                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     132, 52, 0, 255      , 0, 0, 1, 0, 0, 0, 0)
+                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0,     0, 0, 0, 0      , 0, 0, 0, 0, 0, 0, 0)
                 if(dist<10) then
                	 	local x = stationsText[item.s].x
                	 	local y = stationsText[item.s].y
@@ -437,7 +429,7 @@ Citizen.CreateThread(function()
 
         for _, item in pairs(electric_stations) do
             if(isNearElectricStationMarker(item)) then
-                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     90, 255, 90, 255      , 0, 0, 1, 0, 0, 0, 0)
+                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     0, 0, 0, 0      , 0, 0, 1, 0, 0, 0, 0)
             end
         end
 
@@ -445,7 +437,7 @@ Citizen.CreateThread(function()
         for _, item in pairs(boat_stations) do
             local near, dist = isNearBoatStationMarker(item)
             if(near) then
-                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     0, 0, 255, 75      , 0, 0, 1, 0, 0, 0, 0)
+                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     0, 0, 0, 0      , 0, 0, 1, 0, 0, 0, 0)
                 if(dist<10) then
                 	local x = stationsText[item.s].x
                 	local y = stationsText[item.s].y
@@ -461,7 +453,7 @@ Citizen.CreateThread(function()
         for _, item in pairs(avion_stations) do
             local near, dist = isNearStationMarker(item)
             if(near) then
-                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     132, 52, 0, 255      , 0, 0, 1, 0, 0, 0, 0)
+                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     0, 0, 0, 0      , 0, 0, 1, 0, 0, 0, 0)
                 if(dist < 10) then
                 	local x = stationsText[item.s].x
                 	local y = stationsText[item.s].y
@@ -477,7 +469,7 @@ Citizen.CreateThread(function()
         for _, item in pairs(heli_stations) do
             local near, dist = isNearStationMarker(item)
             if(near) then
-                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     132, 52, 0, 255      , 0, 0, 1, 0, 0, 0, 0)
+                DrawMarker(1, item.x, item.y, item.z-1.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 1.0,     0, 0, 0, 0      , 0, 0, 1, 0, 0, 0, 0)
                 if(dist<10) then
                 	local x = stationsText[item.s].x
                 	local y = stationsText[item.s].y

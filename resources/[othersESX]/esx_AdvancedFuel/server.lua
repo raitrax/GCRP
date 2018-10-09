@@ -65,7 +65,10 @@ AddEventHandler("essence:buy", function(amount, index,e)
 	if(toPay > xPlayer.getMoney()) then
 		TriggerClientEvent("showErrorNotif", _source, "You don't have enought money.")
 	else
-		xPlayer.removeMoney(toPay)
+		local digits = 0
+		local shift = 10^digits
+		local officialprice = math.floor(toPay*shift + 0.5) /shift
+		xPlayer.removeMoney(officialprice)
 		TriggerClientEvent("essence:hasBuying", _source, amount)
 	end
 end)
@@ -128,7 +131,7 @@ end
 function renderPrice()
     for i=0,34 do
         if(randomPrice) then
-            StationsPrice[i] = math.random(15,50)/100
+            StationsPrice[i] = math.random(99,100)/100
         else
         	StationsPrice[i] = price
         end

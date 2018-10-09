@@ -4,7 +4,7 @@
 	ESX.HUDElements = [];
 
 	ESX.setHUDDisplay = function(opacity){
-		$('#hud').css('opacity', opacity);
+		$('#hud,#discord,#bg1,#bg2').css('opacity', opacity);
 	}
 
 	ESX.insertHUDElement = function(name, index, priority, html, data){
@@ -79,6 +79,22 @@
 
 			case 'setHUDDisplay' : {
 				ESX.setHUDDisplay(data.opacity);
+				break;
+			}
+			
+			case 'toggleDisplay' : {
+				if(data.hide == 1) $("#hud div:eq("+data.eq+")").hide()
+				else $("#hud div:eq("+data.eq+")").show()
+				break;
+			}
+			case 'setService' : {
+				if(data.set == 1) $("#hud div:eq(2)").css("color","#93e293")
+				else $("#hud div:eq(2)").css("color","#db8585")
+				break;
+			}
+			
+			case 'hideHUDbank' : {
+				$("#hud:eq(3)").hide()
 				break;
 			}
 
