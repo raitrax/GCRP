@@ -13,16 +13,21 @@
 
 			let statusDiv = $(
 				'<div class="status">' +
-					'<div class="status_inner">' +
-						'<div class="status_val"></div>' +
+					'<div class="vert-stat">' +
+                        '<img src="' +
+                        status[i].name +
+                        '.png">' +
+						'<div class="bg" style="z-index: -1;">' +
+                        '</div>' +
 					'</div>' +
 				'</div>');
 			
-			statusDiv.find('.status_inner')
-				.css({'border' : '1px solid ' + status[i].color})
+			statusDiv.find('.bg')
+				.css({'background-color' : status[i].color,
+                      'height'            : (status[i].val / 10000) + '%'})
 			;
 
-			statusDiv.find('.status_val')
+			statusDiv.find('.stagtus_val')
 				.css({
 					'background-color' : status[i].color,
 					'width'            : (status[i].val / 10000) + '%'
@@ -33,6 +38,7 @@
 		}
 
 	}
+
 
 	window.onData = function(data){
 
@@ -47,7 +53,7 @@
 		}
 
 		if(data.setDisplay){
-			$('#status_list').css({'opacity' : data.display})
+			$('#status_lisst').css({'opacity' : data.display})
 		}
 
 	}
