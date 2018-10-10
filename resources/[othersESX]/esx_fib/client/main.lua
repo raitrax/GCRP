@@ -477,13 +477,26 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
     local elements = {}
 
-  
-    table.insert(elements, { label = 'Vigilante', value = 'Vigilante'})
-  table.insert(elements, { label = 'batpod', value = 'batpod'})
-  table.insert(elements, { label = 'snyder', value = 'snyder'})
-  table.insert(elements, { label = 'lp700', value = 'lp700'})
-  table.insert(elements, { label = 'mvisiongt', value = 'mvisiongt'})
-  table.insert(elements, { label = '1989', value = '1989'})
+    table.insert(elements, { label = 'batpod', value = 'batpod'})
+    table.insert(elements, { label = 'PCJ-600', value = 'pcj'})
+
+    if PlayerData.job ~= nil and PlayerData.job.grade_name == 'recruit' then --Alfred
+
+    end
+    if PlayerData.job ~= nil and PlayerData.job.grade_name == 'agent' then --Robin
+
+    end
+    if PlayerData.job ~= nil and PlayerData.job.grade_name == 'specialagent' then --Nightwing
+      
+    end
+    if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
+      table.insert(elements, { label = 'Vigilante', value = 'Vigilante'})
+      table.insert(elements, { label = 'snyder', value = 'snyder'})
+      table.insert(elements, { label = '1989', value = '1989'})
+      table.insert(elements, { label = 'lp700', value = 'lp700'})
+      table.insert(elements, { label = 'mvisiongt', value = 'mvisiongt'})
+    end
+    
 
 
     ESX.UI.Menu.Open(
@@ -623,7 +636,10 @@ function OpenVehicle1SpawnerMenu(station, partNum)
 
     for i=1, #Config.FibStations[station].AuthorizedVehicles1, 1 do
       local vehicle = Config.FibStations[station].AuthorizedVehicles1[i]
-      table.insert(elements, { label = 'batwing', value = 'batwing'})
+        if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
+          table.insert(elements, { label = 'batwing', value = 'batwing'})
+          table.insert(elements, { label = 'Volatus', value = 'volatus'})
+        end
     end
 
     ESX.UI.Menu.Open(
