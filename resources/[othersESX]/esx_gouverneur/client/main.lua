@@ -70,14 +70,18 @@ function CloakRoom()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					TriggerEvent('skinchanger:loadSkin', skin)
 				end)
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HATCHET')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_FLASHLIGHT')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_SWITCHBLADE')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_PISTOL_MK2')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_ASSAULTSMG')
-				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HATCHET')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_COMBATPDW')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_BULLPUPSHOTGUN')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_MUSKET')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_ADVANCEDRIFLE')
+				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_SPECIALCARBINE')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_COMBATMG_MK2')
 				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_HEAVYSNIPER')
-				TriggerServerEvent('esx_gouverneur:removeWeapon','WEAPON_PUMPSHOTGUN_MK2')
 				
 				end
 
@@ -191,14 +195,18 @@ function CloakRoom()
             end
 
             if data.current.value == 'weapon_wear' then
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HATCHET', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_FLASHLIGHT', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_SWITCHBLADE', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_PISTOL_MK2', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_ASSAULTSMG', 2000)
-				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HATCHET', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_COMBATPDW', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_BULLPUPSHOTGUN', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_MUSKET', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_ADVANCEDRIFLE', 2000)
+				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_SPECIALCARBINE', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_COMBATMG_MK2', 2000)
 				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_HEAVYSNIPER', 2000)
-				TriggerServerEvent('esx_gouverneur:giveWeapon','WEAPON_PUMPSHOTGUN_MK2', 2000)
 				end
 
 			CurrentAction     = 'cloakroom_menu'
