@@ -1,0 +1,190 @@
+body, html {
+    overflow-y: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 125px;
+    color: rgba(255, 255, 255, 0.99);
+    font-size: 38px;
+}
+h2.subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.99);
+    font-size: 28px;
+}
+
+.main {
+    background-image: url(https://img.lcpdfr.com/assets/set_resources_16/d0e70b4cbb9ab8afb1bc1065a3f8487a_start18.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.auth {
+    padding: 50px 800px;
+    background-color: rgba(255, 255, 255, 0.99);
+
+    margin-top: 50px;
+    padding-bottom: 90px;
+}
+.form-auth {
+    color: #888;
+    width: 85%;
+    padding: 0px 0px 0px 5px;
+    border: 1px solid #C5E2FF;
+    background: #FBFBFB;
+    outline: 0;
+    -webkit-box-shadow:inset 0px 1px 6px #ECF3F5;
+    box-shadow: inset 0px 1px 6px #ECF3F5;
+    font: 200 12px/25px Arial, Helvetica, sans-serif;
+    height: 30px;
+    line-height:15px;
+    margin: 2px 6px 16px 0px;
+    margin-top: 5px;
+}
+
+.about {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.99);
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    left: 0;
+    bottom: 0;
+
+    margin-left: 25px;
+    margin-bottom: 25px;
+
+    border: 1px solid rgba(255, 0, 0, 0.76);
+}
+
+.btn {
+    transition-duration: 1s;
+    position: absolute;
+    border-radius: 50px;
+    border-color: transparent;
+    background-color: rgba(44, 44, 44, 0.95);
+
+    color: rgba(255, 255, 255, 0.97);
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.btn:hover {
+    transition-duration: 1s;
+    background-color: rgba(44, 44, 44, 0.65);
+}
+
+.exitcomputer {
+    right: 0;
+    bottom: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    background-color: rgba(255, 102, 0, 0.96);
+}
+
+.exitcomputer:hover {
+    transition-duration: 1s;
+    background-color: rgba(255, 102, 0, 0.66);
+}
+
+.submit {
+    background-color: rgba(33, 199, 7, 0.96);
+    margin-top: 15px;
+}
+
+.submit:hover {
+    background-color: rgba(36, 199, 7, 0.69);
+}
+
+.auth-error-message {
+    padding: 4px;
+    padding-left: 15px;
+    margin-right: 48px;
+    border-radius: 2px;
+    background-color: rgba(206, 206, 206, 0.6);
+}
+
+.anpr {
+    background-color: rgba(255, 255, 255, 0.99);
+
+    margin-top: 50px;
+    padding-bottom: 90px;
+}
+
+.anpr .anpr-iframe {
+    overflow: scroll !important;
+    height: 100% !important;
+
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    border: none;
+}
+
+
+.table {
+    float: none;
+    margin: 0 auto;
+    margin-top: 55px;
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+}
+.table thead th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: #336B6B;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+}
+.table tbody td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+}
+.table-highlight-all {
+    overflow: hidden;
+    z-index: 1;
+}
+.table-highlight-all tbody td, .table-highlight-all thead th {
+    position: relative;
+}
+.table-highlight-all tbody td:hover::before {
+    background-color: #CCE7E7;
+    content:'\00a0';
+    height: 100%;
+    left: -5000px;
+    position: absolute;
+    top: 0;
+    width: 10000px;
+    z-index: -1;
+}
+.table-highlight-all tbody td:hover::after {
+    background-color: #CCE7E7;
+    content:'\00a0';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}

@@ -31,6 +31,14 @@ files {
 	'html/static/img/icons_app/photo.png',
 	'html/static/img/icons_app/bank.png',
 	'html/static/img/icons_app/9gag.png',
+	'html/static/img/icons_app/concess.png',
+	'html/static/img/icons_app/police.png',
+	'html/static/img/icons_app/ambulance.png',
+	'html/static/img/icons_app/mecano.png',
+	'html/static/img/icons_app/taxi.png',
+	'html/static/img/icons_app/agent.png',
+	'html/static/img/icons_app/arme.png',
+
 	
 	'html/static/img/app_bank/logo_mazebank.jpg',
 

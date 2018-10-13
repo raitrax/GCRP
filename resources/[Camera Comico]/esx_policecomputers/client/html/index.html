@@ -1,0 +1,54 @@
+<html>
+    <head>
+		<link href="assets/app.css" rel="stylesheet" type="text/css" />
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+	
+		<style>
+            .general {display: none;}
+			.main {display: none;}
+			.anpr {display: none;}
+			.auth-error-message {display: none;}
+		</style>
+		
+
+	
+	</head>
+
+    <body>
+		<div class="general">
+			<div class="main">            
+				<h1><b>L</b>os <b>S</b>antos <b>P</b>olice <b>D</b>epartment</h1>
+				<h2 class="subtitle">SYSTÈME <font color="red">A.N.P.R</font></h2>
+				<div class="auth">
+					<form method="POST">
+
+						<label for="username">Nom d'utilisateur</label>
+						<input type="text" class="form-auth" id="username" placeholder="Entrez votre nom d'utilisateur"><br />
+
+						<label for="password">Mot de passe</label>
+						<input type="password" class="form-auth" id="password" placeholder="Entrez votre mot de passe"><br />
+
+						<div class="auth-error-message"><p><font color="red">Une erreur c'est produite</font>,<br> identifiants incorrectes.</p></div>
+
+						<a class="btn submit" id="submit-form">connexion à mon compte</a>
+
+					</form>
+				</div>
+				<div class="about">
+					<h2>Information</h2>
+					<ul>
+						<li><p><u>Obtenez vos identifiants</u> avec, le <b>chef de la police</b></p></li>
+					</ul>
+				</div>
+				<div class="anpr">
+						<br /><br />
+						
+				</div>
+				<button class="btn exitcomputer" id="exitcomputer">Fermer la session</button>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="assets/app.js"></script>
+</html>

@@ -495,25 +495,73 @@ function OpenCloakroomMenu()
 
       menu.close()
 
-      if data.current.value == 'citizen_wear' then
+    	--Taken from SuperCoolNinja
+			if data.current.value == 'citizen_wear' then
 
-        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-          TriggerEvent('skinchanger:loadSkin', skin)
-        end)
+            ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
-      end
+            if skin.sex == 0 then
+
+                local model = GetHashKey("mp_m_freemode_01")
+                    RequestModel(model)
+                    while not HasModelLoaded(model) do
+                        RequestModel(model)
+                        Citizen.Wait(0)
+                    end
+
+                    SetPlayerModel(PlayerId(), model)
+                    SetModelAsNoLongerNeeded(model)
+                    TriggerEvent('skinchanger:loadSkin', skin)
+                    TriggerEvent('esx:restoreLoadout')
+
+            else
+                    local model = GetHashKey("mp_f_freemode_01")
+
+                    RequestModel(model)
+                    while not HasModelLoaded(model) do
+                        RequestModel(model)
+                        Citizen.Wait(0)
+                    end
+
+                    SetPlayerModel(PlayerId(), model)
+                    SetModelAsNoLongerNeeded(model)
+                    TriggerEvent('skinchanger:loadSkin', skin)
+                    TriggerEvent('esx:restoreLoadout')
+                    end
+
+                end)
+            end
 
       if data.current.value == 'ambulance_wear' then
 
-        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
-          if skin.sex == 0 then
-            TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
-          else
-            TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
-          end
+if skin.sex == 0 then
 
-        end)
+local model = GetHashKey("s_m_m_paramedic_01")
+
+RequestModel(model)
+while not HasModelLoaded(model) do
+RequestModel(model)
+Citizen.Wait(0)
+end
+
+SetPlayerModel(PlayerId(), model)
+SetModelAsNoLongerNeeded(model)
+else
+local model = GetHashKey("s_m_m_paramedic_01")
+
+RequestModel(model)
+while not HasModelLoaded(model) do
+RequestModel(model)
+Citizen.Wait(0)
+end
+
+SetPlayerModel(PlayerId(), model)
+SetModelAsNoLongerNeeded(model)
+end
+
+end)
 
       end
 
