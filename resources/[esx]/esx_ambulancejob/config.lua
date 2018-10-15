@@ -3,7 +3,7 @@ Config                            = {}
 Config.DrawDistance               = 100.0
 Config.MarkerColor                = { r = 102, g = 0, b = 102 }
 Config.MarkerSize                 = { x = 1.5, y = 1.5, z = 1.0 }
-Config.ReviveReward               = 200 -- revive reward, set to 0 if you don't want it enabled
+Config.ReviveReward               = 800 -- revive reward, set to 0 if you don't want it enabled
 Config.AntiCombatLog              = true -- enable anti-combat logging?
 Config.LoadIpl                    = false -- disable if you're using fivem-ipl or other IPL loaders
 Config.Locale                     = 'fr'
@@ -34,7 +34,7 @@ Config.ShowDeathTimer               = true
 Config.EarlyRespawn                 = false
 -- The player can have a fine (on bank account)
 Config.RespawnFine                  = true
-Config.RespawnFineAmount            = 0
+Config.RespawnFineAmount            = 1000
 
 Config.Blip = {
   Pos     = {x = 289.33529663086,y = -610.91461181641,z = 42.377620697021 },

@@ -355,22 +355,22 @@ local function SellBody(source)
 			else
 				xPlayer.removeInventoryItem('organ_pooch', 1)
 				if CopsConnected == 0 then
-                    xPlayer.addAccountMoney('black_money', 7000)
+                    xPlayer.addAccountMoney('black_money', 18000)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_body'))
                 elseif CopsConnected == 1 then
-                    xPlayer.addAccountMoney('black_money', 8000)
+                    xPlayer.addAccountMoney('black_money', 19000)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_body'))
                 elseif CopsConnected == 2 then
-                    xPlayer.addAccountMoney('black_money', 9000)
+                    xPlayer.addAccountMoney('black_money', 20000)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_body'))
                 elseif CopsConnected == 3 then
-                    xPlayer.addAccountMoney('black_money', 10000)
+                    xPlayer.addAccountMoney('black_money', 21000)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_body'))
                 elseif CopsConnected == 4 then
-                    xPlayer.addAccountMoney('black_money', 11000)
+                    xPlayer.addAccountMoney('black_money', 22000)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_body'))
                 elseif CopsConnected >= 5 then
-                    xPlayer.addAccountMoney('black_money', 15000)  
+                    xPlayer.addAccountMoney('black_money', 23000)  
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_body'))
                 end
 				
