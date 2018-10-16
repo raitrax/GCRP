@@ -1,0 +1,226 @@
+									Wait(25)
+Citizen.CreateThread(function()
+							--Wait(500)
+		local pos = GetEntityCoords(playerPed)
+			local entityWorld = GetOffsetFromEntityInWorldCoords(playerPed, 0.0, 20.0, 0.0)
+			local rayHandle = CastRayPointToPoint(pos.x, pos.y, pos.z, entityWorld.x, entityWorld.y, entityWorld.z, 10, playerPed, 0)
+			local a, b, c, d, target = GetRaycastResult(rayHandle)	
+			
+							if target == 0 then
+					aiming, target = GetPlayerTargetEntity(PlayerId(), Citizen.ReturnResultAnyway())
+					end
+					
+	
+					
+					if target == 0 then
+					target = GetMeleeTargetForPed(playerPed)
+					end
+					
+
+					
+					if target == 0 then
+					aiming, target = GetEntityPlayerIsFreeAimingAt(PlayerId(), Citizen.ReturnResultAnyway())
+					end
+					
+					veh = 0
+
+						youflyrel = GetPedRelationshipGroupHash(target)
+					
+						
+				
+						local playerCoords = GetEntityCoords(target)
+		local playerCoords2 = GetEntityCoords(playerPed)
+		
+		if(Vdist( playerCoords.x, playerCoords.y, playerCoords.z, playerCoords2.x, playerCoords2.y, playerCoords2.z) < 5) then
+		return void
+		end
+				
+
+				
+						if GetVehiclePedIsIn(target, false) ~= 0 then
+						target = GetVehiclePedIsIn(target, false)
+						SetPlayerWantedLevel(PlayerId(-1),GetPlayerWantedLevel(PlayerId(-1)) + 1,false)
+						end		
+	if tcard == false then
+tcard = true
+						lib = "melee@knife@streamed_core"
+anim = "knife_short_range_0"
+ RequestAnimDict(lib)
+			while not HasAnimDictLoaded(lib) do
+				Citizen.Wait(1)
+			end
+--TaskPlayAnim(GetPlayerPed(-1), lib, anim, 5.0, -1, -1, 0, 0, false, false, false)
+
+TaskPlayAnim(GetPlayerPed(-1), lib, anim, 5.0, -1, -1, 50, 0, false, false, false)
+
+Citizen.CreateThread(function()
+Wait(750)
+StopEntityAnim(GetPlayerPed(-1), anim, lib, 1.0)
+tcard = false
+end)
+
+end
+
+-- Wait(150)
+
+local myPed = GetPlayerPed(-1) 
+
+
+thisx = GetEntityForwardX(myPed)
+thisy = GetEntityForwardY(myPed)
+
+ --if tostring(ent) == "0" then
+	 
+
+--else	
+
+-- Chat(IsPlayerFreeAiming(PlayerId()))
+
+
+
+
+--	for i = 1, 10 do
+
+math.randomseed(1234)
+
+-- Wait(math.random()*10)
+
+			--	local playerPed = GetPlayerPed(-1)
+				
+				  xp, yp, zp = table.unpack(GetEntityCoords(myPed, true))
+											thisx = GetEntityForwardX(playerPed)
+				thisy = GetEntityForwardY(playerPed)
+		
+		RequestModel("prop_cs_business_card")
+		while not HasModelLoaded("prop_cs_business_card") do
+			Wait(0)
+		end
+
+		local object
+	 object = CreateObject("prop_cs_business_card", xp + thisx * 1.1, yp + thisy * 1.1, zp +.55, true, true, true)
+	 
+	 
+	 
+	 ger1,ger2,ger3 = table.unpack(GetEntityRotation(playerPed,1))
+	 SetEntityRotation(object,ger1 + 45.0,ger2,ger3 + 90.0,1,true)
+	 
+		
+		 SetEntityVisible(object, false, false)
+		
+		-- PlaceObjectOnGroundProperly(object)
+	
+	SetEntityHasGravity(object, false)
+
+-- scr_paletoscore
+		RequestNamedPtfxAsset("scr_paletoscore")
+		while not HasNamedPtfxAssetLoaded("scr_paletoscore") do
+			RequestNamedPtfxAsset("scr_paletoscore")
+			Wait(0)
+		end
+-- cs_paleto_blowtorch
+		SetPtfxAssetNextCall("scr_paletoscore")
+		local thisfx
+		thisfx = StartParticleFxLoopedOnEntity("cs_paleto_blowtorch", object, 0.0, 0.0, 0.0, 90.0, 0.0, 0.0, 10.0, false, false, false);
+		
+		table.insert(fx,thisfx)
+	
+				table.insert(objects, object)
+				
+						 TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 5, 'FlameMagic', 1.0)
+				
+				
+				for i=1,10 do
+
+				
+		ApplyForceToEntity(object, 1, thisx * 2000.0,thisy * 2000.0,(tonumber(GetGameplayCamRelativePitch())) * 100.0,0,0,0, 0, false, false, false, false, false);
+		
+			Wait(0)
+			
+		TriggerServerEvent('Savelog',tostring(HasEntityCollidedWithAnything(object)) .. "beans")
+	--	DrawSprite("speedo", "speedom_003", 0.898,0.752,0.16,0.245, 0.0, 255, 255, 255, 255)
+		
+	
+
+				if HasEntityCollidedWithAnything(object) == 1 then
+				TriggerServerEvent('Savelog',tostring(HasEntityCollidedWithAnything(object)) .. "rice")
+
+				
+
+											
+					
+					if target ~=0 then
+					
+					NetworkExplodeVehicle(target,true, true, true)
+					--	ApplyDamageToPed(target,GetRandomIntInRange(1,1))
+						-- PrintChatMessage("MARVEL RANGED")
+						-- TaskCombatPed(target, GetPlayerPed(-1), 0, 16)
+									for i=1,10 do
+			if DoesEntityExist(target) then
+		--	SetPedToRagdoll(target,1000,1000,0,0,0,0)
+		--	thisapply = ApplyForceToEntity(target, 1, thisx * 500.0,thisy * 500.0,campitch,0,0,0, 0, false, false, false, false, false);
+			end
+		end
+		  --youflyrel = GetPedRelationshipGroupHash(target)
+							if IsEntityDead(target) then
+									v = false
+								if youflyrel == GetHashKey("CIVMALE") then
+									v = true
+									tc = "civmale"
+								end
+								if youflyrel == GetHashKey("CIVFEMALE") then
+									tc = "civfemale"
+									v = true 
+								end
+								if youflyrel == GetHashKey("COP") then
+									tc = "cop"
+									v = true 
+								end
+								
+								AddRelationshipGroup("villains")
+								if v == true then
+									if GetPedRelationshipGroupHash(playerPed) ~= GetHashKey("villains") then
+									--	SetPlayerWantedLevel(PlayerId(),5)
+									Wait(1000)
+											SetPedRelationshipGroupHash(playerPed,GetHashKey("villains"))
+									--	SetPoliceIgnorePlayer(PlayerId(-1),false)
+										PrintChatMessage("Flagged as villain for three minutes " .. tc)
+										SetMaxWantedLevel(5)
+										SetPlayerWantedLevel(PlayerId(),2,true)
+										Citizen.CreateThread(function()
+											Wait(180000)
+											SetPedRelationshipGroupHash(playerPed,GetHashKey("hero"))
+											SetMaxWantedLevel(PlayerId(),1,true)
+										--	SetPoliceIgnorePlayer(PlayerId(-1),true)
+										end)
+									end
+								end
+							end
+						end
+						
+
+						
+					
+										
+  xo, yo, zo = table.unpack(GetEntityCoords(object, true))
+ AddExplosion(xo, yo, zo, 2, .1, true, false, true)								
+StopParticleFxLooped(thisfx,true)
+ Wait(1)
+DeleteEntity(object)
+break
+end
+						
+					end
+		
+		
+	
+--Wait(750)
+	
+
+
+--Wait(750)
+StopParticleFxLooped(thisfx,true)
+ Wait(1)
+DeleteEntity(object)
+
+
+end)

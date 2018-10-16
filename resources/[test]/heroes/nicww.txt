@@ -1,0 +1,561 @@
+local Keys = {
+	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, 
+	["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177, 
+	["TAB"] = 37, ["Q"] = 44, ["W"] = 32, ["E"] = 38, ["R"] = 45, ["T"] = 245, ["Y"] = 246, ["U"] = 303, ["P"] = 199, ["["] = 39, ["]"] = 40, ["ENTER"] = 18,
+	["CAPS"] = 137, ["A"] = 34, ["S"] = 8, ["D"] = 9, ["F"] = 23, ["G"] = 47, ["H"] = 74, ["K"] = 311, ["L"] = 182,
+	["LEFTSHIFT"] = 21, ["Z"] = 20, ["X"] = 73, ["C"] = 26, ["V"] = 0, ["B"] = 29, ["N"] = 249, ["M"] = 244, [","] = 82, ["."] = 81,
+	["LEFTCTRL"] = 36, ["LEFTALT"] = 19, ["SPACE"] = 22, ["RIGHTCTRL"] = 70, 
+	["HOME"] = 213, ["PAGEUP"] = 10, ["PAGEDOWN"] = 11, ["DELETE"] = 178,
+	["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173,["UP"] = 27,
+	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
+}
+
+local t = {}
+
+local ropes = {}
+
+local noflag = false
+
+local cig = {}
+
+local cigfx = {}
+
+local objectcount = 0
+
+local powercalled = false
+
+local ssranks = 0.1
+
+RegisterNetEvent('ww')
+
+RegisterNetEvent('wwMeleeClientFx')
+
+RegisterNetEvent('wwMezServerFx')
+
+Citizen.CreateThread(function()
+
+
+while true do
+local playerPed = GetPlayerPed(-1)
+
+Wait(25)
+
+x,y,z = GetGameplayCamRot()
+
+		thisx = GetEntityForwardX(playerPed)
+			thisy = GetEntityForwardY(playerPed)
+
+	 speed = GetEntitySpeed(playerPed) *2.236936
+--	speed = "Raycast: " .. tostring(youfly)
+                if speed then
+                        SetTextFont(0)
+                        SetTextProportional(1)
+                        SetTextScale(0.0, 0.55)
+        	        SetTextColour(0, 255, 0, 255)
+        	        SetTextDropshadow(0, 0, 0, 0, 255)
+        	        SetTextEdge(1, 0, 0, 0, 255)
+        	        SetTextDropShadow()
+        	        SetTextOutline()
+        	        SetTextEntry("STRING")
+        	        AddTextComponentString("Speed: " .. speed)
+        	        DrawText(0.005, 0.95)
+					end
+					end
+end)
+
+AddEventHandler('wwMeleeClientFx',function(ppd)
+ if IsPedInMeleeCombat(ppd) == false then
+stopped = true
+StopParticleFxLooped(myfx, true)
+else
+if stopped == true then
+	RequestNamedPtfxAsset("core")
+ while not HasNamedPtfxAssetLoaded("core") do
+  RequestNamedPtfxAsset("core")
+  Wait(0)
+  end
+ SetPtfxAssetNextCall("core")
+myfx = StartParticleFxLoopedOnEntityBone("ent_amb_foundry_molten_pour", ppd, 0.0, 0.0, -0.0, 90.0, 0.0, 0.0,GetPedBoneIndex(ppd,18905),0.5, false, false, false)
+stopped = false
+
+end
+end
+
+end)
+
+AddEventHandler('wwMezClientFx',function(ppd)
+
+
+
+end)
+
+AddEventHandler('ww',function()
+
+if powercalled == true then
+return void
+end
+
+powercalled = true
+-- PrintChatMessage("Step 1")
+
+        Wait(1)
+		skin = "u_f_y_bikerchic"
+		local model = GetHashKey(skin)
+    RequestModel(model)
+    while not HasModelLoaded(model) do -- Wait for model to load
+      RequestModel(model)
+      Citizen.Wait(0)
+    end
+    SetPlayerModel(PlayerId(-1), model)
+    SetModelAsNoLongerNeeded(model)
+	
+	
+	SetPedCombatMovement(playerPed,100)
+		
+	--	SetPlayerTargetingMode(PlayerId())
+		
+local playerPed = GetPlayerPed(PlayerId())
+
+
+PrintChatMessage(tostring(playerPed))
+
+	
+SetPedAccuracy(playerPed, 1000)
+SetPedCombatRange(playerPed, 10)
+
+cbr = GetPedCombatRange(playerPed)
+
+-- PrintChatMessage(tostring(cbr))
+
+  SetEntityProofs(playerPed,  true,             true,           true,               true,                 false,           false,   false,   false)
+--SetEntityProofs(int entity, bool bulletproof, bool fireproof, bool explosionproof, bool collisionproof, bool meleeproof, bool p6, bool p7, bool drownproof)
+   
+        
+        RequestModel("prop_ballistic_shield")
+      --  RequestModel("w_me_poolcue")
+        while not HasModelLoaded("prop_ballistic_shield") do
+           Wait(1)
+        end
+    while not y do
+        x, y, z = table.unpack(GetEntityCoords(playerPed, true))
+		end
+	--  PrintChatMessage(tostring(y))
+		y = tonumber(y)
+        local object = CreateObject("prop_ballistic_shield", x, y+2, z, true, true, true)
+        PlaceObjectOnGroundProperly(object)
+		-- Wait(10000)
+		  AttachEntityToEntity(object, playerPed, GetPedBoneIndex(playerPed,18905), 0.0, 0.0, 0.0, 0.0, 160.0, 0.0, false, false, false, true, 2, true)
+		--AttachEntityToEntity(object, playerPed, GetPedBoneIndex(playerPed,57005), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, bool p9, bool isrelative, bool collision, bool allowrotation, int boneindexent1, bool fixedrot)
+	--	 AttachEntityToEntityPhysically(object, playerPed, 2, GetPedBoneIndex(playerPed,57005), 0.0, , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, true, true, true, true, 0)
+		
+		
+ -- StartParticleFxLoopedOnEntityBone(, playerPed, 0.0, 0.0, -0.0, 0.0, 0.0, 0.0,GetPedBoneIndex(playerPed,52301),1.0, false, false, false)
+
+ --myfx = StartParticleFxLoopedOnEntity("ent_amb_foundry_molten_pour", object, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, true, true, true)
+		
+		SetEntityHasGravity(object, false)
+	--	SetEntityHasGravity(myfx, false)
+		
+		GiveWeaponToPed(playerPed, GetHashKey("WEAPON_NIGHTSTICK"), 1000, 0, 1)
+
+-- table.insert(ropes,rope)
+
+-- AttachRopeToEntity(rope, ent, x, y, z + 1, true)
+stopped = true
+ 
+-- GiveWeaponToPed(playerPed, GetHashKey("WEAPON_COMBATPISTOL"), 1000, 0, 1)
+ 
+while true do
+
+if IsEntityDead(playerPed) == 1 then
+powercalled = false
+return void
+-- PrintChatMessage("You died.")
+end
+
+   
+					
+
+			local thisx
+			local thisy
+thisy = GetEntityForwardY(playerPed)
+thisx = GetEntityForwardX(playerPed)
+ClearPedBloodDamage(playerPed)
+ClearPedBloodDamage(object)
+SetPlayerWeaponDamageModifier(playerPed, 100.0)
+-- PrintChatMessage(tostring(IsPedInMeleeCombat(playerPed)))
+Wait(0)
+
+
+
+
+----------rope trick----------------------
+
+--aiming, comeere = GetEntityPlayerIsFreeAimingAt(PlayerId(), Citizen.ReturnResultAnyway())
+--youfly = GetMeleeTargetForPed(playerPed)
+
+local pos = GetEntityCoords(playerPed)
+    local entityWorld = GetOffsetFromEntityInWorldCoords(playerPed, 0.0, 20.0, 0.0)
+
+    local rayHandle = CastRayPointToPoint(pos.x, pos.y, pos.z, entityWorld.x, entityWorld.y, entityWorld.z, 10, playerPed, 0)
+    local a, b, c, d, youfly = GetRaycastResult(rayHandle)
+
+SetEntityHasGravity(youfly, true)
+
+			if GetVehiclePedIsIn(youfly, false) == 0 then
+			else
+			youfly = GetVehiclePedIsIn(youfly)
+			SetVehicleUndriveable(youfly, true)
+			SetVehicleEngineOn(youfly,false)
+			SetEntityHasGravity(youfly, true)
+			end
+			
+
+	  
+if IsControlPressed(1,Keys["B"]) then
+
+	  if IsEntityAPed(youfly) == 1 then	
+
+ 	xp, yp, zp = table.unpack(GetEntityCoords(youfly, true))
+		 
+  RequestModel("prop_amb_ciggy_01")
+		while not HasModelLoaded("prop_amb_ciggy_01") do
+			Wait(1)
+		end
+
+		local ciggy = CreateObject("prop_amb_ciggy_01", xp, yp, zp +1, true, true, true)
+		
+		table.insert(cig,ciggy)
+		
+		TriggerServerEvent('wwMezServerFx', PlayerId(-1), playerPed)
+
+			RequestNamedPtfxAsset("core")
+ while not HasNamedPtfxAssetLoaded("core") do
+  RequestNamedPtfxAsset("core")
+  Wait(0)
+  end
+ SetPtfxAssetNextCall("core")
+cigmyfx = StartParticleFxLoopedOnEntity("ent_amb_foundry_molten_pour", ciggy,    0.0,           0.0,          -0.0,        0.0,        0.0,        0.0,        0.5,         false,   false,    false)
+
+table.insert(cigfx,cigmyfx)
+
+
+Wait(0)
+  
+  ApplyForceToEntity(ciggy, 1,0,0,0,0,0,2.0, 0, false, false, false, false, false);
+  
+  Wait(0)
+  
+  SetEntityHasGravity(ciggy, false)
+  SetEntityVisible(ciggy, false,0)
+  
+  
+
+     
+      local animation = 'idle' -- animation to play
+      local flags = 49 -- only play the animation on the upper body
+
+  
+	  Wait(1)
+  
+objectcount = objectcount + 1
+-- PrintChatMessage(tostring(objectcount))
+if objectcount > 50 then
+-- PrintChatMessage(tostring(objectcount))
+Wait(1)
+StopParticleFxLooped(cigfx[objectcount - 50],true)
+ Wait(1)
+DeleteEntity(cig[objectcount - 50])
+else
+-- Wait(1000)
+end
+
+--rintChatMessage("test")
+		   
+		Citizen.CreateThread(function()
+		for i=1,30 do
+		SetPedToRagdoll(youfly,48000,0,3) --3200 = 1 second
+          Wait(1000)
+	--	 PrintChatMessage(tostring(IsAnEntity(ciggy)))
+	if IsAnEntity(ciggy) == 1 then
+		  ApplyForceToEntity(ciggy, 1,0,0,0,0,0,400.0, 0, false, false, false, false, false);
+	end
+	-- SetEntityVelocity(playerPed,0, 0, 20.0)
+		  end
+		  
+		  	if IsAnEntity(ciggy) == 1 then
+			  StopParticleFxLooped(cigmyfx, true)
+		  DeleteEntity(ciggy)
+	end
+
+         end)
+		 
+	
+	--  end
+  end
+  
+ -- table.insert(t,youfly)
+  end
+
+-----------end rope trick-------------
+
+--------------
+
+for i=1,10 do
+-- aiming, comeere = GetEntityPlayerIsFreeAimingAt(PlayerId(), Citizen.ReturnResultAnyway())
+--youfly = GetMeleeTargetForPed(playerPed)
+
+--if comeere == nil and youfly == nil then
+--PrintChatMessage("BEGIN")
+local pos = GetEntityCoords(playerPed)
+    local entityWorld = GetOffsetFromEntityInWorldCoords(playerPed, 0.0, 20.0, 0.0)
+
+    local rayHandle = CastRayPointToPoint(pos.x, pos.y, pos.z, entityWorld.x, entityWorld.y, entityWorld.z, 10, playerPed, 0)
+    local a, b, c, d, youfly = GetRaycastResult(rayHandle)
+	
+	
+
+	Citizen.Trace("Raycast: " .. tostring(youfly))
+
+-- end
+
+SetEntityHasGravity(youfly, true)
+
+
+		--	Citizen.Trace(GetTimeSincePlayerHitVehicle(PlayerId()))
+	comeere = 0
+
+if comeere == 0 then
+else
+youfly = comeere
+end
+
+			if GetVehiclePedIsIn(youfly, false) == 0 then
+		--	comeere = youfly
+			else
+			comeere = GetVehiclePedIsIn(youfly)
+			youfly = GetVehiclePedIsIn(youfly)
+			SetVehicleUndriveable(youfly, true)
+			SetVehicleEngineOn(youfly,false)
+		--	ExplodeVehicle(ent, true, true)
+			SetEntityHasGravity(youfly, true)
+			end
+--
+--mark			
+--		
+if youfly == 0 then
+else
+if IsPedInMeleeCombat(playerPed) == 1 then
+if HasEntityBeenDamagedByEntity(youfly,playerPed,true) then
+if IsEntityAPed(youfly) == 1 then
+thisapply = ApplyForceToEntity(youfly, 1, thisx * 500.0,thisy * 500.0,(tonumber(GetGameplayCamRelativePitch())/ 5),0,0,0, 0, false, false, false, false, false);
+else
+thisapply = ApplyForceToEntity(youfly, 1, thisx * 5000.0,thisy * 5000.0, 1000.0 ,0,0,180.0, 0, false, false, false, false, false);
+end
+SetPedToRagdoll(youfly,1000,1000,0,0,0,0)
+end
+
+end
+end
+end
+--------------
+
+TriggerServerEvent('wwMeleeServerFx', PlayerId(-1), playerPed)
+
+
+-------------flight---------------------
+SetSuperJumpThisFrame(PlayerId())
+
+
+-- PrintChatMessage(tostring(wwflight))
+
+stateI = false
+	
+			--	Chat(heading)
+	
+	local playerPed = GetPlayerPed(-1)
+--	mach 6.7
+
+
+--1/10000th speed of light	SetEntityMaxSpeed(playerPed, 33480.0) 
+	
+	
+	
+	 GiveWeaponToPed(playerPed, GetHashKey("GADGET_PARACHUTE"), 1000, 0, 1)
+	-- Chat(GetEntityForwardX(playerPed))
+	-- Chat(GetEntityForwardY(playerPed))
+	if tostring(GetPedParachuteState(playerPed)) == "-1" then
+	
+
+	
+	wwflight = 1.5
+	
+	SetPedCanRagdoll(GetPlayerPed(-1),false)
+ if stateI == true then
+ -- Chat("stateI true - setting to false no INVINCE")
+  stateI = false
+  end
+else
+
+ -- SetEntityPhysicsHeading(playerPed, GetGameplayCamRelativeHeading())
+
+
+ if stateI == false then
+ -- Chat("stateI false - setting to true NO INVINCE")
+   stateI = true
+   end
+   		if stateI == true then
+		
+			thisx = GetEntityForwardX(playerPed)
+			thisy = GetEntityForwardY(playerPed)
+			
+			reset = true
+		
+			if IsControlPressed(1,Keys["W"]) then
+			wwflight = wwflight + .1
+			reset = false
+			 SetEntityMaxSpeed(playerPed, 5000.279661107873) 
+		SetPedGravity(playerPed,20)
+			--	GivePlayerRagdollControl(PlayerId(),true)
+				SetSuperJumpThisFrame(PlayerId())
+				for i = 1, 10 do
+				SetPedCanRagdoll(GetPlayerPed(-1),false)
+				GivePlayerRagdollControl(PlayerId(),true)
+				 ApplyForceToEntity(GetPlayerPed(-1), 1, thisx * wwflight,thisy * wwflight,0,0,0,0, 0, false, false, false, false, false);
+				--	SetVehicleForwardSpeed(GetPlayerPed(-1),500.55);	
+				end
+			end
+			
+			if IsControlPressed(1,Keys["X"]) then
+			wwflight = wwflight + .1
+			reset = false
+			 SetEntityMaxSpeed(playerPed, 5000.279661107873) 
+			SetPedCanRagdoll(GetPlayerPed(-1),false)
+		SetPedGravity(playerPed,20)
+		--		GivePlayerRagdollControl(PlayerId(),true)
+				for i = 1, 10 do
+				SetPedCanRagdoll(GetPlayerPed(-1),false)
+				GivePlayerRagdollControl(PlayerId(),true)
+					ApplyForceToEntity(GetPlayerPed(-1), 1, 0,0,wwflight * -1,0,0,0, 0, false, false, false, false, false);
+				--	SetVehicleForwardSpeed(GetPlayerPed(-1),500.55);
+					
+				end
+			end
+			 
+			if IsControlPressed(1,Keys["S"]) then
+			wwflight = wwflight + .1
+			 SetEntityMaxSpeed(playerPed, 5000.279661107873) 
+			reset = false
+	SetPedGravity(playerPed,20)
+		--		GivePlayerRagdollControl(PlayerId(),true)
+				for i = 1, 10 do
+				SetPedCanRagdoll(GetPlayerPed(-1),false)
+				GivePlayerRagdollControl(PlayerId(),true)
+					 ApplyForceToEntity(GetPlayerPed(-1), 1, thisx * wwflight,thisy * wwflight,wwflight,0,0,0, 0, false, false, false, false, false);
+				--	SetVehicleForwardSpeed(GetPlayerPed(-1),500.55);
+
+				end
+			end
+
+	
+			
+   			SetPedCanRagdoll(GetPlayerPed(-1),false)
+	    end
+		
+SetPedCanRagdoll(GetPlayerPed(-1),false)
+
+
+ end
+
+		SetSuperJumpThisFrame(PlayerId())
+		if IsControlPressed(1,Keys["SPACE"]) then
+					wwflight = wwflight + .1
+					reset = false
+			 SetEntityMaxSpeed(playerPed, 5000.279661107873) 
+	--	Chat("Jumping")
+		SetPedGravity(playerPed,20)
+			--	GivePlayerRagdollControl(PlayerId(),true)
+				for i = 1, 10 do
+				SetPedCanRagdoll(GetPlayerPed(-1),false)
+				GivePlayerRagdollControl(PlayerId(),true)
+					ApplyForceToEntity(GetPlayerPed(-1), 1,0,0,wwflight,0,0,0, 0, false, false, false, false, false);
+				--	SetVehicleForwardSpeed(GetPlayerPed(-1),500.55);
+					
+				end
+			end
+			
+						
+			if reset == true then
+			wwflight = 1.50
+			end
+
+----------------------end flight-----------------------		
+
+------------ss---------------------
+-- almost mach 1
+
+running = false
+ 
+			
+							if IsPedSprinting(playerPed) == 1 then
+							running = true
+							ssranks = ssranks + .01
+					if IsControlPressed(1,Keys["W"]) then
+					SetPedCanRagdoll(GetPlayerPed(-1),false)
+			flyranks = 11
+		--	Chat(flyranks)
+			thisx = GetEntityForwardX(playerPed)
+			thisy = GetEntityForwardY(playerPed)
+		SetPedGravity(playerPed,20)
+			--	GivePlayerRagdollControl(PlayerId(),true)
+				for i = 1, 10 do
+				SetPedCanRagdoll(GetPlayerPed(-1),false)
+				GivePlayerRagdollControl(PlayerId(),true)
+				 ApplyForceToEntity(GetPlayerPed(-1), 1, thisx * ssranks,thisy * ssranks,0,0,0,0, 0, false, false, false, false, false);
+				--	SetVehicleForwardSpeed(GetPlayerPed(-1),500.55);	
+				end
+				end
+				end
+		
+		if IsPedRunning(playerPed) == 1 then
+		running = true
+		ssranks = ssranks + .01
+			if IsControlPressed(1,Keys["W"]) then
+			SetPedCanRagdoll(GetPlayerPed(-1),false)
+			flyranks = 10
+	--		Chat(flyranks)
+			thisx = GetEntityForwardX(playerPed)
+			thisy = GetEntityForwardY(playerPed)
+		SetPedGravity(playerPed,20)
+			--	GivePlayerRagdollControl(PlayerId(),true)
+				for i = 1, 10 do
+				SetPedCanRagdoll(GetPlayerPed(-1),false)
+				GivePlayerRagdollControl(PlayerId(),true)
+				 ApplyForceToEntity(GetPlayerPed(-1), 1, thisx * ssranks,thisy * ssranks,0,0,0,0, 0, false, false, false, false, false);
+				end
+				end
+				end
+				
+				if running == false then
+				ssranks = 10.0
+				end
+
+end
+
+---------------end ss----------------
+		
+
+		-- Wait(10000)
+		
+		      local myPed = GetPlayerPed(-1) 
+   	  			thisx = GetEntityForwardX(myPed)
+			thisy = GetEntityForwardY(myPed)
+
+			SetEntityHasGravity(object, true)
+		-- Wait(5000)
+		-- ApplyForceToEntity(object, 1, thisx * 2048.1,thisy * 2048.1,16384.1,0,0,0, 0, false, false, false, false, false);
+end)
+
+function PrintChatMessage(text)
+    TriggerEvent('chatMessage', "system", { 255, 0, 0 }, text)
+end
