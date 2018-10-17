@@ -43,7 +43,7 @@ settings["fr"] = {
 }
 
 
-showBar = false
+showBar = true
 showText = false
 
 
