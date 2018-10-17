@@ -8,7 +8,7 @@ RegisterServerEvent('HulkMeleeServer')
 AddEventHandler('chatMessage', function(source, n, message) -- capture 'chatMessage' events
   local args = stringsplit(message, " ") -- Split the message up into an array of words
  
- --[[if (args[1] == "/wonderwoman") then -- if the first "word" is /cuff
+ if (args[1] == "/wonderwoman") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
 	if not args[2] then
       TriggerClientEvent('ww',source, "") -- Sends event 'mHandCuff' to playerID
@@ -51,7 +51,7 @@ AddEventHandler('chatMessage', function(source, n, message) -- capture 'chatMess
 	  else
 	   TriggerClientEvent('hulk', source, args[2]) -- Sends event 'mHandCuff' to playerID
 	   end
-   end]]--
+   end
    
           if (args[1] == "/reverseflash") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
@@ -62,7 +62,7 @@ AddEventHandler('chatMessage', function(source, n, message) -- capture 'chatMess
 	   end
    end
    
-       --[[if (args[1] == "/deathstroke") then -- if the first "word" is /cuff
+       if (args[1] == "/deathstroke") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
 	if not args[2] then
       TriggerClientEvent('ds',source, "") -- Sends event 'mHandCuff' to playerID
@@ -131,7 +131,7 @@ AddEventHandler('chatMessage', function(source, n, message) -- capture 'chatMess
 	  else
 	   TriggerClientEvent('gb', source, args[2]) -- Sends event 'mHandCuff' to playerID
 	   end
-   end]]--
+   end
    
         if (args[1] == "/supergirl") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
@@ -142,21 +142,21 @@ AddEventHandler('chatMessage', function(source, n, message) -- capture 'chatMess
 	   end
    end
    
-        --[[if (args[1] == "/loki") then -- if the first "word" is /cuff
+        if (args[1] == "/loki") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
       if not args[2] then
       TriggerClientEvent('loki',source, "") -- Sends event 'mHandCuff' to playerID
 	  else
 	   TriggerClientEvent('loki', source, args[2]) -- Sends event 'mHandCuff' to playerID
 	   end
-   end]]--
+   end
    
         if (args[1] == "/flash") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
       TriggerClientEvent('fla', source) -- Sends event 'mHandCuff' to playerID
    end
    
-           --[[if (args[1] == "/juggernaut") then -- if the first "word" is /cuff
+           if (args[1] == "/juggernaut") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
       TriggerClientEvent('jg', source) -- Sends event 'mHandCuff' to playerID
    end
@@ -164,7 +164,7 @@ AddEventHandler('chatMessage', function(source, n, message) -- capture 'chatMess
       if (args[1] == "/magneto") then -- if the first "word" is /cuff
     CancelEvent() -- dont pass this chat message further, we're handling it
       TriggerClientEvent('mag', source) -- Sends event 'mHandCuff' to playerID
-   end ]]--
+   end
    
 end)
 
