@@ -65,22 +65,12 @@ function OpenCloakroomMenu()
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'specialagent' then --Nightwing
     table.insert(elements, {label = 'Nightwing', value = 'nightwing'})
   end
-<<<<<<< HEAD
   
   if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
     --table.insert(elements, {label = 'batman', value = 'batman'})
     table.insert(elements, {label = 'Batman', value = 'BatmanAK'})
   end
   
-=======
-	
-	if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then --Batman
-    table.insert(elements, {label = 'batman', value = 'batman'})
-    table.insert(elements, {label = 'BatmanBVS ', value = 'BatmanBVS'})
-    table.insert(elements, {label = 'The Batman', value = 'BlackPantherIW'})
-	end
-	
->>>>>>> parent of c84efe8... supp batmanbvs
 
   ESX.UI.Menu.CloseAll()
   
