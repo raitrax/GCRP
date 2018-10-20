@@ -16,7 +16,6 @@ server_scripts {
 	'locales/fi.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'locales/cs.lua',
 
 	'config.lua',
 	'config.weapons.lua',
@@ -40,7 +39,6 @@ client_scripts {
 	'locales/fi.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'locales/cs.lua',
 
 	'config.lua',
 	'config.weapons.lua',
@@ -62,7 +60,6 @@ ui_page {
 }
 
 files {
-	'locale.js',
 	'html/ui.html',
 
 	'html/css/app.css',

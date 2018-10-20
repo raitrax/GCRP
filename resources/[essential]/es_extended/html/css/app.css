@@ -12,128 +12,21 @@ html {
   overflow: hidden;
 }
 
-#cursor {
-  position: absolute;
-  z-index: 999999;
-  display:  none;
-}
-
 #hud {
   position   : absolute;
   font-family: 'Pricedown';
+  font-size  : 35px;
   color      : white;
-  padding    : 0px 20px 5px;
+  padding    : 4px;
   text-shadow:
-    -1px -1px 0 rgba(0,0,0,0.5),
-     1px -1px 0 rgba(0,0,0,0.5),
-    -1px  1px 0 rgba(0,0,0,0.5),
-     1px  1px 0 rgba(0,0,0,0.5);
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 
-  text-align: center;
-  top       : 0;
-  left     : 0;
-  right : 0;
-  height:35px;
-	z-index:12;
-}
-#hud div {
-	text-align:left;
-	font-size  : 25px;
-	display:inline-block;
-	margin-right:30px;
-	position:absolute;
-	top:0;
-	padding:2px 5px;
-	min-width:150px;
-	text-align:center;
-	opacity:0.7;
-}
-#hud .ico{
-	font-size:20px;
-	vertical-align:middle
-} 
-#hud div:nth-child(1){
-	left:30%;
-}
-#hud div:nth-child(2){
-	left:50%;
-}
-#hud div:nth-child(3){
-	left:60%;
-	font-size:20px;
-	padding-top:5px;
-}
-#hud div:nth-child(4){
-	left:70%;
-}
-
-#hud div img{
-	vertical-align:middle;
-	width:25px;
-}
-#hud div.hide{
-	display:none;
-}
-#bg1{
-	position:absolute;
-	background:rgba(0,0,0,0.2);
-	top:0;
-	height:40px;
-	left:0;
-	right:100%;
-	z-index:1;
-}
-#bg2{
-	position:absolute;
-	background:rgba(0,0,0,0.2);
-	top:0;
-	height:40px;
-	right:0;
-	left:0%;
-	z-index:1;
-}
-
-/* #hud { */
-  /* position   : absolute; */
-  /* font-family: 'Pricedown'; */
-  /* font-size  : 35px; */
-  /* color      : white; */
-  /* padding    : 4px; */
-  /* text-shadow: */
-    /* -1px -1px 0 #000, */
-     /* 1px -1px 0 #000, */
-    /* -1px  1px 0 #000, */
-     /* 1px  1px 0 #000; */
-
-  /* text-align: center; */
-  /* top       : 40; */
-  /* right     : 50; */
-/* } */
-
-
-#discord {
-	position:absolute;
-	font-family: 'bankgothic';
-	font-size  : 15px;
-	top       : 11px;
-	right     : 100px;
-	color:#f4d442;
-	opacity:0.5;
-	z-index:13;
-}
-
-#logo {
-	position:absolute;
-	font-size  : 25px;
-	top       : 3px;
-	left     : 50px;
-	color:#fff;
-	opacity:0.5;
-	z-index:13;
-	font-family: 'Pricedown';
-}
-#logo img{
-	width:100%;
+  text-align: right;
+  top       : 80;
+  right     : 40;
 }
 
 #inventory_notifications {
@@ -154,7 +47,7 @@ html {
 .menu {
     font-family: 'Open Sans', sans-serif;
     min-width       : 400px;
-    min-height:     : 250px;
+    min-height      : 250px;
     color           : #fff;
     position        : absolute;
     left            : 40;
