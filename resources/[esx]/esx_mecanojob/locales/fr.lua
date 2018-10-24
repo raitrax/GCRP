@@ -1,5 +1,5 @@
 Locales['fr'] = {
-  ['mechanic']                  = 'mecano',
+  ['mechanic']                  = "Benny's",
   ['drive_to_indicated']        = '~y~Conduisez~s~ jusqu\'à l\'endroit indiqué',
   ['mission_canceled']          = 'Mission ~r~annulée~s~',
   ['vehicle_list']              = 'sortir Véhicule',
@@ -29,7 +29,6 @@ Locales['fr'] = {
   ['repair']                    = 'réparer',
   ['clean']                     = 'nettoyer',
   ['impound']                   = 'fourrière',
-  ['imp_veh']                   = 'Mettre le véhicule en fourrière',
   ['place_objects']             = 'placer objets',
   ['invoice_amount']            = 'montant de la facture',
   ['amount_invalid']            = 'montant invalide',
@@ -82,5 +81,4 @@ Locales['fr'] = {
   ['you_removed']               = 'vous avez retiré x',
   ['you_added']                 = 'Vous avez ajouté x',
   ['player_cannot_hold']        = 'you do ~r~not~w~ have enough ~y~free space~w~ in your inventory!',
-  ['kia']                       = 'véhicule de prêt',
 }

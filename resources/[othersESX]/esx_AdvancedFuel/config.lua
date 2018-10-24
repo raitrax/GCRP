@@ -43,13 +43,8 @@ settings["fr"] = {
 }
 
 
-<<<<<<< HEAD
-showBar = true
-showText = false
-=======
 showBar = false
 showText = true
->>>>>>> parent of ffe9b16... Hud + Fuel + carmod
 
 
 hud_form = 2 -- 1 : Vertical | 2 = Horizontal

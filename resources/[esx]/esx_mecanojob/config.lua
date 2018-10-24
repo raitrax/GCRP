@@ -5,46 +5,46 @@ Config.EnablePlayerManagement     = true
 Config.EnableSocietyOwnedVehicles = false
 Config.NPCSpawnDistance           = 500.0
 Config.NPCNextToDistance          = 25.0
-Config.NPCJobEarnings             = { min = 50, max = 250 }
+Config.NPCJobEarnings             = { min = 15, max = 40 }
 Config.Locale                     = 'fr'
 
 Config.Zones = {
   MecanoActions = {
-    Pos   = { x = -206.54887390197, y = -1331.3979492188, z = 33.89164352417 },
+    Pos   = { x = -206.56454467773, y = -1331.6457519531, z = 33.894367218018 }, --- point tenue véhicules
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   Garage = {
-    Pos   = { x = -197.06440734863, y = -1319.6019287109, z = 30.089345932007 },
+    Pos   = { x = -227.34460449219, y = -1329.1387939453, z = 29.890390396118 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   Craft = {
-    Pos   = { x = -339.98764038086, y = -1466.2784423828, z = 29.59801864624 },
+    Pos   = { x = -196.37339782715, y = -1318.0704345703, z = 30.08934211731 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   VehicleSpawnPoint = {
-    Pos   = { x = -222.95542907715, y = -1291.3491210938, z = 31.295965194702 },
+    Pos   = { x = -186.84483337402, y = -1290.2495117188, z = 30.295980453491 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Type  = -1,
   },
 
   VehicleDeleter = {
-    Pos   = { x = -235.82666015625, y = -1268.8059082031, z = 30.295967102051 },
+    Pos   = { x = -226.8896484375, y = -1283.3486328125, z = 30.295967102051	},
     Size  = { x = 3.0, y = 3.0, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
   VehicleDelivery = {
-    Pos   = { x = -382.925, y = -133.748, z = 36.685 },
+    Pos   = { x = -223.95269775391, y = -1303.6076660156, z = 30.269287109375 },
     Size  = { x = 20.0, y = 20.0, z = 3.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = -1,

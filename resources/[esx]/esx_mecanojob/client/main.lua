@@ -165,8 +165,7 @@ function OpenMecanoActionsMenu()
 
             local elements = {
               {label = _U('flat_bed'), value = 'flatbed'},
-              {label = _U('tow_truck'), value = 'towtruck'},
-              {label = _U('kia'), value = 'optima'}
+              {label = _U('tow_truck'), value = 'towtruck2'}
             }
 
             if Config.EnablePlayerManagement and PlayerData.job ~= nil and
@@ -371,8 +370,8 @@ function OpenMobileMecanoActionsMenu()
         {label = _U('repair'),       value = 'fix_vehicle'},
         {label = _U('clean'),      value = 'clean_vehicle'},
         {label = _U('imp_veh'),     value = 'del_vehicle'},
-        {label = _U('flat_bed'),       value = 'dep_vehicle'}
-        --{label = _U('place_objects'), value = 'object_spawner'}
+        {label = _U('flat_bed'),       value = 'dep_vehicle'},
+        {label = _U('place_objects'), value = 'object_spawner'}
       }
     },
     function(data, menu)
@@ -597,7 +596,7 @@ function OpenMobileMecanoActionsMenu()
           ESX.ShowNotification(_U('imp_flatbed'))
         end
       end
---[[
+
       if data.current.value == 'object_spawner' then
 
         ESX.UI.Menu.Open(
@@ -641,7 +640,7 @@ function OpenMobileMecanoActionsMenu()
         )
 
       end
-]]--
+
     end,
   function(data, menu)
     menu.close()

@@ -1,10 +1,5 @@
 local TeleportFromTo = {
-	["Wayne Tech"] = {
-		positionFrom = { ['x'] = 127.0193, ['y'] = -729.1538, ['z'] = 242.1519, nom = "Batcave"},
-		positionTo =   { ['x'] = 1950.4136, ['y'] = 770.1567, ['z'] = 171.5949, nom = "Wayne Tech"},
-	},
-
-	["Manoir"] = {
+        ["Manoir"] = {
 		positionFrom = { ['x'] = -1541.1917, ['y'] = 92.2758, ['z'] = 53.8975, nom = "Batcave"},
 		positionTo =   { ['x'] = 1947.7565, ['y'] = 769.9936, ['z'] = 171.8310, nom = "Manoir"},
 	},

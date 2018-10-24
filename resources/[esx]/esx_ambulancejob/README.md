@@ -1,47 +1,38 @@
-# esx_ambulancejob
+# fxserver-esx_ambulancejob
+FXServer ESX Ambulance Job
 
-## Requirements
+
+[UPDATE]
+anti alt+F4, player will always be killed when reconnected
+install this ambulance job and insert this sql into your database:
+
+```
+ALTER TABLE `users` ADD isalife2 int(2) default 1;
+```
+
+
+[REQUIREMENTS]
 
 * Auto mode
-   - [esx_skin](https://github.com/ESX-Org/esx_skin)
-
+   - esx_skin => https://github.com/FXServer-ESX/fxserver-esx_skin
+  
 * Player management (boss actions **There is no way to earn money for now**)
-   - [esx_society](https://github.com/ESX-Org/esx_society)
+  * esx_society => https://github.com/FXServer-ESX/fxserver-esx_society
 
-## Download & Installation
+[INSTALLATION]
 
-### Using [fvm](https://github.com/qlaffont/fvm-installer)
+1) CD in your resources/[esx] folder
+2) Clone the repository
 ```
-fvm install --save --folder=esx esx-org/esx_ambulancejob
+git clone https://github.com/TanguyOrtegat/esx_ambulancejob.git esx_ambulancejob
 ```
+3) Import esx_ambulancejob.sql in your database
 
-### Using Git
-```
-cd resources
-git clone https://github.com/ESX-Org/esx_ambulancejob [esx]/esx_ambulancejob
-```
-
-### Manually
-- Download https://github.com/ESX-Org/esx_ambulancejob/archive/master.zip
-- Put it in the `[esx]` directory
-
-## Installation
-- Import `esx_ambulancejob.sql` in your database
-- If you want player management you have to set `Config.EnablePlayerManagement` to `true` in `config.lua`
-- Add this in your `server.cfg`:
+4) Add this in your server.cfg :
 
 ```
+start baseevents
 start esx_ambulancejob
 ```
+5) * If you want player management you have to set Config.EnablePlayerManagement to true in config.lua
 
-# Legal
-### License
-esx_ambulancejob - ambulance script for fivem
-
-Copyright (C) 2015-2018 Jérémie N'gadi
-
-This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
-
-This program Is distributed In the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty Of MERCHANTABILITY Or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License For more details.
-
-You should have received a copy Of the GNU General Public License along with this program. If Not, see http://www.gnu.org/licenses/.

@@ -4,22 +4,22 @@
 	<script>
 		function addCommas(nStr) {
 			nStr += '';
-			let x = nStr.split('.');
-			let x1 = x[0];
-			let x2 = x.length > 1 ? '.' + x[1] : '';
-			let rgx = /(\d+)(\d{3})/;
+			var x = nStr.split('.');
+			var x1 = x[0];
+			var x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
 			while (rgx.test(x1)) {
 				x1 = x1.replace(rgx, '$1' + '<span style="margin-left: 3px; margin-right: 3px;"/>' + '$2');
 			}
 			return x1 + x2;
 		}
 
-		let moneyIcon = "$"
+		var moneyIcon = "$"
 
 		window.onload = function(e){
 			// NUI Callback
 			window.addEventListener('message', function(event){
-				let item = event.data;
+				var item = event.data;
 
 				if(item.seticon == true)
 					moneyIcon = item.icon;
@@ -61,32 +61,49 @@
 			src: url(pdown.ttf);
 		}
 		.tiny {
-			font-size: 29px;
-			position: absolute; right: 10;
+			position: absolute;
 		}
 		#money {
-			font-family: pcdown;
-			font-size: 35px;
-			color: white;
-			padding: 4px;
+			position   : absolute;
+			font-family: 'pcdown';
+			color      : white;
+			padding    : 0px 20px 5px;
 			text-shadow:
-					-1px -1px 0 #000,
-					1px -1px 0 #000,
-					-1px 1px 0 #000,
-					1px 1px 0 #000;
-			}
+				-1px -1px 0 rgba(0,0,0,0.5),
+				 1px -1px 0 rgba(0,0,0,0.5),
+				-1px  1px 0 rgba(0,0,0,0.5),
+				 1px  1px 0 rgba(0,0,0,0.5);
+			text-align: center;
+			top       : 0;
+			left     : 0;
+			right : 0;
+			height:35px;
+		    z-index:12;
+		}
 
 		#container {
-			position: absolute;
-			top: 40; right: 40;
+			text-align:left;
+			font-size  : 25px;
+			display:inline-block;
+			margin-right:30px;
+			position:absolute;
+			top:0;
+			padding:2px 5px;
+			min-width:150px;
+			text-align:center;
+			opacity:0.7;
+			left:40%;
 		}
 	</style>
 </head>
 
 <body>
-	<div id="starter" style="font-family: 'roboto'; color: white; position: absolute; left: 20%; top: 5%; width: 60%; background: rgba(40, 40, 40, 0.8)"></div>
+	<div id="starter" style="font-family: 'roboto'; color: white; position: absolute; left: 20%; top: 5%; width: 60%; background: rgba(40, 40, 40, 0.8)">
+
+	</div>
 	<div id="container">
 		<div id="money">
+
 			<div id="cash"/>
 		</div>
 	</div>

@@ -52,11 +52,11 @@ RegisterNUICallback("player", function(data, cb)
 		drawNotification("~r~You Committed Suicide.")
 
 	-- God Mode/Invincibility
-	--elseif action == "god" then
-		--featurePlayerInvincible = newstate
-		--drawNotification("God Mode: "..tostring(text))
+	elseif action == "god" then
+		featurePlayerInvincible = newstate
+		drawNotification("God Mode: "..tostring(text))
 
-		--featurePlayerInvincibleUpdated = true;
+		featurePlayerInvincibleUpdated = true;
 
 	-- Infinite Stamina
 	elseif action == "stamina" then
